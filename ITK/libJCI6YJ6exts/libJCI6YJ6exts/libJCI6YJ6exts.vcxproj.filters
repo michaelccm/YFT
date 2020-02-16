@@ -1,0 +1,207 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="源文件">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="头文件">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="资源文件">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="register callbacks">
+      <UniqueIdentifier>{74f45ce9-1c8e-465a-96cf-749e265e3831}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="newADD">
+      <UniqueIdentifier>{523bf540-7900-47c7-b228-4b068d29e3b1}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\src\yfjc_ebp_ccl_macros.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\yfjc_ebp_custom_define.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\yfjc_ebp_error.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\yfjc_ebp_head.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\yfjc_ebp_server_exits_custom.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\yfjc_time.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\bmf_autoUpdateSOPFisYear.cxx">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\bmf_programinfo_change_closedate.cxx">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\bmf_set_programinfo_date.cxx">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\yfjc_assign_manager.cxx">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\yfjc_common_itk_util.cxx">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\yfjc_create_lcc_cost.cxx">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\yfjc_delete_lcc_cost.cxx">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\yfjc_ebp_ask_DesignReq_ValidValue.cxx">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\yfjc_ebp_ask_timesheetentry_hour.cxx">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\yfjc_ebp_auto_assign_PEF.cxx">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\yfjc_ebp_auto_assign_PKR.cxx">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\yfjc_ebp_automatic_calculation_EQU.cxx">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\yfjc_ebp_ccl_switch_objects.cxx">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\yfjc_ebp_check_overduelogtime.cxx">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\yfjc_ebp_Delete_schedule_task_check.cxx">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\yfjc_ebp_deleteCostInfo_Handler.cxx">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\yfjc_ebp_get_workingdates.cxx">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\yfjc_ebp_getDRCheckResult.cxx">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\yfjc_ebp_getXSOGBGRateValue.cxx">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\yfjc_ebp_getXSOReviewStatusValue.cxx">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\yfjc_ebp_getXSORevInfo.cxx">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\yfjc_ebp_importhyperion.cxx">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\yfjc_ebp_importPersonPlan.cxx">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\yfjc_ebp_importProgramInfo.cxx">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\yfjc_ebp_importTimeLog.cxx">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\yfjc_ebp_isLeadEngineer.cxx">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\yfjc_ebp_list_division.cxx">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\yfjc_ebp_pef_itemrev_post_action.cxx">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\yfjc_ebp_postActionsForNewProj.cxx">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\yfjc_ebp_pre_actions_for_new_proj.cxx">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\yfjc_ebp_programinfo_property_sum.cxx">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\yfjc_ebp_programInfoExt.cxx">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\yfjc_ebp_reject_overdue_timesheet.cxx">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\yfjc_ebp_remove_default_assignee.cxx">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\yfjc_ebp_revise_XSOInfo.cxx">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\yfjc_ebp_server_exits_custom.cxx">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\yfjc_ebp_setXSODefaultDateValue.cxx">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\yfjc_ebp_timesheetEntry_isOverDue.cxx">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\yfjc_ebp_timesheetEntry_prop.cxx">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\yfjc_ebp_timesheetEntryControl.cxx">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\yfjc_ebp_transToCostInfo.cxx">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\yfjc_ebp_update_programinfo_reopenTime_and_phase0Time.cxx">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\yfjc_ebp_updateCostAfterLogTime.cxx">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\yfjc_ebp_updateProjCloseDate.cxx">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\yfjc_ebp_updateProjInfoRevStatus.cxx">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\yfjc_ebp_userservice_create_item.cxx">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\yfjc_ebp_userservice_setSignOff.cxx">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\yfjc_ebp_userservice_update_programinfo.cxx">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\yfjc_notify_with_signoff_report.cxx">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\yfjc_time.cxx">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\yfjc_transfer_forecast_costinfo.cxx">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\yfjc_transfer_timesheetentry.cxx">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\yfjc_ebp_custom_main.cxx">
+      <Filter>register callbacks</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\yfjc_ebp_head.cxx">
+      <Filter>头文件</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,176 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{7A492070-B414-47F7-B93B-763EE2F0F035}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>libJCI6YJ6exts</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v110</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v110</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <PlatformToolset>v110</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <PlatformToolset>v110</PlatformToolset>
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <UseOfMfc />
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <TargetExt>.dll</TargetExt>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;LIBJCI6YJ6EXTS_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;LIBJCI6YJ6EXTS_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\Siemens\Teamcenter11\include;C:\Siemens\Teamcenter11\include_cpp;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>IPLIB=none;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <WarningLevel>TurnOffAllWarnings</WarningLevel>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>C:\Siemens\Teamcenter11\lib\*.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <IgnoreSpecificDefaultLibraries>libuser_exits.ar.lib</IgnoreSpecificDefaultLibraries>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="..\src\yfjc_ebp_ccl_macros.h" />
+    <ClInclude Include="..\src\yfjc_ebp_custom_define.h" />
+    <ClInclude Include="..\src\yfjc_ebp_error.h" />
+    <ClInclude Include="..\src\yfjc_ebp_head.h" />
+    <ClInclude Include="..\src\yfjc_ebp_server_exits_custom.h" />
+    <ClInclude Include="..\src\yfjc_time.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\bmf_autoUpdateSOPFisYear.cxx" />
+    <ClCompile Include="..\src\bmf_programinfo_change_closedate.cxx" />
+    <ClCompile Include="..\src\bmf_set_programinfo_date.cxx" />
+    <ClCompile Include="..\src\yfjc_assign_manager.cxx" />
+    <ClCompile Include="..\src\yfjc_common_itk_util.cxx" />
+    <ClCompile Include="..\src\yfjc_create_lcc_cost.cxx" />
+    <ClCompile Include="..\src\yfjc_delete_lcc_cost.cxx" />
+    <ClCompile Include="..\src\yfjc_ebp_ask_DesignReq_ValidValue.cxx" />
+    <ClCompile Include="..\src\yfjc_ebp_ask_timesheetentry_hour.cxx" />
+    <ClCompile Include="..\src\yfjc_ebp_automatic_calculation_EQU.cxx" />
+    <ClCompile Include="..\src\yfjc_ebp_auto_assign_PEF.cxx" />
+    <ClCompile Include="..\src\yfjc_ebp_auto_assign_PKR.cxx" />
+    <ClCompile Include="..\src\yfjc_ebp_ccl_switch_objects.cxx" />
+    <ClCompile Include="..\src\yfjc_ebp_check_overduelogtime.cxx" />
+    <ClCompile Include="..\src\yfjc_ebp_custom_main.cxx" />
+    <ClCompile Include="..\src\yfjc_ebp_deleteCostInfo_Handler.cxx" />
+    <ClCompile Include="..\src\yfjc_ebp_Delete_schedule_task_check.cxx" />
+    <ClCompile Include="..\src\yfjc_ebp_getDRCheckResult.cxx" />
+    <ClCompile Include="..\src\yfjc_ebp_getXSOGBGRateValue.cxx" />
+    <ClCompile Include="..\src\yfjc_ebp_getXSOReviewStatusValue.cxx" />
+    <ClCompile Include="..\src\yfjc_ebp_getXSORevInfo.cxx" />
+    <ClCompile Include="..\src\yfjc_ebp_get_workingdates.cxx" />
+    <ClCompile Include="..\src\yfjc_ebp_head.cxx" />
+    <ClCompile Include="..\src\yfjc_ebp_importhyperion.cxx" />
+    <ClCompile Include="..\src\yfjc_ebp_importPersonPlan.cxx" />
+    <ClCompile Include="..\src\yfjc_ebp_importProgramInfo.cxx" />
+    <ClCompile Include="..\src\yfjc_ebp_importTimeLog.cxx" />
+    <ClCompile Include="..\src\yfjc_ebp_isLeadEngineer.cxx" />
+    <ClCompile Include="..\src\yfjc_ebp_list_division.cxx" />
+    <ClCompile Include="..\src\yfjc_ebp_pef_itemrev_post_action.cxx" />
+    <ClCompile Include="..\src\yfjc_ebp_postActionsForNewProj.cxx" />
+    <ClCompile Include="..\src\yfjc_ebp_pre_actions_for_new_proj.cxx" />
+    <ClCompile Include="..\src\yfjc_ebp_programInfoExt.cxx" />
+    <ClCompile Include="..\src\yfjc_ebp_programinfo_property_sum.cxx" />
+    <ClCompile Include="..\src\yfjc_ebp_reject_overdue_timesheet.cxx" />
+    <ClCompile Include="..\src\yfjc_ebp_remove_default_assignee.cxx" />
+    <ClCompile Include="..\src\yfjc_ebp_revise_XSOInfo.cxx" />
+    <ClCompile Include="..\src\yfjc_ebp_server_exits_custom.cxx" />
+    <ClCompile Include="..\src\yfjc_ebp_setXSODefaultDateValue.cxx" />
+    <ClCompile Include="..\src\yfjc_ebp_timesheetEntryControl.cxx" />
+    <ClCompile Include="..\src\yfjc_ebp_timesheetEntry_isOverDue.cxx" />
+    <ClCompile Include="..\src\yfjc_ebp_timesheetEntry_prop.cxx" />
+    <ClCompile Include="..\src\yfjc_ebp_transToCostInfo.cxx" />
+    <ClCompile Include="..\src\yfjc_ebp_updateCostAfterLogTime.cxx" />
+    <ClCompile Include="..\src\yfjc_ebp_updateProjCloseDate.cxx" />
+    <ClCompile Include="..\src\yfjc_ebp_updateProjInfoRevStatus.cxx" />
+    <ClCompile Include="..\src\yfjc_ebp_update_programinfo_reopenTime_and_phase0Time.cxx" />
+    <ClCompile Include="..\src\yfjc_ebp_userservice_create_item.cxx" />
+    <ClCompile Include="..\src\yfjc_ebp_userservice_setSignOff.cxx" />
+    <ClCompile Include="..\src\yfjc_ebp_userservice_update_programinfo.cxx" />
+    <ClCompile Include="..\src\yfjc_notify_with_signoff_report.cxx" />
+    <ClCompile Include="..\src\yfjc_time.cxx" />
+    <ClCompile Include="..\src\yfjc_transfer_forecast_costinfo.cxx" />
+    <ClCompile Include="..\src\yfjc_transfer_timesheetentry.cxx" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
