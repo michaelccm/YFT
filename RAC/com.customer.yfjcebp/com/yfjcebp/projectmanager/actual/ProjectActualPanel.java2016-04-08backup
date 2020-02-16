@@ -1,0 +1,493 @@
+/*
+#=============================================================================
+#																			   
+#			opyright (c) 2009 Origin Enterprise Solution LTD.		   
+#																			   
+#=============================================================================
+# File name: ReadDataFromExcel.java
+# File description: 										   	
+#=============================================================================
+#	Date		Name		Action	Description of Change					   
+#	2013-3-11	liujm  	SP-RICH-FUN-06.查看实际									   
+#=============================================================================
+ */
+package com.yfjcebp.projectmanager.actual;
+
+import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.awt.GridLayout;
+import java.awt.event.AdjustmentEvent;
+import java.awt.event.AdjustmentListener;
+import java.util.Vector;
+import javax.swing.BorderFactory;
+import javax.swing.JPanel;
+import javax.swing.JScrollBar;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.ScrollPaneConstants;
+import javax.swing.border.TitledBorder;
+import org.apache.log4j.Logger;
+import com.teamcenter.rac.common.TCTable;
+import com.teamcenter.rac.kernel.TCComponent;
+import com.teamcenter.rac.kernel.TCComponentItem;
+import com.teamcenter.rac.kernel.TCException;
+import com.teamcenter.rac.kernel.TCProperty;
+import com.teamcenter.rac.kernel.TCSession;
+import com.teamcenter.rac.kernel.tcservices.TcPropService;
+import com.teamcenter.rac.util.Registry;
+import com.teamcenter.rac.util.SplitPane;
+import com.yfjcebp.projectmanager.budget.ProgressBarThread;
+
+/**
+ * @author liujm
+ */
+public class ProjectActualPanel extends JPanel {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	private static Logger logger = Logger.getLogger(ProjectActualPanel.class);
+
+	private String widthStr = "25";
+	protected TCSession session;
+	private Registry reg;
+
+	// Summary 成本预算汇总
+	private JScrollPane scrollPaneSum;
+	private TCTable summaryTable;
+	private String[] table_titleSum;
+
+	// add 2014-6-10
+	private JScrollPane pr_scrollPaneSum;
+	private TCTable summaryPRTable;
+	private String[] table_pr_titleSum;
+	private JScrollBar hScrollBar;
+
+	// Labour Memo 人工成本明细
+	private JScrollPane scrollPaneLab;
+	private TCTable labourMemoTable;
+	private String[] table_titleLab;
+
+	// Non Labour Memo(PR) 非人工成本明细
+	private JScrollPane scrollPaneNonPR;
+	private TCTable nonLabourMemoPRTable;
+	private String[] table_titleNon;
+
+	// Non Labour Memo(Actual) 非人工成本明细
+	private JScrollPane scrollPaneNonActual;
+	private TCTable nonLabourMemoActualTable;
+
+	private TCComponentItem programInfoItem;
+
+	// 存放加载界面的时候的原始数据
+	private Vector<TCComponent> VecCostInfo = new Vector<TCComponent>();
+
+	public ProjectActualPanel() {
+		super(true);
+	}
+
+	public ProjectActualPanel(TCSession tcsession) {
+		super(true);
+		session = null;
+		session = tcsession;
+		reg = Registry.getRegistry(this);
+		initializePanel();
+	}
+
+	public ProjectActualPanel(TCComponentItem programInfoItem) {
+		super(true);
+		this.programInfoItem = programInfoItem;
+	}
+
+	public TCComponentItem getProgramInfoItem() {
+		return programInfoItem;
+	}
+
+	public void setProgramInfoItem(TCComponentItem programInfoItem) {
+		this.programInfoItem = programInfoItem;
+	}
+
+	/**
+	 * 初始化这个panel
+	 */
+	private void initializePanel() {
+
+		// tyl 2015/05/05
+		// modify by wuh 2014-6-10
+		// table_titleSum = new String[]
+		// {"jci6_actual_total_cost","jci6_actual_labor_hc","jci6_actual_labor_hours","jci6_actual_labor_cost",
+		// "jci6_actual_sample","jci6_actual_sample_ext","jci6_actual_sample_int","jci6_actual_sample_pv",
+		// "jci6_actual_test",
+		// "jci6_actual_test_dv","jci6_actual_test_pv","jci6_actual_tool","jci6_actual_other_freight","jci6_actual_other_support","jci6_actual_other_travel"
+		// };
+		//
+		// String[] revProNamesWidth = new String[] { widthStr, widthStr,
+		// widthStr, widthStr, widthStr, widthStr, widthStr, widthStr,
+		// widthStr, widthStr, widthStr, widthStr, widthStr, widthStr,
+		// widthStr};
+		// table_pr_titleSum = new String[] { "jci6_pr_total_cost",
+		// "jci6_actual_labor_hc", "jci6_actual_labor_hours",
+		// "jci6_actual_labor_cost", "jci6_pr_sample", "jci6_pr_sample_ext",
+		// "jci6_pr_sample_int", "jci6_pr_sample_pv", "jci6_pr_test",
+		// "jci6_pr_test_dv", "jci6_pr_test_pv", "jci6_pr_tool",
+		// "jci6_actual_other_freight", "jci6_actual_other_support",
+		// "jci6_actual_other_travel" };
+
+		table_titleSum = new String[] { "jci6_actual_total_cost", "jci6_actual_labor_hc", "jci6_actual_labor_hours", "jci6_actual_labor_cost", "jci6_actual_sample", "jci6_actual_sample_ext", "jci6_actual_sample_int", "jci6_actual_sample_pv", "jci6_actual_sample_mnjt","jci6_actual_test", "jci6_actual_test_dv",
+				"jci6_actual_test_pv","jci6_actual_test_wfsy","jci6_actual_test_sygz", "jci6_actual_tool", "jci6_actual_other_freight", "jci6_actual_other_support", "jci6_actual_other_travel" };
+
+		String[] revProNamesWidth = new String[] { widthStr, widthStr, widthStr, widthStr, widthStr, widthStr, widthStr, widthStr, widthStr, widthStr, widthStr, widthStr, widthStr, widthStr, widthStr , widthStr, widthStr, widthStr};
+
+		table_pr_titleSum = new String[] { "jci6_pr_total_cost", "jci6_actual_labor_hc", "jci6_actual_labor_hours", "jci6_actual_labor_cost", "jci6_pr_sample", "jci6_pr_sample_ext", "jci6_pr_sample_int", "jci6_pr_sample_pv","jci6_pr_sample_mnjt", "jci6_pr_test", "jci6_pr_test_dv", "jci6_pr_test_pv","jci6_pr_test_wfsy","jci6_pr_test_sygz", "jci6_pr_tool",
+				"jci6_actual_other_freight", "jci6_pr_other_support", "jci6_actual_other_travel" };
+		// tyl 2015/05/05
+
+		summaryTable = new TCTable() {
+
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			public boolean isCellEditable(int row, int column) {
+				return false;
+			}
+		};
+
+		summaryPRTable = new TCTable() {
+
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			public boolean isCellEditable(int row, int column) {
+				return false;
+			}
+		};
+
+		summaryTable.setColumnNames(session, table_titleSum, "JCI6_ProgramInfo");
+		// summaryTable.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+		summaryTable.setColumnWidths(revProNamesWidth);
+		summaryTable.setPreferredScrollableViewportSize(new Dimension(800, 15));
+
+		summaryPRTable.setColumnNames(session, table_pr_titleSum, "JCI6_ProgramInfo");
+		// summaryTable.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+		summaryPRTable.setColumnWidths(revProNamesWidth);
+		summaryPRTable.setPreferredScrollableViewportSize(new Dimension(800, 15));
+
+		// scrollPaneSum = new JScrollPane(summaryTable);
+		scrollPaneSum = new JScrollPane(summaryTable, ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+
+		pr_scrollPaneSum = new JScrollPane(summaryPRTable, ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+		// pr_scrollPaneSum.getVerticalScrollBar().setVisible(false);
+
+		hScrollBar = pr_scrollPaneSum.getHorizontalScrollBar();
+
+		hScrollBar.addAdjustmentListener(new AdjustmentListener() {
+			@Override
+			public void adjustmentValueChanged(AdjustmentEvent adjustmentevent) {
+				// TODO Auto-generated method stub
+				// System.out.println("adjustmentValueChanged");
+				scrollPaneSum.getHorizontalScrollBar().setValue(hScrollBar.getValue());
+			}
+		});
+
+		// Color lightBlue = new Color(92,155,178);
+		// setTableHeaderColor(summaryTable,0,lightBlue);
+		// setTableHeaderColor(summaryTable,3,Color.lightGray);
+		// setTableHeaderColor(summaryTable,4,Color.lightGray);
+		// setTableHeaderColor(summaryTable,8,Color.lightGray);
+		// setTableHeaderColor(summaryTable,11,Color.lightGray);
+		// setTableHeaderColor(summaryTable,12,Color.lightGray);
+		// setTableHeaderColor(summaryTable,13,Color.lightGray);
+		// setTableHeaderColor(summaryTable,14,Color.lightGray);
+		//
+		// setTableHeaderColor(summaryPRTable,0,lightBlue);
+		// setTableHeaderColor(summaryPRTable,3,Color.lightGray);
+		// setTableHeaderColor(summaryPRTable,4,Color.lightGray);
+		// setTableHeaderColor(summaryPRTable,8,Color.lightGray);
+		// setTableHeaderColor(summaryPRTable,11,Color.lightGray);
+		// setTableHeaderColor(summaryPRTable,12,Color.lightGray);
+		// setTableHeaderColor(summaryPRTable,13,Color.lightGray);
+		// setTableHeaderColor(summaryPRTable,14,Color.lightGray);
+
+		JPanel paneSummary = new JPanel(new GridLayout(2, 1));
+		TitledBorder actual_border = new TitledBorder(BorderFactory.createEtchedBorder(), reg.getString("ActualSummaryTable.LABEL"));
+		TitledBorder pr_border = new TitledBorder(BorderFactory.createEtchedBorder(), reg.getString("Actual_PRSummaryTable.LABEL"));
+		scrollPaneSum.setBorder(actual_border);
+		pr_scrollPaneSum.setBorder(pr_border);
+		paneSummary.setBorder(new TitledBorder(BorderFactory.createEtchedBorder(), reg.getString("SummaryTable.LABEL")));
+		paneSummary.add(scrollPaneSum);
+		paneSummary.add(pr_scrollPaneSum);
+
+		String[] costInfoProNames = new String[] { "jci6_Division", "jci6_User", "jci6_RateLevel", "jci6_CostType", "jci6_Unit", "jci6_Year", "jci6_Jan", "jci6_Feb", "jci6_Mar", "jci6_Apr", "jci6_May", "jci6_Jun", "jci6_Jul", "jci6_Aug", "jci6_Sep", "jci6_Oct", "jci6_Nov", "jci6_Dec" };
+		table_titleLab = new String[18];
+		table_titleNon = new String[15];
+		for (int i = 0; i < 18; i++) {
+			String proName = costInfoProNames[i];
+			table_titleLab[i] = proName;
+			if (i >= 3) {
+				table_titleNon[i - 3] = proName;
+			}
+		}
+		labourMemoTable = new TCTable() {
+
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			public boolean isCellEditable(int row, int column) {
+				return false;
+			}
+		};
+		labourMemoTable.setColumnNames(session, table_titleLab, "JCI6_CostInfo");
+		labourMemoTable.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+		labourMemoTable.setPreferredScrollableViewportSize(new Dimension(1000, 150));
+		scrollPaneLab = new JScrollPane(labourMemoTable, ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
+
+		JPanel paneLab = new JPanel(new BorderLayout());
+		paneLab.setBorder(new TitledBorder(BorderFactory.createEtchedBorder(), reg.getString("LabourMemoTable.LABEL")));
+		paneLab.add(BorderLayout.CENTER, scrollPaneLab);
+
+		nonLabourMemoPRTable = new TCTable() {
+
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			public boolean isCellEditable(int row, int column) {
+				return false;
+			}
+		};
+		nonLabourMemoPRTable.setColumnNames(session, table_titleNon, "JCI6_CostInfo");
+		nonLabourMemoPRTable.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+		nonLabourMemoPRTable.setPreferredScrollableViewportSize(new Dimension(1000, 150));
+		scrollPaneNonPR = new JScrollPane(nonLabourMemoPRTable, ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
+
+		JPanel paneNonPR = new JPanel(new BorderLayout());
+		paneNonPR.setBorder(new TitledBorder(BorderFactory.createEtchedBorder(), reg.getString("NonLabourMemoPRTable.LABEL")));
+		paneNonPR.add(BorderLayout.CENTER, scrollPaneNonPR);
+
+		nonLabourMemoActualTable = new TCTable() {
+
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+
+			@Override
+			public boolean isCellEditable(int row, int column) {
+				return false;
+			}
+		};
+		nonLabourMemoActualTable.setColumnNames(session, table_titleNon, "JCI6_CostInfo");
+		nonLabourMemoActualTable.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+		nonLabourMemoActualTable.setPreferredScrollableViewportSize(new Dimension(1000, 150));
+		scrollPaneNonActual = new JScrollPane(nonLabourMemoActualTable, ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
+
+		JPanel paneNonActual = new JPanel(new BorderLayout());
+		paneNonActual.setBorder(new TitledBorder(BorderFactory.createEtchedBorder(), reg.getString("NonLabourMemoActualTable.LABEL")));
+		paneNonActual.add(BorderLayout.CENTER, scrollPaneNonActual);
+
+		setLayout(new BorderLayout());
+		JPanel mainPanel = new JPanel(new BorderLayout());
+		mainPanel.add(BorderLayout.NORTH, paneSummary);
+		SplitPane mainSplitpane = new SplitPane(1);
+		SplitPane bottomSplitpane = new SplitPane(1);
+		bottomSplitpane.setTopComponent(paneNonPR);
+		bottomSplitpane.setBottomComponent(paneNonActual);
+		mainSplitpane.setTopComponent(paneLab);
+		mainSplitpane.setBottomComponent(bottomSplitpane);
+
+		mainPanel.add(BorderLayout.CENTER, mainSplitpane);
+
+		JScrollPane mainScrollPane = new JScrollPane(mainPanel, ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED, ScrollPaneConstants.HORIZONTAL_SCROLLBAR_ALWAYS);
+		add("Center", mainScrollPane);
+	}
+
+	/**
+	 * 刚开始加载界面时候填充的原始数据
+	 */
+	public void fillOriginalData() {
+		System.out.println("clear before summaryTable row count is " + summaryTable.getRowCount());
+		summaryTable.clear();
+		summaryPRTable.clear();
+		System.out.println("clear before summaryTable row count is " + summaryTable.getRowCount());
+		labourMemoTable.clear();
+		nonLabourMemoPRTable.clear();
+		nonLabourMemoActualTable.clear();
+		try {
+			TCComponent[] costInfos = null;
+			if (programInfoItem != null) {
+				summaryTable.addRow(programInfoItem);
+				summaryPRTable.addRow(programInfoItem);
+				costInfos = programInfoItem.getRelatedComponents("IMAN_external_object_link");
+			}
+			if (costInfos != null) {
+				int costInfoLength = costInfos.length;
+				VecCostInfo.clear();
+				logger.debug("find " + costInfoLength + " CostInfo Object...");
+				if (costInfoLength > 0) {
+					for (int i = 0; i < costInfoLength; i++) {
+						TCComponent costInfo = costInfos[i];
+						if (costInfo.getType().equals("JCI6_CostInfo")) {
+							String jci6_CPT = costInfo.getProperty("jci6_CPT");
+							if (jci6_CPT.equals(reg.getString("jci6_CPT1.NAME")) || jci6_CPT.equals(reg.getString("jci6_CPT2.NAME"))) {
+								VecCostInfo.add(costInfos[i]);
+							}
+						}
+					}
+				}
+				fillOriginalDataToTable();
+			}
+		} catch (TCException e) {
+			e.printStackTrace();
+		}
+	}
+
+	// add by wuh 2014-5-14
+	public void fillOriginalData(ProgressBarThread thread, int a) {
+		summaryTable.removeAllRows();
+		summaryPRTable.removeAllRows();
+		labourMemoTable.removeAllRows();
+		nonLabourMemoPRTable.removeAllRows();
+		nonLabourMemoActualTable.removeAllRows();
+		try {
+			TCComponent[] costInfos = null;
+			if (programInfoItem != null) {
+				summaryTable.addRow(programInfoItem);
+				summaryPRTable.addRow(programInfoItem);
+				costInfos = programInfoItem.getRelatedComponents("IMAN_external_object_link");
+			}
+			thread.setProgressValue(thread.getProgressValue() + a / 100);
+			int next_yb = a / 100 * 99 / 2;
+			if (costInfos != null) {
+				int costInfoLength = costInfos.length;
+				VecCostInfo.clear();
+				logger.debug("find " + costInfoLength + " CostInfo Object...");
+				if (costInfoLength > 0) {
+					int for_next = next_yb / costInfoLength;
+					for (int i = 0; i < costInfoLength; i++) {
+						TCComponent costInfo = costInfos[i];
+						if (costInfo.getType().equals("JCI6_CostInfo")) {
+							String jci6_CPT = costInfo.getProperty("jci6_CPT");
+							if (jci6_CPT.equals(reg.getString("jci6_CPT1.NAME")) || jci6_CPT.equals(reg.getString("jci6_CPT2.NAME"))) {
+								VecCostInfo.add(costInfos[i]);
+							}
+						}
+						thread.setProgressValue(thread.getProgressValue() + for_next);
+					}
+				}
+				thread.setProgressValue(next_yb + a / 100);
+				fillOriginalDataToTable(thread, next_yb);
+			}
+			thread.setProgressValue(a);
+			thread.close();
+		} catch (TCException e) {
+			e.printStackTrace();
+		}
+	}
+
+	// add by wuh 2014-5-14
+	public void fillOriginalDataToTable(ProgressBarThread thread, int next_yb) {
+		int costInfoSize = VecCostInfo.size();
+		TCComponent[] costInfos = new TCComponent[costInfoSize];
+		costInfos = VecCostInfo.toArray(costInfos);
+		String[] proNames = new String[] { "jci6_CPT", "jci6_Division", "jci6_User", "jci6_RateLevel", "jci6_CostType", "jci6_Unit", "jci6_Year", "jci6_Jan", "jci6_Feb", "jci6_Mar", "jci6_Apr", "jci6_May", "jci6_Jun", "jci6_Jul", "jci6_Aug", "jci6_Sep", "jci6_Oct", "jci6_Nov", "jci6_Dec" };
+		try {
+			TcPropService.getProperties(session, costInfos, proNames);
+		} catch (Exception e1) {
+			e1.printStackTrace();
+		}
+
+		int for_val = next_yb;
+		if (costInfoSize > 0) {
+			for_val = next_yb / costInfoSize;
+		}
+		for (int i = 0; i < costInfoSize; i++) {
+			TCComponent costInfo = VecCostInfo.get(i);
+			String[] propertyNames = new String[] { "jci6_CPT", "jci6_CostType" };
+			TCProperty[] propertyValues = null;
+			try {
+				propertyValues = costInfo.getTCProperties(propertyNames);
+			} catch (TCException e) {
+				e.printStackTrace();
+			}
+			String cpt = propertyValues[0].getDisplayValue();
+			String costType = propertyValues[1].getDisplayValue();
+			if (costType.equals(reg.getString("jci6_CostType1.NAME")) || costType.equals(reg.getString("jci6_CostType2.NAME")) || costType.equals(reg.getString("jci6_CostType3.NAME")) || costType.equals(reg.getString("jci6_CostType4.NAME")) || costType.equals(reg.getString("jci6_CostType5.NAME"))) {
+				labourMemoTable.addRow(costInfo);
+			} else {
+				if (cpt.equals(reg.getString("jci6_CPT1.NAME"))) {
+					nonLabourMemoActualTable.addRow(costInfo);
+				} else if (cpt.equals(reg.getString("jci6_CPT2.NAME"))) {
+					nonLabourMemoPRTable.addRow(costInfo);
+				}
+			}
+			thread.setProgressValue(thread.getProgressValue() + for_val);
+		}
+	}
+
+	/**
+	 * 把得到的原始数据加载到人工成本和非人工成本的对应的表中
+	 * 
+	 * @throws TCException
+	 */
+	public void fillOriginalDataToTable() {
+		int costInfoSize = VecCostInfo.size();
+		TCComponent[] costInfos = new TCComponent[costInfoSize];
+		costInfos = VecCostInfo.toArray(costInfos);
+		String[] proNames = new String[] { "jci6_CPT", "jci6_Division", "jci6_User", "jci6_RateLevel", "jci6_CostType", "jci6_Unit", "jci6_Year", "jci6_Jan", "jci6_Feb", "jci6_Mar", "jci6_Apr", "jci6_May", "jci6_Jun", "jci6_Jul", "jci6_Aug", "jci6_Sep", "jci6_Oct", "jci6_Nov", "jci6_Dec" };
+		try {
+			TcPropService.getProperties(session, costInfos, proNames);
+		} catch (Exception e1) {
+			e1.printStackTrace();
+		}
+
+		for (int i = 0; i < costInfoSize; i++) {
+			TCComponent costInfo = VecCostInfo.get(i);
+			String[] propertyNames = new String[] { "jci6_CPT", "jci6_CostType" };
+			TCProperty[] propertyValues = null;
+			try {
+				propertyValues = costInfo.getTCProperties(propertyNames);
+			} catch (TCException e) {
+				e.printStackTrace();
+			}
+			String cpt = propertyValues[0].getDisplayValue();
+			String costType = propertyValues[1].getDisplayValue();
+			if (costType.equals(reg.getString("jci6_CostType1.NAME")) || costType.equals(reg.getString("jci6_CostType2.NAME")) || costType.equals(reg.getString("jci6_CostType3.NAME")) || costType.equals(reg.getString("jci6_CostType4.NAME")) || costType.equals(reg.getString("jci6_CostType5.NAME"))) {
+				labourMemoTable.addRow(costInfo);
+			} else {
+				if (cpt.equals(reg.getString("jci6_CPT1.NAME"))) {
+					nonLabourMemoActualTable.addRow(costInfo);
+				} else if (cpt.equals(reg.getString("jci6_CPT2.NAME"))) {
+					nonLabourMemoPRTable.addRow(costInfo);
+				}
+			}
+		}
+	}
+
+	// 设置表头背景颜色，并移除表头鼠标监听
+	// private void setTableHeaderColor(TCTable table, int columnIndex, Color c)
+	// {
+	// JTableHeader header = table.getTableHeader();
+	// TableColumn column = header.getColumnModel().getColumn(columnIndex);
+	// DefaultTableCellRenderer cellRenderer = new DefaultTableCellRenderer();
+	// cellRenderer.setBackground(c);
+	// column.setHeaderRenderer(cellRenderer);
+	// MouseListener[] mouseListeners = header.getMouseListeners();
+	// System.out.println("mouseListeners length--->"+mouseListeners.length);
+	// for(int i=0;i<mouseListeners.length;i++){
+	// header.removeMouseListener(mouseListeners[i]);
+	// }
+	// }
+}

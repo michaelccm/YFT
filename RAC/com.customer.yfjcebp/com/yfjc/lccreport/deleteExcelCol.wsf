@@ -1,0 +1,65 @@
+
+<job id="DeleteExcelCol">
+    <script language="VBScript">
+	
+
+If WScript.Arguments.Count < 2 Then
+		MsgBox "Usage: DeleteExcelCol<vsd>..."
+		WScript.Quit
+End If
+
+Dim txt_value,excelFile
+txt_value=WScript.Arguments(0)
+excelFile=WScript.Arguments(1)
+
+Dim excelApp
+Set excelApp = CreateObject("Excel.Application")
+excelApp.Visible = false
+
+Set workBook= excelApp.Workbooks.Open(excelFile) 
+Set objSheet = workBook.Sheets("Program-Division-ExtSupport") 
+
+Dim col_values
+Dim n
+Dim value,col
+Dim value1,value2,value3,value4
+
+col_values=split(txt_value,"|")
+
+For n = LBound(col_values) To UBound(col_values)
+	value=col_values(n)
+	col=CInt(value)
+	'得到第3行第n列的值
+	value1 = objSheet.cells(3,col).value
+	'得到第4行第n列的值
+	value3 = objSheet.cells(4,col).value
+	
+	
+	If value3="Forecast_hr" Then
+		value4=objSheet.cells(3,col).value
+		objSheet.Columns(col).Delete
+		'得到当前行的值
+		value2=objSheet.cells(3,col).value
+		If value2 = "" Then
+			objSheet.cells(3,col).value=value4
+		End If
+	ElseIf value1 = "LCC_Budget" Then
+		value4=objSheet.cells(2,col).value
+		objSheet.Columns(col).Delete
+		value2=objSheet.cells(2,col).value
+		If value2 = "" Then
+			objSheet.cells(2,col).value=value4
+		End If
+	Else 
+		objSheet.Columns(col).Delete
+	End If
+	
+	
+Next
+
+workBook.Save 
+excelApp.Quit
+
+WScript.Quit
+	 </script>
+</job>

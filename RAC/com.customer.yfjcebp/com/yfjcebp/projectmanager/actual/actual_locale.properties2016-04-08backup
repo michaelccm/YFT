@@ -1,0 +1,57 @@
+
+#table name
+SummaryTable.LABEL=Summary
+LabourMemoTable.LABEL=Labour Memo
+NonLabourMemoPRTable.LABEL=Non Labour Memo(PR)
+NonLabourMemoActualTable.LABEL=Non Labour Memo(Actual)
+
+#property name
+jci6_CPT1.NAME=Actual
+jci6_CPT2.NAME=Actual_PR
+jci6_CostType1.NAME=Normal Hours
+jci6_CostType2.NAME=Overtime Hours
+jci6_CostType3.NAME=Holiday Hours
+jci6_CostType4.NAME=Weekend Hours
+jci6_CostType5.NAME=Non-billable Hours
+
+#Summary
+jci6_actual_total_cost.ColumnName=actual_total_cost
+jci6_actual_labor_hc.ColumnName=actual_labor_hc
+jci6_actual_labor_hours.ColumnName=actual_labor_hours
+jci6_actual_labor_cost.ColumnName=actual_labor_cost
+jci6_actual_sample.ColumnName=actual_sample
+jci6_actual_sample_ext.ColumnName=actual_sample_ext
+jci6_actual_sample_int.ColumnName=actual_sample_int
+jci6_actual_sample_pv.ColumnName=actual_sample_pv
+jci6_actual_tool.ColumnName=actual_tool
+jci6_actual_test.ColumnName=actual_test
+jci6_actual_test_dv.ColumnName=actual_test_dv
+jci6_actual_test_pv.ColumnName=actual_test_pv
+jci6_actual_other_travel.ColumnName=actual_other_travel
+jci6_actual_other_support.ColumnName=actual_other_support
+jci6_actual_other_freight.ColumnName=actual_other_freight
+
+#LabourMemo  NonLabourMemo
+jci6_Division.ColumnName=Division
+jci6_User.ColumnName=User
+jci6_RateLevel.ColumnName=RateLevel
+jci6_Unit.ColumnName=Unit
+jci6_Year.ColumnName=Year
+jci6_Jan.ColumnName=Jan
+jci6_Feb.ColumnName=Feb
+jci6_Mar.ColumnName=Mar
+jci6_Apr.ColumnName=Apr
+jci6_May.ColumnName=May
+jci6_Jun.ColumnName=Jun
+jci6_Jul.ColumnName=Jul
+jci6_Aug.ColumnName=Aug
+jci6_Sep.ColumnName=Sep
+jci6_Oct.ColumnName=Oct
+jci6_Nov.ColumnName=Nov
+jci6_Dec.ColumnName=Dec
+jci6_CostType.ColumnName=CostType
+
+#Modify
+ActualSummaryTable.LABEL=Actual Summary
+Actual_PRSummaryTable.LABEL=Actual_PR Summary
+

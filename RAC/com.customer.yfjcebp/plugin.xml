@@ -1,0 +1,809 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.6"?>
+<!-- 
+@<COPYRIGHT>@
+==================================================
+Copyright 2011.
+Siemens Product Lifecycle Management Software Inc.
+All Rights Reserved.
+==================================================
+@<COPYRIGHT>@
+-->
+<plugin>
+<extension   point="org.eclipse.ui.menus">
+<!--menu  -->  
+    <menuContribution locationURI="menu:org.eclipse.ui.main.menu">
+              <menu
+                    id="ImportTools"
+                    label="%ImportTools.TITLE">
+                    <separator
+                          name="group1"
+                          visible="true">
+                    </separator>
+                 <menu
+                       id="yfjchistorydata"
+                       label="%YFJChistorydata.TITLE">
+                    <separator
+                          name="group1"
+                          visible="true">
+                    </separator>
+                 </menu>
+                 <separator
+                       name="group2"
+                       visible="true">
+                 </separator>
+                 <separator
+                       name="group3"
+                       visible="true">
+                 </separator>
+                 <separator
+                       name="group4"
+                       visible="true">
+                 </separator>
+				 <separator
+                       name="group5"
+                       visible="true">
+                 </separator>
+				  <separator
+                       name="group6"
+                       visible="true">
+                 </separator>
+				 <separator
+                       name="group7"
+                       visible="true">
+                 </separator>
+             </menu>
+             <menu
+                    id="ebp"
+                    label="EBP">
+                    <separator
+                          name="group1"
+                          visible="true">
+                    </separator>
+             </menu>	 
+      </menuContribution>
+      <!-- add by wuh -->
+      <menuContribution locationURI="menu:ebp?after=group1">
+       	<command commandId="REOUSERPRI">
+                 <visibleWhen>
+                    <and>
+                       <reference
+                             definitionId="com.teamcenter.rac.ui.inMainPerspective">
+                       </reference>
+					   <test property="com.teamcenter.rac.kernel.TCComponentUser.role"  value="DBA" />
+                       <with
+                             variable="rac_command_suppression">
+                          <not>
+                             <iterate
+                                   operator="or">
+                                <equals
+                                      value="REOUSERPRI">
+                                </equals>
+                             </iterate>
+                          </not>
+                       </with>
+                    </and>
+                 </visibleWhen>
+           </command>
+	       <command commandId="com.yfjc.extplanoverview.ExtPlanOverviewHandler">
+                 <visibleWhen>
+                    <and>
+                       <reference
+                             definitionId="com.teamcenter.rac.ui.inMainPerspective">
+                       </reference>
+					   <test property="com.teamcenter.rac.kernel.TCComponentUser.role"  value="ExtSupporter" />
+                       <with
+                             variable="rac_command_suppression">
+                          <not>
+                             <iterate
+                                   operator="or">
+                                <equals
+                                      value="com.yfjc.extplanoverview.ExtPlanOverviewHandler">
+                                </equals>
+                             </iterate>
+                          </not>
+                       </with>
+                    </and>
+                 </visibleWhen>
+           </command>    
+           	<command commandId="workflowHelp">
+                 <visibleWhen>
+                    <and>
+                       <reference
+                             definitionId="com.teamcenter.rac.ui.inMainPerspective">
+                       </reference>
+                       <with
+                             variable="rac_command_suppression">
+                          <not>
+                             <iterate
+                                   operator="or">
+                                <equals
+                                      value="workflowHelp">
+                                </equals>
+                             </iterate>
+                          </not>
+                       </with>
+                    </and>
+                 </visibleWhen>
+           </command>
+           <command commandId="LCCREPORT">
+                 <visibleWhen>
+                    <and>
+                       <reference
+                             definitionId="com.teamcenter.rac.ui.inMainPerspective">
+                       </reference>
+					   <test property="com.teamcenter.rac.kernel.TCComponentUser.role"  value="DBA" />
+                       <with
+                             variable="rac_command_suppression">
+                          <not>
+                             <iterate
+                                   operator="or">
+                                <equals
+                                      value="LCCREPORT">
+                                </equals>
+                             </iterate>
+                          </not>
+                       </with>
+                    </and>
+                 </visibleWhen>
+           </command>
+           <command commandId="extsupportplanform">
+                 <visibleWhen>
+                    <and>
+                       <reference
+                             definitionId="com.teamcenter.rac.ui.inMainPerspective">
+                       </reference>
+                       <with
+                             variable="rac_command_suppression">
+                          <not>
+                             <iterate
+                                   operator="or">
+                                <equals
+                                      value="extsupportplanform">
+                                </equals>
+                             </iterate>
+                          </not>
+                       </with>
+                    </and>
+                 </visibleWhen>
+           </command>
+		   
+		   <!--2017-06-26-->
+		   <command commandId="ExtSupportManagement">
+                 <visibleWhen>
+                    <and>
+                       <reference
+                             definitionId="com.teamcenter.rac.ui.inMainPerspective">
+                       </reference>
+                       <with
+                             variable="rac_command_suppression">
+                          <not>
+                             <iterate
+                                   operator="or">
+                                <equals
+                                      value="ExtSupportManagement">
+                                </equals>
+                             </iterate>
+                          </not>
+                       </with>
+                    </and>
+                 </visibleWhen>
+           </command>
+		   <command commandId="AdjustExtSupportPlan">
+                 <visibleWhen>
+                    <and>
+                       <reference
+                             definitionId="com.teamcenter.rac.ui.inMainPerspective">
+                       </reference>
+                       <with
+                             variable="rac_command_suppression">
+                          <not>
+                             <iterate
+                                   operator="or">
+                                <equals
+                                      value="AdjustExtSupportPlan">
+                                </equals>
+                             </iterate>
+                          </not>
+                       </with>
+                    </and>
+                 </visibleWhen>
+           </command>
+            <command commandId="ExtWorkDayHourForm">
+                 <visibleWhen>
+                    <and>
+                       <reference
+                             definitionId="com.teamcenter.rac.ui.inMainPerspective">
+                       </reference>
+					   <test property="com.teamcenter.rac.kernel.TCComponentUser.role"  value="ExtSupporter" />
+                       <with
+                             variable="rac_command_suppression">
+                          <not>
+                             <iterate
+                                   operator="or">
+                                <equals
+                                      value="ExtWorkDayHourForm">
+                                </equals>
+                             </iterate>
+                          </not>
+                       </with>
+                    </and>
+                 </visibleWhen>
+           </command>
+     </menuContribution>
+     <!--fy-->
+     <menuContribution
+            locationURI="popup:org.eclipse.ui.popup.any?after=additions">
+         <command
+                  commandId="SDT"
+                  icon="icons/select_members_16.png"
+                  label="%SDT.TITLE">
+			 <visibleWhen>
+				 <and>
+                    <iterate ifEmpty= "false">
+                       <adapt type= "com.teamcenter.rac.kernel.TCComponent" >
+                          <or>
+                            <test property="com.teamcenter.rac.kernel.TCComponent.typeClass" value= "BOMLine">
+                            </test>
+                          </or>
+                      </adapt>
+                    </iterate>
+                    <with variable= "rac_command_suppression">
+                       <not>
+                          <iterate operator= "or">
+                             <equals value= "SDT" />
+                          </iterate>
+                       </not>
+                   </with>
+               </and>		 
+		  </visibleWhen>
+		</command>   
+      </menuContribution>
+	 <!--tyl-->
+	 <menuContribution locationURI="menu:file.new?after=additions"> 
+	 <command commandId="com.yfjc.newschedule.YfjsNewScheduleHandler" icon="icons/schedule.png"> </command> 
+	 
+	 <!--
+	 <command commandId="com.teamcenter.rac.newSchedule"
+	                   icon="icons/schedule_16.png">
+                 <visibleWhen>
+                    <and>
+                       <reference
+                             definitionId="com.teamcenter.rac.ui.inMainPerspective">
+                       </reference>
+                       <with
+                             variable="rac_command_suppression">
+                          <not>
+                             <iterate
+                                   operator="or">
+                                <equals
+                                      value="com.teamcenter.rac.newSchedule">
+                                </equals>
+                             </iterate>
+                          </not>
+                       </with>
+                    </and>
+                 </visibleWhen>
+         </command>
+         -->
+	  </menuContribution>
+      <menuContribution locationURI="menu:tools?after=import.ext">
+	 <!-- <menu id="chooseSDTMember" label="éæ©SDTæå"> -->
+	  <command
+            commandId="SDT"
+            icon="icons/select_members_16.png"
+            label="%SDT.TITLE">
+            tooltip="%SDT.TITLE"
+            id="SDT">     
+		    <visibleWhen>
+			   <and>
+                  <iterate ifEmpty= "false">
+                     <adapt type= "com.teamcenter.rac.kernel.TCComponent" >
+                       <or>
+                         <test property="com.teamcenter.rac.kernel.TCComponent.typeClass" value= "BOMLine">
+                         </test>
+                       </or>
+                     </adapt>
+                  </iterate>
+                  <with variable= "rac_command_suppression">
+                    <not>
+                       <iterate operator= "or">
+                         <equals value= "SDT" />
+                       </iterate>
+                    </not>
+                  </with>
+               </and>				 
+			</visibleWhen>
+       </command>
+		<!--  </menu> -->
+	  </menuContribution>
+	  
+      <menuContribution
+            locationURI="toolbar:org.eclipse.ui.main.toolbar?after=additions">
+         <toolbar
+               id="yfjc.toolbars.sampleToolbar">
+            <command
+                  		commandId="SDT"
+                  		icon="icons/select_members_16.png"
+                 		tooltip="%SDT.TITLE"
+                  		id="SDT">
+              
+				   <visibleWhen>
+				     <and>
+                       <iterate ifEmpty= "false">
+                         <adapt type= "com.teamcenter.rac.kernel.TCComponent" >
+                           <or>
+                             <test property="com.teamcenter.rac.kernel.TCComponent.typeClass" value= "BOMLine">
+                             </test>
+                           </or>
+                        </adapt>
+                       </iterate>
+                      <with variable= "rac_command_suppression">
+                        <not>
+                           <iterate operator= "or">
+                               <equals value= "SDT" />
+                           </iterate>
+                         </not>
+                     </with>
+                  </and>
+				</visibleWhen>
+            </command>
+            
+         </toolbar>
+      </menuContribution>
+      
+      <menuContribution
+          locationURI="menu:ImportTools?after=group1">
+       	<command commandId="ImportProgram">
+                 <visibleWhen>
+                    <and>
+                       <reference
+                             definitionId="com.teamcenter.rac.ui.inMainPerspective">
+                       </reference>
+                       <with
+                             variable="rac_command_suppression">
+                          <not>
+                             <iterate
+                                   operator="or">
+                                <equals
+                                      value="ImportProgram">
+                                </equals>
+                             </iterate>
+                          </not>
+                       </with>
+                    </and>
+                 </visibleWhen>
+              </command>
+    </menuContribution>
+    <menuContribution
+          locationURI="menu:yfjchistorydata?after=group1">
+              <command commandId="ImportTimeLog">
+                 <visibleWhen>
+                    <and>
+                       <reference
+                             definitionId="com.teamcenter.rac.ui.inMainPerspective">
+                       </reference>
+                       <with
+                             variable="rac_command_suppression">
+                          <not>
+                             <iterate
+                                   operator="or">
+                                <equals
+                                      value="ImportTimeLog">
+                                </equals>
+                             </iterate>
+                          </not>
+                       </with>
+                    </and>
+                 </visibleWhen>
+              </command> 
+       		<command commandId="ImportHyperionData">
+          <visibleWhen>
+             <and>
+                <reference
+                      definitionId="com.teamcenter.rac.ui.inMainPerspective">
+                </reference>
+                <with
+                      variable="rac_command_suppression">
+                   <not>
+                      <iterate
+                            operator="or">
+                         <equals
+                               value="ImportHyperionData">
+                         </equals>
+                      </iterate>
+                   </not>
+                </with>
+             </and>
+          </visibleWhen>
+       </command>
+    </menuContribution>
+    <menuContribution
+          locationURI="menu:ImportTools?after=group2">
+       <command commandId="ImportNonLaborData">
+          <visibleWhen>
+             <and>
+                <reference
+                      definitionId="com.teamcenter.rac.ui.inMainPerspective">
+                </reference>
+                <with
+                      variable="rac_command_suppression">
+                   <not>
+                      <iterate
+                            operator="or">
+                         <equals
+                               value="ImportNonLaborData">
+                         </equals>
+                      </iterate>
+                   </not>
+                </with>
+             </and>
+          </visibleWhen>
+       </command>
+    </menuContribution>
+     <menuContribution
+          locationURI="menu:ImportTools?after=group3">
+       <command commandId="ImportPersonPlanData">
+          <visibleWhen>
+             <and>
+                <reference
+                      definitionId="com.teamcenter.rac.ui.inMainPerspective">
+                </reference>
+                <with
+                      variable="rac_command_suppression">
+                   <not>
+                      <iterate
+                            operator="or">
+                         <equals
+                               value="ImportPersonPlanData">
+                         </equals>
+                      </iterate>
+                   </not>
+                </with>
+             </and>
+          </visibleWhen>
+       </command>
+    </menuContribution>
+    <menuContribution
+          locationURI="menu:ImportTools?after=group4">
+      <command commandId="com.yfjcebp.skillmatrix.commands.yfjcUserSkillHandler">
+              <visibleWhen>
+            	<and>
+            		<or>
+	 					<reference definitionId="com.teamcenter.rac.ui.inMainPerspective"/>
+ 					</or>
+ 					<with variable="rac_command_suppression">
+                    	<not>
+                        	<iterate operator="or">
+                            	<equals value="com.yfjcebp.skillmatrix.commands.yfjcUserSkillHandler"/>
+                        	</iterate>
+                    	</not>
+                	</with>
+            	</and>  
+            </visibleWhen>
+            </command>     
+    </menuContribution>
+	
+	
+	
+	<menuContribution
+          locationURI="menu:ImportTools?after=group5">
+      <command commandId="haiermouldplm.handlers.ModNavigateHandler">
+              <visibleWhen>
+            	<and>
+            		<or>
+	 					<reference definitionId="com.teamcenter.rac.ui.inMainPerspective"/>
+ 					</or>
+					<test property="com.teamcenter.rac.kernel.TCComponentUser.role"  value="DBA" />
+ 					<with variable="rac_command_suppression">
+                    	<not>
+                        	<iterate operator="or">
+                            	<equals value="haiermouldplm.handlers.ModNavigateHandler"/>
+                        	</iterate>
+                    	</not>
+                	</with>
+            	</and>  
+            </visibleWhen>
+            </command>     
+    </menuContribution>
+   
+    <menuContribution
+          locationURI="menu:ImportTools?after=group6">
+    	 <command commandId="changeUserInfo">
+                 <visibleWhen>
+                    <and>
+                       <reference
+                             definitionId="com.teamcenter.rac.ui.inMainPerspective">
+                       </reference>
+					   
+						<test property="com.teamcenter.rac.kernel.TCComponentUser.role"  value="DBA" />
+						
+                       <with
+                             variable="rac_command_suppression">
+                          <not>
+                             <iterate
+                                   operator="or">
+                                <equals
+                                      value="changeUserInfo">
+                                </equals>
+                             </iterate>
+                          </not>
+                       </with>
+                    </and>
+                 </visibleWhen>
+           </command>
+    </menuContribution>
+	<menuContribution locationURI="menu:ImportTools?after=group7">
+		<!--2017-06-22-->
+		   <command commandId="ImportExtRate">
+                 <visibleWhen>
+                    <and>
+                       <reference
+                             definitionId="com.teamcenter.rac.ui.inMainPerspective">
+                       </reference>
+                       <with
+                             variable="rac_command_suppression">
+                          <not>
+                             <iterate
+                                   operator="or">
+                                <equals
+                                      value="ImportExtRate">
+                                </equals>
+                             </iterate>
+                          </not>
+                       </with>
+                    </and>
+                 </visibleWhen>
+           </command>
+    </menuContribution>
+	
+	
+    <menuContribution locationURI="menu:file?before=fileEnd">
+         <menu
+               id="cpsj"
+               label="%Budget.TITLE">
+            <separator
+                  name="group1"
+                  visible="true">
+            </separator>
+         </menu>
+   </menuContribution>
+ 
+   <menuContribution
+            locationURI="menu:cpsj?after=group1">
+          <command commandId="haiermouldplm.handlers.ProNavigateHandler">
+            <visibleWhen>
+            	<and>
+            		<or>
+	 					<reference definitionId="com.teamcenter.rac.project.inMainView"/>
+ 					</or>
+ 					<with variable="rac_command_suppression">
+                    	<not>
+                        	<iterate operator="or">
+                            	<equals value="haiermouldplm.handlers.ProNavigateHandler"/>
+                        	</iterate>
+                    	</not>
+                	</with>
+            	</and>
+               
+            </visibleWhen>
+         </command>
+         <command commandId="haiermouldplm.handlers.ModNavigateHandler">
+            <visibleWhen>
+            	<and>
+            		<or>
+	            	
+	 					<reference definitionId="com.teamcenter.rac.project.inMainView"/>
+ 					</or>
+ 					<with variable="rac_command_suppression">
+                    	<not>
+                        	<iterate operator="or">
+                            	<equals value="haiermouldplm.handlers.ModNavigateHandler"/>
+                        	</iterate>
+                    	</not>
+                	</with>
+            	</and>
+               
+            </visibleWhen>
+         </command>      
+   </menuContribution>
+ </extension>
+ 
+ <extension   point="org.eclipse.ui.commands">
+  	   <command	
+			id="ImportProgram"
+			name="%ImportProgram.TITLE">
+	   </command>
+       <command
+             id="ImportTimeLog"
+             name="%ImportTimeLog.TITLE">
+       </command>
+       <command
+             id="ImportHyperionData"
+             name="%ImportHyperion.TITLE">
+       </command>
+       <command
+             id="ImportNonLaborData"
+             name="%ImportNonLaborData.TITLE">
+       </command>
+       <command
+	   		 id="haiermouldplm.handlers.ProNavigateHandler"
+	   		 name="%GrantEQU.TITLE">
+	   </command>
+	   <command
+	   		 id="haiermouldplm.handlers.ModNavigateHandler"
+	   		 name="%ImportBudget.TITLE">
+	   </command>
+	   <command
+             id="com.yfjcebp.skillmatrix.commands.yfjcUserSkillHandler"
+             name="%UserSkillInfo.TITLE">
+       </command>	
+        <command
+             id="ImportPersonPlanData"
+             name="%ImportPersonPlanData.TITLE">
+       </command>
+        <!-- add by wuh-->
+        <command
+            name="%REOUSERPRI.TITLE"
+            id="REOUSERPRI">
+      </command>
+      <command
+            name="%EXTSUPPORTPLANFORM.TITLE"
+            id="extsupportplanform">
+      </command>
+	  <!-- add by ck-->
+	  <command
+            name="%IMPORTEXTRATE.TITLE"
+            id="ImportExtRate">
+      </command>
+	  <command
+            name="%ExtSupportManagement.TITLE"
+            id="ExtSupportManagement">
+      </command>
+	  <command
+            name="%AdjustExtSupportPlan.TITLE"
+            id="AdjustExtSupportPlan">
+      </command>
+      <command
+            name="%EXTWORKDAYHOURFORM.TITLE"
+            id="ExtWorkDayHourForm">
+      </command>
+      <command
+            name="%reoUserInfo.TITLE"
+            id="changeUserInfo">
+      </command>
+      
+       <command
+            name="%workflow.TITLE"
+            id="workflowHelp">
+      </command>
+       <command
+            id="LCCREPORT"
+            name="%LCCREPORT.TITLE">
+      </command>
+       <command
+            id="SDT"
+            name="%SDT.TITLE">
+      </command>
+	  <command
+            id="com.yfjc.extplanoverview.ExtPlanOverviewHandler"
+            name="%ExtPlanOverview.TITLE">
+      </command>
+      <command id="com.yfjc.newschedule.YfjsNewScheduleHandler" name="%YfjsNewSchedule.TITLE"/>
+      <!--
+	  <command
+            id="com.yfjc.newschedule.YfjsNewScheduleHandler"
+            name="%YfjsNewSchedule.TITLE">
+    </command>  
+    -->
+ </extension>
+ 
+  <extension  point="org.eclipse.ui.handlers">
+   <handler
+        commandId="com.yfjc.extplanoverview.ExtPlanOverviewHandler"
+        class="com.yfjc.extplanoverview.ExtPlanOverviewHandler">
+   </handler>
+    <handler
+            commandId="com.yfjc.newschedule.YfjsNewScheduleHandler"
+            class="com.teamcenter.rac.schedule.commands.newschedule.NewScheduleHandler">
+    </handler>
+   <handler 
+		class="com.yfjcebp.importdata.importprogram.ImportProgramHandler" 
+		commandId="ImportProgram">
+    </handler>
+    <handler
+          class="com.yfjcebp.importdata.importtimelog.ImportTimeLogHandler"
+          commandId="ImportTimeLog">
+    </handler> 
+    <handler
+          class="com.yfjcebp.importdata.importhyperion.ImportHyperionDataHandler"
+          commandId="ImportHyperionData">
+    </handler>
+    <handler
+          class="com.yfjcebp.importdata.importnonlabor.actual.ImportNonLaborActualDataHandler"
+          commandId="ImportNonLaborData">
+    </handler> 
+    <handler
+       	  class="com.yfjcebp.projectmanager.budget.handlers.GrantEQUHandler"
+       	  commandId="haiermouldplm.handlers.ProNavigateHandler">
+  	</handler>
+  	<handler
+       	  class="com.yfjcebp.projectmanager.budget.handlers.ImportBudgetHandler"
+       	  commandId="haiermouldplm.handlers.ModNavigateHandler">
+  	</handler>
+  	<handler
+          commandId="com.yfjcebp.skillmatrix.commands.yfjcUserSkillHandler"
+          class="com.yfjcebp.skillmatrix.SkillMatrixHandler">
+    </handler>
+     <handler
+          class="com.yfjcebp.importdata.importpersonplan.ImportPersonPlanDataHandler"
+          commandId="ImportPersonPlanData">
+    </handler> 
+    <!-- add by wuh -->
+    <handler
+            commandId="REOUSERPRI"
+            class="com.yfjcebp.reorientation.user.privileges.ReoUserPrivilegesHandler">
+     </handler>
+     <!--yuanyx-->
+      <handler
+            commandId="workflowHelp"
+            class="com.casic.handlers.DynamicHelpHandler">
+     </handler>
+     <!--fangy -->
+     <handler
+            commandId="LCCREPORT"
+            class="com.yfjc.lccreport.LCCReportHandler">
+     </handler>
+     <handler
+            commandId="SDT"
+            class="com.yfjc.sdtinput.SDTMemberInputHandler">
+      </handler>
+      <!-- 2014-8-4-->
+      <handler
+            commandId="extsupportplanform"
+            class="com.yfjcebp.extsupport.SectionManagerHandler">
+      </handler>   
+	  <!-- 2017-06-22-->
+	  <handler
+            commandId="ImportExtRate"
+            class="com.yfjcebp.importdata.importextrate.ImportExtRateHandler">
+      </handler> 
+	  <handler
+            commandId="ExtSupportManagement"
+            class="com.yfjcebp.extsupport.management.ExtSupportManagementHandler">
+      </handler> 
+	   <handler
+            commandId="AdjustExtSupportPlan"
+            class="com.yfjcebp.extsupport.adjustplan.AdjustExtSupportPlanHandler">
+      </handler> 
+	  
+      <handler
+            commandId="changeUserInfo"
+            class="com.yfjcebp.change.user.info.ChangeUserInfoHandler">
+      </handler> 
+      <handler
+            commandId="ExtWorkDayHourForm"
+            class="com.yfjc.workdayhourform.WorkdayHourFormHandler">
+      </handler>  
+ </extension>
+ 
+ 	<extension point="com.teamcenter.rac.common.tcLabelProviderDelegates">
+        <labelProviderDelegate>
+            <typeDelegate 
+                class="com.yfjcebp.smte.YFJCEMPTaskProvider" 
+                parentType="EPMTask" priority="100"/>
+        </labelProviderDelegate>
+    </extension>
+    
+     <!-- æ°å¢-->
+   <extension 
+          point="org.eclipse.ui.bindings"> 
+         
+        <key 
+              commandId="workflowHelp" 
+              schemeId="com.teamcenter.rac.scheme" 
+              sequence="M1+G"> 
+        </key> 
+    </extension> 
+
+</plugin>

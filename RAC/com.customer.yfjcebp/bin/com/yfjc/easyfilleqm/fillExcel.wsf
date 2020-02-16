@@ -1,0 +1,73 @@
+<job id="FillInExcelX">
+    <script language="VBScript">
+If WScript.Arguments.Count < 1 Then
+		MsgBox "Usage: FillInExcelX<vsd>..."
+		WScript.Quit
+End If
+
+Dim txtFile,excelFile
+txtFile=WScript.Arguments(0)
+excelFile=WScript.Arguments(1)
+
+
+Set dtn = CreateObject("Scripting.Dictionary") 
+Set objFSO = CreateObject("Scripting.FileSystemObject") 
+Dim i 
+i=0
+Dim objFile
+If objFSO.FileExists(txtFile) Then 
+    Set objFile = objFSO.OpenTextFile(txtFile,1) 
+	Do Until objFile.AtEndOfStream 
+	dtn.add i,objFile.ReadLine 
+	i=i+1
+	Loop 
+	objFile.Close 
+Else
+    Wscript.Echo "File does not exist."
+End If 
+
+
+Dim excelApp
+Set excelApp = CreateObject("Excel.Application")
+excelApp.Visible = false
+
+Set workBook= excelApp.Workbooks.Open(excelFile) 
+
+'Set co = CreateObject("Scripting.FileSystemObject")
+'co.GetFile(excelFile).Attributes = 0
+
+Dim tempstr1
+Dim a
+Dim sheet,row,col,valuex
+Dim intr,intc
+intr=0
+intc=0
+a=dtn.Items
+For i=0 To dtn.count-1     
+ '   Wscript.Echo   a(i)
+	tempstr1=split(CStr(a(i)),"|")
+  '	Wscript.Echo ubound(tempstr1)
+	sheet=(split(CStr(tempstr1(0)),"="))(1)
+	row=(split(tempstr1(2),"="))(1)
+	col=(split(tempstr1(3),"="))(1)
+	valuex=(split(tempstr1(1),"="))(1)
+	intr=CInt(row)
+	intc=CInt(col)
+'	Wscript.Echo sheet
+'	Wscript.Echo intr
+'	Wscript.Echo intc
+'	Wscript.Echo valuex
+		
+	
+	
+    Set objSheet = workBook.Sheets(sheet) 
+	objSheet.cells(intr,intc).value = valuex
+'	Wscript.Echo "HHH ==  "+objSheet.cells(intr,intc).value
+next
+
+workBook.Save 
+excelApp.Quit
+WScript.StdOut.Write 0
+WScript.Quit
+	 </script>
+</job>
