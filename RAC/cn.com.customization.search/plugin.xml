@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+<extension point="org.eclipse.ui.menus">  
+  <menuContribution locationURI="menu:org.eclipse.ui.main.menu">
+     <menu id="searchMenu" label="%searchMenu">	 
+	   <separator name="sep1" visible="true"></separator>
+	   <separator name="sep2" visible="true"></separator>
+	   <separator name="sep3" visible="true"></separator>
+	   <separator name="sep4" visible="true"></separator>
+	   <separator name="sep5" visible="true"></separator>
+	   <separator name="sep6" visible="true"></separator>
+	 </menu>
+  </menuContribution>
+  
+  <menuContribution locationURI="menu:searchMenu?after=sep1">
+     <menu id="searchMenu.menu1" label="%searchMenu.menu1">	 
+	   <separator name="sep1" visible="true"></separator>
+	 </menu>
+  </menuContribution>
+  <menuContribution locationURI="menu:searchMenu?after=sep2">
+     <menu id="searchMenu.menu2" label="%searchMenu.menu2">	 
+	   <separator name="sep1" visible="true"></separator>
+	 </menu>
+  </menuContribution>
+  <menuContribution locationURI="menu:searchMenu?after=sep3">
+     <menu id="searchMenu.menu3" label="%searchMenu.menu3">	 
+	   <separator name="sep1" visible="true"></separator>
+	 </menu>
+  </menuContribution>
+  <menuContribution locationURI="menu:searchMenu?after=sep4">
+     <menu id="searchMenu.menu4" label="%searchMenu.menu4">	 
+	   <separator name="sep1" visible="true"></separator>
+	 </menu>
+  </menuContribution>
+  <menuContribution locationURI="menu:searchMenu?after=sep5">
+     <menu id="searchMenu.menu5" label="%searchMenu.menu5">	 
+	   <separator name="sep1" visible="true"></separator>
+	 </menu>
+  </menuContribution>
+  <menuContribution locationURI="menu:searchMenu?after=sep6">
+     <menu id="searchMenu.menu6" label="%searchMenu.menu6">	 
+	   <separator name="sep1" visible="true"></separator>
+	 </menu>
+  </menuContribution>
+  <menuContribution locationURI="menu:searchMenu.menu1?after=sep1">
+     <command commandId="cn.com.customization.search.handler.ShowSearchViewHandler" label="%searchMenu.menu1_1"  style="push">
+	 </command>
+	 <command commandId="cn.com.customization.search.handler.ShowSearchViewHandler" label="%searchMenu.menu1_2"  style="push">
+	 </command>
+	 <command commandId="cn.com.customization.search.handler.ShowSearchViewHandler" label="%searchMenu.menu1_3"  style="push">
+	 </command>
+  </menuContribution> 
+  
+  <menuContribution locationURI="menu:searchMenu.menu2?after=sep1">
+     <command commandId="cn.com.customization.search.handler.ShowSearchViewHandler" label="%searchMenu.menu2_1"  style="push">
+	 </command>
+     <command commandId="cn.com.customization.search.handler.ShowSearchViewHandler" label="%searchMenu.menu2_2"  style="push">
+	 </command>
+  </menuContribution>
+  
+  <menuContribution locationURI="menu:searchMenu.menu3?after=sep1">
+     <command commandId="cn.com.customization.search.handler.ShowSearchViewHandler" label="%searchMenu.menu3_1"  style="push">
+	 </command>
+	 <command commandId="cn.com.customization.search.handler.ShowSearchViewHandler" label="%searchMenu.menu3_2"  style="push">
+	 </command>
+	 <command commandId="cn.com.customization.search.handler.ShowSearchViewHandler" label="%searchMenu.menu3_3"  style="push">
+	 </command>
+  </menuContribution>
+  
+  <menuContribution locationURI="menu:searchMenu.menu4?after=sep1">
+     <command commandId="cn.com.customization.search.handler.ShowSearchViewHandler" label="%searchMenu.menu4_1"  style="push">
+	 </command>
+	 <command commandId="cn.com.customization.search.handler.ShowSearchViewHandler" label="%searchMenu.menu4_2"  style="push">
+	 </command>
+	 <command commandId="cn.com.customization.search.handler.ShowSearchViewHandler" label="%searchMenu.menu4_3"  style="push">
+	 </command>
+  </menuContribution>
+  
+  <menuContribution locationURI="menu:searchMenu.menu5?after=sep1">
+     <command commandId="cn.com.customization.search.handler.ShowSearchViewHandler" label="%searchMenu.menu5_1"  style="push">
+	 </command>
+	 <command commandId="cn.com.customization.search.handler.ShowSearchViewHandler" label="%searchMenu.menu5_2"  style="push">
+	 </command>
+	 <command commandId="cn.com.customization.search.handler.ShowSearchViewHandler" label="%searchMenu.menu5_3"  style="push">
+	 </command>
+	 <command commandId="cn.com.customization.search.handler.ShowSearchViewHandler" label="%searchMenu.menu5_4"  style="push">
+	 </command>
+  </menuContribution>
+  
+  <menuContribution locationURI="menu:searchMenu.menu6?after=sep1">
+     <command commandId="cn.com.customization.search.handler.ShowSearchViewHandler" label="%searchMenu.menu6_1"  style="push">
+	 </command>
+	 <command commandId="cn.com.customization.search.handler.ShowSearchViewHandler" label="%searchMenu.menu6_2"  style="push">
+	 </command>
+  </menuContribution>
+ </extension>
+
+
+<extension point="org.eclipse.ui.commands">  
+    <command
+       id="cn.com.customization.search.handler.ShowSearchViewHandler"
+       name="search">
+   	</command>
+ </extension>
+   		
+<extension point="org.eclipse.ui.handlers">
+  <handler
+     class="cn.com.customization.search.handler.ShowSearchViewHandler"
+     commandId="cn.com.customization.search.handler.ShowSearchViewHandler">
+  </handler>
+</extension>
+  
+</plugin>

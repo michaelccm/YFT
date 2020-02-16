@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.commands">
+          <command 
+      		id="com.teamcenter.custwork.handlers.WorkManagerHandler" 
+      		name="Timesheet"/>
+   </extension>
+   <extension
+         point="org.eclipse.ui.handlers">
+         <handler
+             class="com.teamcenter.custwork.handlers.WorkManagerHandler"
+             commandId="com.teamcenter.custwork.handlers.WorkManagerHandler">
+        </handler>
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+		<menuContribution locationURI="menu:ebp?after=workflowHelp">
+			<command 
+				commandId="com.teamcenter.custwork.handlers.WorkManagerHandler"
+         		id="com.teamcenter.custwork.handlers.WorkManagerHandler"
+         		icon="icons/workcontext_16.png">       					
+         		<visibleWhen>
+         		    <and>
+					    <reference definitionId="com.teamcenter.rac.ui.inMainPerspective"/>
+						<with variable="rac_command_suppression">
+							<not>
+								<iterate operator="or">
+									<equals value="com.teamcenter.custwork.handlers.WorkManagerHandler"/>
+								</iterate>
+							</not>
+						</with>
+				    </and>          			
+         		</visibleWhen>
+         	</command>
+		</menuContribution>
+   </extension>
+
+
+</plugin>

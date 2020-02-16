@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" activate="initialize">
+	<implementation class="com.teamcenter.rac.schedule.ScheduleManagerService"/>
+ <service>
+    <provide interface="com.teamcenter.rac.schedule.services.IScheduleManagerLogicService"/>
+    <provide interface="com.teamcenter.rac.schedule.services.IScheduleManagerUIService"/>
+    <provide interface="com.teamcenter.rac.services.IOpenService"/>
+    <provide interface="com.teamcenter.rac.services.IAspectUIService"/>
+    <provide interface="com.teamcenter.rac.services.IAspectService"/>
+ </service>
+ <property name="perspectiveId" type="String" value="com.teamcenter.rac.schedule.ScheduleManagerPerspective"/>
+ <property name="viewId" type="String" value="com.teamcenter.rac.schedule.ScheduleManagerView"/> 
+</scr:component>
+ 

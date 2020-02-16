@@ -1,0 +1,725 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.8"?>
+<!-- 
+@<COPYRIGHT>@
+==================================================
+Copyright 2012.
+Siemens Product Lifecycle Management Software Inc.
+All Rights Reserved.
+==================================================
+@<COPYRIGHT>@
+-->
+
+<plugin>
+   <extension-point id="ProjectUIPostActions" name="Project UI Post Actions" schema="schema/ProjectUIPostActions.exsd"/>
+  <extension point="org.eclipse.ui.perspectives">
+    <perspective class="com.teamcenter.rac.aifrcp.perspective.GenericRACPerspective"
+        icon="icons/projectadminapplication_16.png"
+        id="com.teamcenter.rac.project.ProjectPerspective"
+        name="%projectAdminApplication.title"/>
+  </extension>
+  <extension point="org.eclipse.ui.views">
+    <view allowMultiple="true" category="projectsCategory"
+       class="com.teamcenter.rac.project.views.ProjectTreeView"
+        icon="icons/projectadminapplication_16.png"
+        id="com.teamcenter.rac.project.ProjectView"
+        name="%projectAdminApplication.title"/>
+    <view
+      allowMultiple="false" category="projectsCategory"
+        class="com.teamcenter.rac.project.views.ProjectDefinitionView"
+        icon="icons/projectadminapplication_16.png"
+        id="com.teamcenter.rac.project.ProjectDefinitionView"
+        name="%projectDefinitionTab.TITLE"/>
+        
+      <view allowMultiple="true" category="projectsCategory"
+        class="com.teamcenter.rac.project.views.ProjActualView"
+        icon="icons/projectadminapplication_16.png"
+        id="com.teamcenter.rac.project.views.ProjActualView"
+        name="Actual"/>
+        
+        <view allowMultiple="true" category="projectsCategory"
+        class="com.teamcenter.rac.project.views.ProjBudgetView"
+        icon="icons/projectadminapplication_16.png"
+        id="com.teamcenter.rac.project.views.ProjBudgetView"
+        name="Budget"/>
+        
+        <view allowMultiple="true" category="projectsCategory"
+        class="com.teamcenter.rac.project.views.ProjResourceView"
+        icon="icons/projectadminapplication_16.png"
+        id="com.teamcenter.rac.project.views.ProjResourceView"
+        name="Forecast"/>
+      
+    <view allowMultiple="true" category="projectsCategory"
+        class="com.teamcenter.rac.project.views.ProjectAMView"
+        icon="icons/accessmanagerapplication_16.png"
+        id="com.teamcenter.rac.project.views.ProjectAMView"
+        name="%projectAMPanelTab.TITLE"/>
+    <view allowMultiple="true" category="projectsCategory"
+        class="com.teamcenter.rac.project.views.ProjectDataDictionaryView"
+        icon="icons/classification_admin_16.png"
+        id="com.teamcenter.rac.project.views.ProjectDataDictionaryView"
+        name="%projectDDPanelTab.TITLE"/>
+  </extension>
+  <extension point="com.teamcenter.rac.aifrcp.viewDefs">
+    <view
+          alwaysUseSetRootInputObject="true"
+          autoCloseEnabled="true"
+          folderId="RAC_Folder_UL"
+          id="com.teamcenter.rac.project.ProjectView"
+          selectionInPrimaryEffectsInvisbleSecondary="false"
+          selectionInSecondaryEffectsPrimary="true" type="primary"/>
+    <view
+          alwaysUseSetRootInputObject="true"
+          autoCloseEnabled="true"
+          folderId="RAC_Folder_UR"
+          id="com.teamcenter.rac.project.ProjectDefinitionView"
+          selectionInPrimaryEffectsInvisbleSecondary="false"
+          selectionInSecondaryEffectsPrimary="true" type="secondary"/>
+          
+    <view
+          alwaysUseSetRootInputObject="true"
+          autoCloseEnabled="true"
+          folderId="RAC_Folder_UR"
+          id="com.teamcenter.rac.project.views.ProjActualView"
+          selectionInPrimaryEffectsInvisbleSecondary="false"
+          selectionInSecondaryEffectsPrimary="true" type="secondary"/>
+         
+    <view
+          alwaysUseSetRootInputObject="true"
+          autoCloseEnabled="true"
+          folderId="RAC_Folder_UR"
+          id="com.teamcenter.rac.project.views.ProjBudgetView"
+          selectionInPrimaryEffectsInvisbleSecondary="false"
+          selectionInSecondaryEffectsPrimary="true" type="secondary"/>
+          
+    <view
+          alwaysUseSetRootInputObject="true"
+          autoCloseEnabled="true"
+          folderId="RAC_Folder_UR"
+          id="com.teamcenter.rac.project.views.ProjResourceView"
+          selectionInPrimaryEffectsInvisbleSecondary="false"
+          selectionInSecondaryEffectsPrimary="true" type="secondary"/>
+          
+    <view
+          alwaysUseSetRootInputObject="true"
+          autoCloseEnabled="true"
+          folderId="RAC_Folder_UR"
+          id="com.teamcenter.rac.project.views.ProjectAMView"
+          selectionInPrimaryEffectsInvisbleSecondary="false"
+          selectionInSecondaryEffectsPrimary="true" type="secondary"/>
+    <view
+          alwaysUseSetRootInputObject="true"
+          autoCloseEnabled="true"
+          folderId="RAC_Folder_UR"
+          id="com.teamcenter.rac.project.views.ProjectDataDictionaryView"
+          selectionInPrimaryEffectsInvisbleSecondary="false"
+          selectionInSecondaryEffectsPrimary="true" type="secondary"/>
+  </extension>
+  <extension point="com.teamcenter.rac.aifrcp.perspectiveDefs">
+    <perspective
+          displayMode="Tertiary"
+          icon16="icons/projectadminapplication_16.png"
+          icon24="icons/projectadminapplication_24.png"
+          icon32="icons/projectadminapplication_32.png"
+          id="com.teamcenter.rac.project.ProjectPerspective"
+          isLegacyAppDefault="true"
+          label="%projectAdminApplication.title"
+          legacyAppId="com.teamcenter.rac.project.ProjectAdminApplication"
+          ordinality="0"
+          tooltip="%projectAdminApplication.tip">
+      <contextRef
+            id="com.teamcenter.rac.project.ProjectContext">
+      </contextRef>
+      <viewRef
+            id="com.teamcenter.rac.project.ProjectView">
+      </viewRef>
+      <viewRef
+            id="com.teamcenter.rac.project.ProjectDefinitionView">
+      </viewRef>
+      
+      <viewRef
+            id="com.teamcenter.rac.project.views.ProjActualView">
+      </viewRef>
+     
+      <viewRef
+            id="com.teamcenter.rac.project.views.ProjBudgetView">
+      </viewRef>
+      
+      <viewRef
+            id="com.teamcenter.rac.project.views.ProjResourceView">
+      </viewRef>
+      
+      <viewRef
+            id="com.teamcenter.rac.project.views.ProjectAMView">
+      </viewRef>
+      <viewRef
+            id="com.teamcenter.rac.project.views.ProjectDataDictionaryView">
+      </viewRef>
+    </perspective>
+  </extension>
+  <extension point="org.eclipse.ui.perspectiveExtensions">
+    <perspectiveExtension
+        targetID="com.teamcenter.rac.project.ProjectPerspective">
+      <viewShortcut id="com.teamcenter.rac.project.ProjectView"/>
+    </perspectiveExtension>
+  </extension>
+  <extension
+        point="org.eclipse.ui.contexts">
+    <context
+          description="%projectAdminApplication.title"
+          id="com.teamcenter.rac.project.ProjectContext"
+          name="%projectAdminApplication.title"
+          parentId="com.teamcenter.rac.common.TCAdministratorContext">
+    </context>
+  </extension>
+  <extension point="org.eclipse.ui.menus">
+    <menuContribution locationURI="menu:edit?after=find.ext">
+      <command commandId="com.teamcenter.rac.moveUpAMRuleTree"
+          icon="platform:/plugin/com.teamcenter.rac.aifrcp/com/teamcenter/rac/aif/images/moveup_16.png"
+          mnemonic="%moveUpAMRuleTreeAction.MNEMONIC">
+        <visibleWhen>
+          <and>
+            <reference
+                definitionId="com.teamcenter.rac.project.inMainView"/>
+            <with variable="rac_command_suppression">
+              <not>
+                <iterate operator="or">
+                  <equals
+                      value="com.teamcenter.rac.moveUpAMRuleTree"/>
+                </iterate>
+              </not>
+            </with>
+          </and>
+        </visibleWhen>
+      </command>
+      <command commandId="com.teamcenter.rac.moveDownAMRuleTree"
+          icon="platform:/plugin/com.teamcenter.rac.aifrcp/com/teamcenter/rac/aif/images/movedown_16.png"
+          mnemonic="%moveDownAMRuleTreeAction.MNEMONIC">
+        <visibleWhen>
+          <and>
+            <reference
+                definitionId="com.teamcenter.rac.project.inMainView"/>
+            <with variable="rac_command_suppression">
+              <not>
+                <iterate operator="or">
+                  <equals
+                      value="com.teamcenter.rac.moveDownAMRuleTree"/>
+                </iterate>
+              </not>
+            </with>
+          </and>
+        </visibleWhen>
+      </command>
+    </menuContribution>
+    <menuContribution locationURI="menu:edit?before=additions">
+      <command commandId="com.teamcenter.rac.changeOwnership"
+          mnemonic="%changeOwnershipAction.MNEMONIC">
+        <visibleWhen>
+          <and>
+            <reference
+                definitionId="com.teamcenter.rac.project.inMainView"/>
+            <with variable="rac_command_suppression">
+              <not>
+                <iterate operator="or">
+                  <equals
+                      value="com.teamcenter.rac.changeOwnership"/>
+                </iterate>
+              </not>
+            </with>
+          </and>
+        </visibleWhen>
+      </command>
+    </menuContribution>
+    <menuContribution locationURI="menu:view?after=additions">
+      <command commandId="org.eclipse.ui.file.refresh"
+          mnemonic="%refreshAction.MNEMONIC">
+        <visibleWhen>
+          <and>
+            <reference
+                definitionId="com.teamcenter.rac.project.inMainView"/>
+            <with variable="rac_command_suppression">
+              <not>
+                <iterate operator="or">
+                  <equals
+                      value="org.eclipse.ui.file.refresh"/>
+                </iterate>
+              </not>
+            </with>
+          </and>
+        </visibleWhen>
+      </command>
+      <command commandId="com.teamcenter.rac.refreshWindow"
+          mnemonic="%refreshWindowAction.MNEMONIC">
+        <visibleWhen>
+          <and>
+            <reference
+                definitionId="com.teamcenter.rac.project.inMainView"/>
+            <with variable="rac_command_suppression">
+              <not>
+                <iterate operator="or">
+                  <equals
+                      value="com.teamcenter.rac.refreshWindow"/>
+                </iterate>
+              </not>
+            </with>
+          </and>
+        </visibleWhen>
+      </command>
+      <command commandId="com.teamcenter.rac.expandBelowAMRuleTree"
+          mnemonic="%expandBelowAMRuleTreeAction.MNEMONIC">
+        <visibleWhen>
+          <and>
+            <reference
+                definitionId="com.teamcenter.rac.project.inMainView"/>
+            <with variable="rac_command_suppression">
+              <not>
+                <iterate operator="or">
+                  <equals
+                      value="com.teamcenter.rac.expandBelowAMRuleTree"/>
+                </iterate>
+              </not>
+            </with>
+          </and>
+        </visibleWhen>
+      </command>
+    </menuContribution>
+  </extension>
+  <extension point="org.eclipse.core.expressions.definitions">
+    <definition id="com.teamcenter.rac.project.inMainView">
+      <or>
+        <with variable="activeContexts">
+          <or>
+            <equals
+                value="com.teamcenter.rac.project.ProjectPerspective">
+            </equals>             
+          </or>
+        </with>
+        <with variable="activePartId">
+          <or>
+            <equals
+                value="com.teamcenter.rac.project.ProjectView">
+            </equals>
+            <equals
+                value="com.teamcenter.rac.project.ProjectDefinitionView">
+            </equals>
+            
+            <equals
+                value="com.teamcenter.rac.project.views.ProjActualView">
+            </equals>
+            
+            <equals
+                value="com.teamcenter.rac.project.views.ProjBudgetView">
+            </equals>
+            
+            <equals
+                value="com.teamcenter.rac.project.views.ProjResourceView">
+            </equals>
+            
+            
+            <equals
+                value="com.teamcenter.rac.project.views.ProjectAMView">
+            </equals>
+            <equals
+                value="com.teamcenter.rac.project.views.ProjectDataDictionaryView">
+            </equals>
+          </or>
+        </with>
+        
+      </or>
+    </definition>
+  </extension>
+
+  <extension point="org.eclipse.ui.commands">
+    <command
+          defaultHandler="com.teamcenter.rac.classification.common.commands.DDShowProjectsHandler"
+          id="com.teamcenter.rac.project.g4mShowProjects"
+          name="g4mShowProjects">
+    </command>
+    <command
+          defaultHandler="com.teamcenter.rac.project.SaveAMRuleTreeAction"
+          id="com.teamcenter.rac.project.SaveAMRuleTreeAction"
+          name="SaveAMRuleTreeAction">
+    </command>
+    <command
+          defaultHandler="com.teamcenter.rac.project.MoveUPAMRuleAction"
+          id="com.teamcenter.rac.project.MoveUPAMRuleAction"
+          name="MoveUPAMRuleAction">
+    </command>
+    <command
+          defaultHandler="com.teamcenter.rac.project.MoveDownAMRuleAction"
+          id="com.teamcenter.rac.project.MoveDownAMRuleAction"
+          name="MoveDownAMRuleAction">
+    </command>
+    <command
+          defaultHandler="com.teamcenter.rac.project.handlers.CreateChildProjectHandler"
+          id="com.teamcenter.rac.project.createChild"
+          name="%createChildProjectAction.TITLE">
+    </command>
+
+  </extension>
+  <extension point="org.eclipse.ui.menus">
+    <menuContribution locationURI="toolbar:project_Toolbar?after=additions">
+      <separator name="project_Toolbar0" visible="true"/>
+      <separator name="project_Toolbar1" visible="true"/>
+      <command commandId="com.teamcenter.rac.moveUpAMRuleTree"
+          icon="platform:/plugin/com.teamcenter.rac.aifrcp/com/teamcenter/rac/aif/images/moveup_16.png"
+          tooltip="%Moves_the_selected_AM_Rule_Up_one_level.TIP">
+        <visibleWhen>
+          <and>
+            <reference
+                definitionId="com.teamcenter.rac.project.inMainView"/>
+            <with variable="rac_command_suppression">
+              <not>
+                <iterate operator="or">
+                  <equals
+                      value="com.teamcenter.rac.moveUpAMRuleTree"/>
+                </iterate>
+              </not>
+            </with>
+          </and>
+        </visibleWhen>
+      </command>
+      <command commandId="com.teamcenter.rac.moveDownAMRuleTree"
+          icon="platform:/plugin/com.teamcenter.rac.aifrcp/com/teamcenter/rac/aif/images/movedown_16.png"
+          tooltip="%Moves_the_selected_AM_Rule_Down_one_level.TIP">
+        <visibleWhen>
+          <and>
+            <reference
+                definitionId="com.teamcenter.rac.project.inMainView"/>
+            <with variable="rac_command_suppression">
+              <not>
+                <iterate operator="or">
+                  <equals
+                      value="com.teamcenter.rac.moveDownAMRuleTree"/>
+                </iterate>
+              </not>
+            </with>
+          </and>
+        </visibleWhen>
+      </command>
+      <separator name="project_Toolbar2" visible="true"/>
+      <command
+            commandId="com.teamcenter.rac.project.g4mShowProjects"
+            icon="platform:/plugin/com.teamcenter.rac.common/icons/detail_16.png"
+            style="push"
+            tooltip="%Class_Details.TIP">
+        <visibleWhen>
+          <and>
+            <reference
+                  definitionId="com.teamcenter.rac.project.inMainView">
+            </reference>
+            <with
+                  variable="rac_command_suppression">
+              <not>
+                <iterate
+                      operator="or">
+                  <equals
+                        value="com.teamcenter.rac.project.g4mShowProjects">
+                  </equals>
+                </iterate>
+              </not>
+            </with>
+          </and>
+        </visibleWhen>
+      </command>
+    </menuContribution>
+    <menuContribution
+        locationURI="toolbar:org.eclipse.ui.main.toolbar?after=additions">
+      <toolbar id="project_Toolbar"/>
+    </menuContribution>
+  </extension>
+  <extension point="org.eclipse.ui.handlers">
+    <handler
+     class="com.teamcenter.rac.project.SaveAMRuleTreeAction"
+        commandId="org.eclipse.ui.file.save">
+      <activeWhen>
+        <reference
+            definitionId="com.teamcenter.rac.project.inMainView"/>
+      </activeWhen>
+      <enabledWhen>
+        <with variable="rac_property.PROJECT_AM_MENU_VISIBLE">
+          <equals value="true"/>
+        </with>
+      </enabledWhen>
+    </handler>
+    <handler
+        class="com.teamcenter.rac.project.MoveUPAMRuleAction"
+        commandId="com.teamcenter.rac.moveUpAMRuleTree">
+      <activeWhen>
+        <reference
+            definitionId="com.teamcenter.rac.project.inMainView"/>
+      </activeWhen>
+      <enabledWhen>
+        <with variable="rac_property.PROJECT_AM_MENU_VISIBLE">
+          <equals value="true"/>
+        </with>
+      </enabledWhen>
+    </handler>
+     <handler
+              class="com.teamcenter.rac.ui.commands.handlers.GenericItemHandler"
+              commandId="com.teamcenter.rac.newItem">
+            <activeWhen>
+                <and>                
+                    <with variable="activeWorkbenchWindow.activePerspective">
+                       <equals value="com.teamcenter.rac.project.ProjectPerspective">
+                       </equals>
+                      </with>    
+                    <with variable="rac_command_suppression">
+                        <not>
+                            <iterate operator="or">
+                                <equals value="com.teamcenter.rac.newItem"/>
+                            </iterate>
+                        </not>
+                    </with> 
+                    <not>
+                        <test property="com.teamcenter.rac.kernel.TCPreferenceService.TC_Enable_Legacy_Create" value="Item"/>
+                    </not>
+                </and>
+            </activeWhen>
+     </handler>
+     <handler 
+            class="com.teamcenter.rac.handlers.LegacyHandler:newItemAction:com.teamcenter.rac.common.actions.actions" 
+            commandId="com.teamcenter.rac.newItem">
+            <activeWhen>
+                <and>
+                     <with variable="activeWorkbenchWindow.activePerspective">
+                       <equals value="com.teamcenter.rac.project.ProjectPerspective">
+                       </equals>
+                       </with>    
+                    <with variable="rac_command_suppression">
+                    <not>
+                                                <iterate operator="or">
+                                <equals value="com.teamcenter.rac.newItem"/>
+                            </iterate>
+                            </not>
+                    </with>
+                    <test property="com.teamcenter.rac.kernel.TCPreferenceService.TC_Enable_Legacy_Create" value="Item"/>                    
+                </and>
+            </activeWhen>
+        </handler>
+    <handler
+        class="com.teamcenter.rac.project.handlers.ProjectRefreshHandler"
+        commandId="com.teamcenter.rac.refreshWindow">
+      <activeWhen>
+        <reference
+            definitionId="com.teamcenter.rac.project.inMainView"/>
+      </activeWhen>
+    </handler>
+    <handler
+        class="com.teamcenter.rac.project.handlers.CreateChildProjectHandler"
+        commandId="com.teamcenter.rac.project.createChild">
+      <activeWhen>
+        <reference
+            definitionId="com.teamcenter.rac.project.inMainView"/>
+      </activeWhen>
+      <enabledWhen>
+        <reference
+            definitionId="com.teamcenter.rac.project.inMainView"/>
+      </enabledWhen>
+    </handler>
+    <handler
+        class="com.teamcenter.rac.handlers.LegacyHandler:changeOwnershipAction:com.teamcenter.rac.project.project"
+        commandId="com.teamcenter.rac.changeOwnership">
+      <activeWhen>
+        <reference
+            definitionId="com.teamcenter.rac.project.inMainView"/>
+      </activeWhen>
+    </handler>
+    <handler
+          class="com.teamcenter.rac.project.MoveDownAMRuleAction"
+          commandId="com.teamcenter.rac.moveDownAMRuleTree">
+      <activeWhen>
+        <reference
+            definitionId="com.teamcenter.rac.project.inMainView"/>
+      </activeWhen>
+      <enabledWhen>
+        <with variable="rac_property.PROJECT_AM_MENU_VISIBLE">
+          <equals value="true"/>
+        </with>
+      </enabledWhen>
+    </handler>
+    <handler
+        class="com.teamcenter.rac.handlers.LegacyHandler:expandBelowAMRuleTreeAction:com.teamcenter.rac.project.project"
+        commandId="com.teamcenter.rac.expandBelowAMRuleTree">
+      <activeWhen>
+        <reference
+            definitionId="com.teamcenter.rac.project.inMainView"/>
+      </activeWhen>
+      <enabledWhen>
+        <with variable="rac_property.PROJECT_AM_MENU_VISIBLE">
+          <equals value="true"/>
+        </with>
+      </enabledWhen>
+    </handler>
+    <handler
+        class="com.teamcenter.rac.handlers.LegacyHandler:refreshAction:com.teamcenter.rac.project.project"
+        commandId="org.eclipse.ui.file.refresh">
+      <activeWhen>
+        <and>
+          <reference
+              definitionId="com.teamcenter.rac.project.inMainView"/>
+          <with variable="rac_command_suppression">
+            <not>
+              <iterate operator="or">
+                <equals value="org.eclipse.ui.file.refresh"/>
+              </iterate>
+            </not>
+          </with>
+        </and>
+      </activeWhen>
+    </handler>
+    <handler
+          class="com.teamcenter.rac.classification.common.commands.DDShowProjectsHandler"
+          commandId="com.teamcenter.rac.project.g4mShowProjects">
+      <activeWhen>
+        <and>
+          <reference
+              definitionId="com.teamcenter.rac.project.inMainView"/>
+          <with variable="rac_command_suppression">
+            <not>
+              <iterate operator="or">
+                <equals value="com.teamcenter.rac.project.g4mShowProjects"/>
+              </iterate>
+            </not>
+          </with>
+        </and>
+      </activeWhen>
+      <enabledWhen>
+        <with
+              variable="rac_property.PROJECT_CLASS_DETAILS_VISIBLE">
+          <equals
+                value="true">
+          </equals>
+        </with>
+      </enabledWhen>
+    </handler>
+    <handler 
+  class="com.teamcenter.rac.aif.commands.help.DefaultHelpHandler:#filename:project:c_am_rules" 
+  commandId="com.teamcenter.rac.help.application">
+    <activeWhen>
+      <with variable="activePartId">
+        <equals value="com.teamcenter.rac.project.views.ProjectAMView">
+        </equals>
+      </with>
+    </activeWhen>
+</handler>
+    <handler 
+  class="com.teamcenter.rac.aif.commands.help.DefaultHelpHandler:#filename:project:DefineProjectNameAndId" 
+  commandId="com.teamcenter.rac.help.application">
+    <activeWhen>
+      <with variable="activePartId">
+        <equals value="com.teamcenter.rac.project.ProjectDefinitionView">
+        </equals>
+      </with>
+    </activeWhen>
+</handler>
+    <handler 
+  class="com.teamcenter.rac.aif.commands.help.DefaultHelpHandler:#filename:project:data_dictionary" 
+  commandId="com.teamcenter.rac.help.application">
+    <activeWhen>
+      <with variable="activePartId">
+        <equals value="com.teamcenter.rac.project.views.ProjectDataDictionaryView">
+        </equals>
+      </with>
+    </activeWhen>
+</handler>    
+<handler
+          class="com.teamcenter.rac.aif.commands.help.DefaultHelpHandler:#uid:index_project:r_project_admin_window"
+          commandId="com.teamcenter.rac.help.application">
+      <activeWhen>
+        <and>
+          <with
+                variable="activePartId">
+            <equals
+                  value="com.teamcenter.rac.project.ProjectView">
+            </equals>
+          </with>
+          <with
+                variable="rac_command_suppression">
+            <not>
+              <iterate
+                    operator="or">
+                <equals
+                      value="com.teamcenter.rac.help.application">
+                </equals>
+              </iterate>
+            </not>
+          </with>
+        </and>
+      </activeWhen>
+    </handler>
+    <handler
+            class="com.teamcenter.rac.handlers.LegacyHandler:cutAction:com.teamcenter.rac.common.actions.actions"
+            commandId="org.eclipse.ui.edit.cut">
+            <activeWhen>
+                <and>
+                    <reference
+                        definitionId="com.teamcenter.rac.project.inMainView"/>
+                    <iterate ifEmpty="false">
+                        <adapt type="com.teamcenter.rac.kernel.TCComponentProject"/>                            
+                    </iterate>
+                    <with variable="rac_command_suppression">
+                        <not>
+                            <iterate operator="or">
+                                <equals value="org.eclipse.ui.edit.cut"/>
+                            </iterate>
+                        </not>
+                    </with>
+                </and>
+            </activeWhen>
+            <enabledWhen>
+                    <reference
+                        definitionId="com.teamcenter.rac.project.inMainView">
+                    </reference>
+            </enabledWhen>
+        </handler>
+  </extension>
+  <extension
+        point="org.eclipse.ui.menus">
+     <menuContribution
+           allPopups="false"
+           locationURI="popup:org.eclipse.ui.popup.any?before=additions">
+        <command
+              commandId="com.teamcenter.rac.project.createChild"
+              icon="icons/create_16.png"
+              style="push">
+           <visibleWhen
+                 checkEnabled="false">
+              <and>
+                 <reference
+                       definitionId="com.teamcenter.rac.project.inMainView">
+                 </reference>
+                 <iterate
+                       ifEmpty="false">
+                    <adapt
+                          type="com.teamcenter.rac.kernel.TCComponentProject">
+                    </adapt>
+                 </iterate>
+                 <with
+                  variable="rac_command_suppression">
+                  <not>
+                    <iterate
+                          operator="or">
+                      <equals
+                            value="com.teamcenter.rac.project.createChild">
+                      </equals>
+                    </iterate>
+                  </not>
+                </with>
+                <with
+                  variable="rac_contextmenu_suppression">
+                  <not>
+                    <iterate
+                          operator="or">
+                      <equals
+                            value="com.teamcenter.rac.project.createChild">
+                      </equals>
+                    </iterate>
+                  </not>
+                </with>
+              </and>
+           </visibleWhen>
+        </command>
+     </menuContribution>
+  </extension>
+</plugin>

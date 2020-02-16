@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0">
+	<implementation class="com.teamcenter.rac.project.ProjectService"/>
+ <service>
+    <provide interface="com.teamcenter.rac.services.IOpenService"/>
+ </service>
+ <property name="perspectiveId" type="String" value="com.teamcenter.rac.project.ProjectPerspective"/>
+ <property name="viewId" type="String" value="com.teamcenter.rac.project.ProjectView"/>
+</scr:component>

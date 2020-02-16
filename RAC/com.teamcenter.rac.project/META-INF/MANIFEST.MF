@@ -1,0 +1,46 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Teamcenter Project Plug-in
+Bundle-SymbolicName: com.teamcenter.rac.project; singleton:=true
+Bundle-Version: 11000.2.0
+TC-Version: V11000.2.0.62_20180813.00
+Bundle-Activator: com.teamcenter.rac.project.plugin.Activator
+Bundle-Vendor: Siemens PLM Software, Inc.
+Bundle-Localization: plugin
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-ActivationPolicy: lazy
+Service-Component: OSGI-INF/ProjectServices.xml,
+ OSGI-INF/AMRuleActivator.xml
+Import-Package: com.teamcenter.rac.smartnavigator.viewer.provider,
+ com.teamcenter.services.internal.loose.core._2008_06,
+ org.apache.log4j,
+ org.osgi.service.event
+Require-Bundle: org.eclipse.core.runtime,
+ org.eclipse.core.expressions,
+ org.eclipse.ui,
+ org.eclipse.ui.forms,
+ org.eclipse.ui.views,
+ com.teamcenter.rac.ui,
+ com.teamcenter.rac.ui.commands,
+ com.teamcenter.rac.ui.views,
+ com.teamcenter.rac.util,
+ com.teamcenter.rac.aifrcp,
+ com.teamcenter.rac.vns,
+ com.teamcenter.rac.kernel,
+ com.teamcenter.rac.common,
+ com.teamcenter.rac.tcapps,
+ com.teamcenter.rac.viewer,
+ com.teamcenter.rac.accessmanager,
+ TcSoaAdministrationRac,
+ TcSoaCommon,
+ TcSoaCoreRac,
+ TcSoaClient,
+ com.customer.yfjcebp;bundle-version="1.0.0"
+Export-Package: com.teamcenter.rac.project,
+ com.teamcenter.rac.project.common,
+ com.teamcenter.rac.project.handlers,
+ com.teamcenter.rac.project.plugin;x-internal:=true,
+ com.teamcenter.rac.project.providers,
+ com.teamcenter.rac.project.services,
+ com.teamcenter.rac.project.views,
+ icons;x-internal:=true
