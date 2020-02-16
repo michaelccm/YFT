@@ -1,0 +1,670 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+
+<!-- 
+ @<COPYRIGHT>@
+ ==================================================
+ Copyright 2012
+ Siemens Product Lifecycle Management Software Inc.
+ All Rights Reserved.
+ ==================================================
+ @<COPYRIGHT>@
+
+ ==================================================
+
+   Auto-generated source from service interface.
+                 DO NOT EDIT
+
+ ==================================================
+-->
+
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+    targetNamespace="http://d6.com/Schemas/Work/2012-02/ManHourManagement"
+    xmlns:tns="http://d6.com/Schemas/Work/2012-02/ManHourManagement" 
+    xmlns:soa="http://teamcenter.com/Schemas/Soa/2006-03/Base"
+     
+    elementFormDefault="qualified" attributeFormDefault="unqualified">
+    
+    <xsd:import namespace="http://teamcenter.com/Schemas/Soa/2006-03/Base"           schemaLocation="SoaBase.xsd" />
+    
+    
+
+
+    <xsd:complexType name="ManHourEntry">
+        <xsd:annotation>
+            <xsd:documentation><![CDATA[
+                man hour enty
+            ]]></xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+        </xsd:sequence>
+        <xsd:attribute name="myUserName" type="xsd:string" use="required">
+            <xsd:annotation>
+                <xsd:documentation><![CDATA[
+                    myUserName
+                ]]></xsd:documentation>
+            </xsd:annotation>
+       </xsd:attribute>
+        <xsd:attribute name="myYear" type="xsd:string" use="required">
+            <xsd:annotation>
+                <xsd:documentation><![CDATA[
+                    the year for man hour.
+                ]]></xsd:documentation>
+            </xsd:annotation>
+       </xsd:attribute>
+        <xsd:attribute name="myMonth" type="xsd:string" use="required">
+            <xsd:annotation>
+                <xsd:documentation><![CDATA[
+                    the month for man hour
+                ]]></xsd:documentation>
+            </xsd:annotation>
+       </xsd:attribute>
+        <xsd:attribute name="myDay" type="xsd:string" use="required">
+            <xsd:annotation>
+                <xsd:documentation><![CDATA[
+                    the day of year
+                ]]></xsd:documentation>
+            </xsd:annotation>
+       </xsd:attribute>
+        <xsd:attribute name="myDayOfWeek" type="xsd:string" use="required">
+            <xsd:annotation>
+                <xsd:documentation><![CDATA[
+                    myDayOfWeek
+                ]]></xsd:documentation>
+            </xsd:annotation>
+       </xsd:attribute>
+        <xsd:attribute name="myHoliday" type="xsd:string" use="required">
+            <xsd:annotation>
+                <xsd:documentation><![CDATA[
+                    myHoliday
+                ]]></xsd:documentation>
+            </xsd:annotation>
+       </xsd:attribute>
+        <xsd:attribute name="workRequired" type="xsd:string" use="required">
+            <xsd:annotation>
+                <xsd:documentation><![CDATA[
+                    workRequired
+                ]]></xsd:documentation>
+            </xsd:annotation>
+       </xsd:attribute>
+        <xsd:attribute name="myPrjName" type="xsd:string" use="required">
+            <xsd:annotation>
+                <xsd:documentation><![CDATA[
+                    myPrjName
+                ]]></xsd:documentation>
+            </xsd:annotation>
+       </xsd:attribute>
+        <xsd:attribute name="myPrjId" type="xsd:string" use="required">
+            <xsd:annotation>
+                <xsd:documentation><![CDATA[
+                    myPrjId
+                ]]></xsd:documentation>
+            </xsd:annotation>
+       </xsd:attribute>
+        <xsd:attribute name="myTaskType" type="xsd:string" use="required">
+            <xsd:annotation>
+                <xsd:documentation><![CDATA[
+                    myTaskType
+                ]]></xsd:documentation>
+            </xsd:annotation>
+       </xsd:attribute>
+        <xsd:attribute name="myTaskTypeDval" type="xsd:string" use="required">
+            <xsd:annotation>
+                <xsd:documentation><![CDATA[
+                    myTaskTypeDval
+                ]]></xsd:documentation>
+            </xsd:annotation>
+       </xsd:attribute>
+        <xsd:attribute name="billType" type="xsd:string" use="required">
+            <xsd:annotation>
+                <xsd:documentation><![CDATA[
+                    billType
+                ]]></xsd:documentation>
+            </xsd:annotation>
+       </xsd:attribute>
+        <xsd:attribute name="myRefBR" type="xsd:string" use="required">
+            <xsd:annotation>
+                <xsd:documentation><![CDATA[
+                    bill rate reference
+                ]]></xsd:documentation>
+            </xsd:annotation>
+       </xsd:attribute>
+        <xsd:attribute name="workingHours" type="xsd:string" use="required">
+            <xsd:annotation>
+                <xsd:documentation><![CDATA[
+                    workingHours
+                ]]></xsd:documentation>
+            </xsd:annotation>
+       </xsd:attribute>
+        <xsd:attribute name="myRefTE" type="xsd:string" use="required">
+            <xsd:annotation>
+                <xsd:documentation><![CDATA[
+                    myRefTE
+                ]]></xsd:documentation>
+            </xsd:annotation>
+       </xsd:attribute>
+        <xsd:attribute name="tseStatus" type="xsd:string" use="required">
+            <xsd:annotation>
+                <xsd:documentation><![CDATA[
+                    tse status
+                ]]></xsd:documentation>
+            </xsd:annotation>
+       </xsd:attribute>
+        <xsd:attribute name="myRefMHE" type="xsd:string" use="required">
+            <xsd:annotation>
+                <xsd:documentation><![CDATA[
+                    myRefMHE
+                ]]></xsd:documentation>
+            </xsd:annotation>
+       </xsd:attribute>
+        <xsd:attribute name="row" type="xsd:integer" use="required">
+            <xsd:annotation>
+                <xsd:documentation><![CDATA[
+                    row
+                ]]></xsd:documentation>
+            </xsd:annotation>
+       </xsd:attribute>
+        <xsd:attribute name="col" type="xsd:integer" use="required">
+            <xsd:annotation>
+                <xsd:documentation><![CDATA[
+                    col
+                ]]></xsd:documentation>
+            </xsd:annotation>
+       </xsd:attribute>
+        <xsd:attribute name="billTypeInternal" type="xsd:string" use="required">
+            <xsd:annotation>
+                <xsd:documentation><![CDATA[
+                    billTypeInternal
+                ]]></xsd:documentation>
+            </xsd:annotation>
+       </xsd:attribute>
+    </xsd:complexType>
+
+
+    <xsd:element name="ManHourInfo">
+    <xsd:complexType>
+        <xsd:annotation>
+            <xsd:documentation><![CDATA[
+                basic man hour info.
+            ]]></xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="theMonthTmp" type="tns:ManHourMonthTmp"  minOccurs="0" maxOccurs="unbounded">
+               <xsd:annotation>
+                    <xsd:documentation><![CDATA[
+                        the month template.
+                    ]]></xsd:documentation>
+               </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="theProgramSet" type="tns:ManHourProgram"  minOccurs="0" maxOccurs="unbounded">
+               <xsd:annotation>
+                    <xsd:documentation><![CDATA[
+                        a set of program
+                    ]]></xsd:documentation>
+               </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="theBillTypeSet" type="tns:ManHourBillType"  minOccurs="0" maxOccurs="unbounded">
+               <xsd:annotation>
+                    <xsd:documentation><![CDATA[
+                        theBillTypeSet
+                    ]]></xsd:documentation>
+               </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+        <xsd:attribute name="myUserName" type="xsd:string" use="required">
+            <xsd:annotation>
+                <xsd:documentation><![CDATA[
+                    user name
+                ]]></xsd:documentation>
+            </xsd:annotation>
+       </xsd:attribute>
+        <xsd:attribute name="myPosition" type="xsd:string" use="required">
+            <xsd:annotation>
+                <xsd:documentation><![CDATA[
+                    myPosition
+                ]]></xsd:documentation>
+            </xsd:annotation>
+       </xsd:attribute>
+        <xsd:attribute name="myYear" type="xsd:string" use="required">
+            <xsd:annotation>
+                <xsd:documentation><![CDATA[
+                    the year for man hour.
+                ]]></xsd:documentation>
+            </xsd:annotation>
+       </xsd:attribute>
+        <xsd:attribute name="myMonth" type="xsd:string" use="required">
+            <xsd:annotation>
+                <xsd:documentation><![CDATA[
+                    the month for the man hour.
+                ]]></xsd:documentation>
+            </xsd:annotation>
+       </xsd:attribute>
+        <xsd:attribute name="totalDays" type="xsd:integer" use="required">
+            <xsd:annotation>
+                <xsd:documentation><![CDATA[
+                    Total days for the give year and month.
+                ]]></xsd:documentation>
+            </xsd:annotation>
+       </xsd:attribute>
+        <xsd:attribute name="isHourlyBasedUser" type="xsd:boolean" use="required">
+            <xsd:annotation>
+                <xsd:documentation><![CDATA[
+                    identify if the user is a hourly based user
+                ]]></xsd:documentation>
+            </xsd:annotation>
+       </xsd:attribute>
+        <xsd:attribute name="isManHourEditable" type="xsd:boolean" use="required">
+            <xsd:annotation>
+                <xsd:documentation><![CDATA[
+                    identify if the man hour can be edited.
+                ]]></xsd:documentation>
+            </xsd:annotation>
+       </xsd:attribute>
+    </xsd:complexType>
+    </xsd:element>
+
+
+    <xsd:complexType name="ManHourMonthTmp">
+        <xsd:annotation>
+            <xsd:documentation><![CDATA[
+                the month template for man hour.
+            ]]></xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+        </xsd:sequence>
+        <xsd:attribute name="dayOfMonth" type="xsd:integer" use="required">
+            <xsd:annotation>
+                <xsd:documentation><![CDATA[
+                    the day of month.
+                ]]></xsd:documentation>
+            </xsd:annotation>
+       </xsd:attribute>
+        <xsd:attribute name="dayOfWeek" type="xsd:string" use="required">
+            <xsd:annotation>
+                <xsd:documentation><![CDATA[
+                    the day of week.
+                ]]></xsd:documentation>
+            </xsd:annotation>
+       </xsd:attribute>
+        <xsd:attribute name="isWeekend" type="xsd:boolean" use="required">
+            <xsd:annotation>
+                <xsd:documentation><![CDATA[
+                    is the day weekend
+                ]]></xsd:documentation>
+            </xsd:annotation>
+       </xsd:attribute>
+        <xsd:attribute name="isHoliday" type="xsd:boolean" use="required">
+            <xsd:annotation>
+                <xsd:documentation><![CDATA[
+                    is the day holiday
+                ]]></xsd:documentation>
+            </xsd:annotation>
+       </xsd:attribute>
+        <xsd:attribute name="holidayName" type="xsd:string" use="required">
+            <xsd:annotation>
+                <xsd:documentation><![CDATA[
+                    the holiday name.
+                ]]></xsd:documentation>
+            </xsd:annotation>
+       </xsd:attribute>
+        <xsd:attribute name="isWorkRequired" type="xsd:boolean" use="required">
+            <xsd:annotation>
+                <xsd:documentation><![CDATA[
+                    is the day required to work.
+                ]]></xsd:documentation>
+            </xsd:annotation>
+       </xsd:attribute>
+    </xsd:complexType>
+
+
+    <xsd:complexType name="ManHourProgram">
+        <xsd:annotation>
+            <xsd:documentation><![CDATA[
+                the program info for the man hour.
+            ]]></xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+        </xsd:sequence>
+        <xsd:attribute name="prjId" type="xsd:string" use="required">
+            <xsd:annotation>
+                <xsd:documentation><![CDATA[
+                    Project ID
+                ]]></xsd:documentation>
+            </xsd:annotation>
+       </xsd:attribute>
+        <xsd:attribute name="prjName" type="xsd:string" use="required">
+            <xsd:annotation>
+                <xsd:documentation><![CDATA[
+                    Project Name
+                ]]></xsd:documentation>
+            </xsd:annotation>
+       </xsd:attribute>
+        <xsd:attribute name="tskType" type="xsd:string" use="required">
+            <xsd:annotation>
+                <xsd:documentation><![CDATA[
+                    task type
+                ]]></xsd:documentation>
+            </xsd:annotation>
+       </xsd:attribute>
+        <xsd:attribute name="tskTypeDval" type="xsd:string" use="required">
+            <xsd:annotation>
+                <xsd:documentation><![CDATA[
+                    tskTypeDval
+                ]]></xsd:documentation>
+            </xsd:annotation>
+       </xsd:attribute>
+        <xsd:attribute name="stkTag" type="xsd:string" use="required">
+            <xsd:annotation>
+                <xsd:documentation><![CDATA[
+                    Schdeule Task Tag
+                ]]></xsd:documentation>
+            </xsd:annotation>
+       </xsd:attribute>
+        <xsd:attribute name="startDay" type="xsd:integer" use="required">
+            <xsd:annotation>
+                <xsd:documentation><![CDATA[
+                    start day in given month
+                ]]></xsd:documentation>
+            </xsd:annotation>
+       </xsd:attribute>
+        <xsd:attribute name="endDay" type="xsd:integer" use="required">
+            <xsd:annotation>
+                <xsd:documentation><![CDATA[
+                    end day in given month
+                ]]></xsd:documentation>
+            </xsd:annotation>
+       </xsd:attribute>
+        <xsd:attribute name="prjStartYear" type="xsd:integer" use="required">
+            <xsd:annotation>
+                <xsd:documentation><![CDATA[
+                    prjStartYear
+                ]]></xsd:documentation>
+            </xsd:annotation>
+       </xsd:attribute>
+        <xsd:attribute name="prjStartMonth" type="xsd:integer" use="required">
+            <xsd:annotation>
+                <xsd:documentation><![CDATA[
+                    prjStartMonth
+                ]]></xsd:documentation>
+            </xsd:annotation>
+       </xsd:attribute>
+        <xsd:attribute name="prjStartDay" type="xsd:integer" use="required">
+            <xsd:annotation>
+                <xsd:documentation><![CDATA[
+                    prjStartDay
+                ]]></xsd:documentation>
+            </xsd:annotation>
+       </xsd:attribute>
+        <xsd:attribute name="prjEndYear" type="xsd:integer" use="required">
+            <xsd:annotation>
+                <xsd:documentation><![CDATA[
+                    prjEndYear
+                ]]></xsd:documentation>
+            </xsd:annotation>
+       </xsd:attribute>
+        <xsd:attribute name="prjEndMonth" type="xsd:integer" use="required">
+            <xsd:annotation>
+                <xsd:documentation><![CDATA[
+                    prjEndMonth
+                ]]></xsd:documentation>
+            </xsd:annotation>
+       </xsd:attribute>
+        <xsd:attribute name="prjEndDay" type="xsd:integer" use="required">
+            <xsd:annotation>
+                <xsd:documentation><![CDATA[
+                    prjEndDay
+                ]]></xsd:documentation>
+            </xsd:annotation>
+       </xsd:attribute>
+        <xsd:attribute name="schTag" type="xsd:string" use="required">
+            <xsd:annotation>
+                <xsd:documentation><![CDATA[
+                    schTag
+                ]]></xsd:documentation>
+            </xsd:annotation>
+       </xsd:attribute>
+    </xsd:complexType>
+
+
+    <xsd:element name="ManHourEntrySet">
+    <xsd:complexType>
+        <xsd:annotation>
+            <xsd:documentation><![CDATA[
+                a set of man hour entries
+            ]]></xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="mheSet" type="tns:ManHourEntry"  minOccurs="0" maxOccurs="unbounded">
+               <xsd:annotation>
+                    <xsd:documentation><![CDATA[
+                        a sef of man hour entries
+                    ]]></xsd:documentation>
+               </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    </xsd:element>
+
+
+    <xsd:complexType name="ManHourBillType">
+        <xsd:annotation>
+            <xsd:documentation><![CDATA[
+                BillType
+            ]]></xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+        </xsd:sequence>
+        <xsd:attribute name="myRefBR" type="xsd:string" use="required">
+            <xsd:annotation>
+                <xsd:documentation><![CDATA[
+                    bill rate ref.
+                ]]></xsd:documentation>
+            </xsd:annotation>
+       </xsd:attribute>
+        <xsd:attribute name="billTypeInternal" type="xsd:string" use="required">
+            <xsd:annotation>
+                <xsd:documentation><![CDATA[
+                    billTypeInternal
+                ]]></xsd:documentation>
+            </xsd:annotation>
+       </xsd:attribute>
+        <xsd:attribute name="billRateName" type="xsd:string" use="required">
+            <xsd:annotation>
+                <xsd:documentation><![CDATA[
+                    billRateName
+                ]]></xsd:documentation>
+            </xsd:annotation>
+       </xsd:attribute>
+    </xsd:complexType>
+
+
+
+    <xsd:element name="GetManHourInfoInput">
+    <xsd:complexType>
+        <xsd:sequence>
+        </xsd:sequence>
+        <xsd:attribute name="theUserName" type="xsd:string" use="required">
+            <xsd:annotation>
+                <xsd:documentation><![CDATA[
+                    the user name
+                ]]></xsd:documentation>
+            </xsd:annotation>
+       </xsd:attribute>
+        <xsd:attribute name="theYear" type="xsd:string" use="required">
+            <xsd:annotation>
+                <xsd:documentation><![CDATA[
+                    the given year
+                ]]></xsd:documentation>
+            </xsd:annotation>
+       </xsd:attribute>
+        <xsd:attribute name="theMonth" type="xsd:string" use="required">
+            <xsd:annotation>
+                <xsd:documentation><![CDATA[
+                    the given month
+                ]]></xsd:documentation>
+            </xsd:annotation>
+       </xsd:attribute>
+    </xsd:complexType>
+    </xsd:element>
+    <!--  ManHourInfo is used as the getManHourInfo output element -->
+
+
+    <xsd:element name="ClearManHoursInput">
+    <xsd:complexType>
+        <xsd:sequence>
+        </xsd:sequence>
+        <xsd:attribute name="theUser" type="xsd:string" use="required">
+            <xsd:annotation>
+                <xsd:documentation><![CDATA[
+                    the user name
+                ]]></xsd:documentation>
+            </xsd:annotation>
+       </xsd:attribute>
+        <xsd:attribute name="theYear" type="xsd:string" use="required">
+            <xsd:annotation>
+                <xsd:documentation><![CDATA[
+                    the year
+                ]]></xsd:documentation>
+            </xsd:annotation>
+       </xsd:attribute>
+        <xsd:attribute name="theMonth" type="xsd:string" use="required">
+            <xsd:annotation>
+                <xsd:documentation><![CDATA[
+                    the month
+                ]]></xsd:documentation>
+            </xsd:annotation>
+       </xsd:attribute>
+    </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="ClearManHoursOutput">
+    <xsd:complexType>
+        <xsd:sequence>
+        </xsd:sequence>
+        <xsd:attribute name="out" type="xsd:string" use="required">
+       </xsd:attribute>
+    </xsd:complexType>
+    </xsd:element>
+
+
+    <xsd:element name="LoadInput">
+    <xsd:complexType>
+        <xsd:sequence>
+            <xsd:element name="filter" type="tns:ManHourEntry" >
+               <xsd:annotation>
+                    <xsd:documentation><![CDATA[
+                        filter
+                    ]]></xsd:documentation>
+               </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    </xsd:element>
+    <!--  ManHourEntrySet is used as the load output element -->
+
+
+    <xsd:element name="SaveInput">
+    <xsd:complexType>
+        <xsd:sequence>
+            <xsd:element name="manHours" type="tns:ManHourEntry"  minOccurs="0" maxOccurs="unbounded">
+               <xsd:annotation>
+                    <xsd:documentation><![CDATA[
+                        manHours
+                    ]]></xsd:documentation>
+               </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="thePrograms" type="tns:ManHourProgram"  minOccurs="0" maxOccurs="unbounded">
+               <xsd:annotation>
+                    <xsd:documentation><![CDATA[
+                        the programs
+                    ]]></xsd:documentation>
+               </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+        <xsd:attribute name="theUserName" type="xsd:string" use="required">
+            <xsd:annotation>
+                <xsd:documentation><![CDATA[
+                    theUserName
+                ]]></xsd:documentation>
+            </xsd:annotation>
+       </xsd:attribute>
+        <xsd:attribute name="theYear" type="xsd:string" use="required">
+            <xsd:annotation>
+                <xsd:documentation><![CDATA[
+                    theYear
+                ]]></xsd:documentation>
+            </xsd:annotation>
+       </xsd:attribute>
+        <xsd:attribute name="theMonth" type="xsd:string" use="required">
+            <xsd:annotation>
+                <xsd:documentation><![CDATA[
+                    theMonth
+                ]]></xsd:documentation>
+            </xsd:annotation>
+       </xsd:attribute>
+    </xsd:complexType>
+    </xsd:element>
+    <!--  ManHourEntrySet is used as the save output element -->
+
+
+    <xsd:element name="ReviseInput">
+    <xsd:complexType>
+        <xsd:sequence>
+            <xsd:element name="manHours" type="tns:ManHourEntry"  minOccurs="0" maxOccurs="unbounded">
+               <xsd:annotation>
+                    <xsd:documentation><![CDATA[
+                        manHours
+                    ]]></xsd:documentation>
+               </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+        <xsd:attribute name="username" type="xsd:string" use="required">
+            <xsd:annotation>
+                <xsd:documentation><![CDATA[
+                    username
+                ]]></xsd:documentation>
+            </xsd:annotation>
+       </xsd:attribute>
+        <xsd:attribute name="year" type="xsd:string" use="required">
+            <xsd:annotation>
+                <xsd:documentation><![CDATA[
+                    year
+                ]]></xsd:documentation>
+            </xsd:annotation>
+       </xsd:attribute>
+        <xsd:attribute name="month" type="xsd:string" use="required">
+            <xsd:annotation>
+                <xsd:documentation><![CDATA[
+                    month
+                ]]></xsd:documentation>
+            </xsd:annotation>
+       </xsd:attribute>
+    </xsd:complexType>
+    </xsd:element>
+    <!--  ManHourEntrySet is used as the revise output element -->
+
+
+    <xsd:element name="MheTestInput">
+    <xsd:complexType>
+        <xsd:sequence>
+        </xsd:sequence>
+        <xsd:attribute name="userName" type="xsd:string" use="required">
+            <xsd:annotation>
+                <xsd:documentation><![CDATA[
+                    userName
+                ]]></xsd:documentation>
+            </xsd:annotation>
+       </xsd:attribute>
+    </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="MheTestOutput">
+    <xsd:complexType>
+        <xsd:sequence>
+        </xsd:sequence>
+        <xsd:attribute name="out" type="xsd:string" use="required">
+       </xsd:attribute>
+    </xsd:complexType>
+    </xsd:element>
+
+
+
+</xsd:schema>

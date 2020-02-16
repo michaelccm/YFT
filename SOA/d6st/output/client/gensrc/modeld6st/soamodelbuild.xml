@@ -1,0 +1,131 @@
+<!--
+@<COPYRIGHT>@
+================================================================================
+Copyright 2009.
+Siemens Product Lifecycle Management Software Inc.
+All Rights Reserved.
+================================================================================
+@<COPYRIGHT>@
+-->
+<!--============================================================================ -->
+
+<project name="FunctionalGroup" default="All" basedir=".">
+
+  <property name="project.folder"           value="D6SoaWork"/>
+  <property name="model.template.name"      value="d6st"/>
+
+  <property name="build.compiler" value="extJavac"/>
+  <echo message=" ___________________________________________________________" />
+  <echo message="   Building ${model.template.name} Java Model bindings          " />
+  <echo message=" ___________________________________________________________" />
+
+  <!-- Real value of framework home is passed in from TcSoa, this makes Ant editor happy -->
+  <property environment="tcsoa.external.env" />
+
+  <!--Javac target version-->
+  <property name="javac.target" value="1.5" />
+
+  <property name="tc.root"                  location="/siemens/afuz1/teamcenter9"/>
+  <property name="tcsoa.out.home"           location="/siemens/afuz1/dev/workspace/d6st/output"/>
+  <property name="tcsoa.client.kit.home"    location="/siemens/afuz1/dev/soa_client"/>
+  <property name="External.Tools.home"      location="${tcsoa.client.kit.home}/toolbox"/>
+
+  <property name="tcsoa.drv.home"           location="${tcsoa.out.home}"/>
+
+  <property name="server.gen.home"          location="/siemens/afuz1/dev/workspace/d6st/output/server/gensrc/${project.folder}"/>
+  <property name="server.src.home"          location="/siemens/afuz1/dev/workspace/d6st/src/server/${project.folder}"/>
+  <property name="client.gen.home"          location="/siemens/afuz1/dev/workspace/d6st/output/client/gensrc/${project.folder}"/>
+  <property name="types.gen.home"           location="/siemens/afuz1/dev/workspace/d6st/output/types/gensrc/${project.folder}"/>
+  <property name="model.gen.home"           location="/siemens/afuz1/dev/workspace/d6st/output/client/gensrc/modeld6st"/>
+  <property name="cpp.gen.folder.name"      value="cpp"/>
+  <property name="java.gen.folder.name"     value="java"/>
+  <property name="net.gen.folder.name"      value="net"/>
+
+  <property name="tcsoa.client.classes.home"   location="/siemens/afuz1/dev/workspace/d6st/output/client/classes"/>
+  <property name="tcsoa.client.jars.home"      location="/siemens/afuz1/dev/workspace/d6st/output/client/jars"/>
+  <property name="tcsoa.types.classes.home"    location="/siemens/afuz1/dev/workspace/d6st/output/types/classes"/>
+  <property name="tcsoa.types.jars.home"       location="/siemens/afuz1/dev/workspace/d6st/output/types/jars"/>
+
+  <property name="java.gen.home"            location="${model.gen.home}/${java.gen.folder.name}"/>
+
+  <property name="soa.jar.prefix"           value="TcSoaStrongModel" />
+
+  <fileset dir="${tcsoa.client.kit.home}/java/libs" id="soa.client.libs">
+    <include name="TcSoaCommon*.jar" />
+    <include name="TcSoaStrongModel*.jar" />
+    <include name="TcSoaClient*.jar" />
+  </fileset>
+
+  <path id="build.classpath">
+        <pathelement location="${tcsoa.client.classes.home}/model${model.template.name}"/>   <!-- Types Jar is created after compile -->
+        <fileset refid="soa.client.libs"/>
+    </path>
+
+    <target name="init">
+        <tstamp/>
+
+        <mkdir dir="${tcsoa.client.jars.home}" />
+        <mkdir dir="${tcsoa.client.classes.home}/model${model.template.name}"/>
+    </target>
+
+    <target name="clean">
+        <delete dir="${tcsoa.client.classes.home}/model${model.template.name}"/>
+        <delete file="${tcsoa.client.jars.home}/${soa.jar.prefix}${model.template.name}.jar"/>
+     </target>
+
+     <target name="Compile" depends="init" description="compile the source">
+
+        <javac destdir="${tcsoa.client.classes.home}/model${model.template.name}" debug="true" source="${javac.target}" target="${javac.target}">
+            <src path="${java.gen.home}"/>
+            <classpath refid="build.classpath"/>
+        </javac>
+     </target>
+
+     <target name="packageList" >
+        <!-- Create Package List for Types -->
+        <path id="type.folder.list">
+            <dirset  dir="${tcsoa.client.classes.home}/model${model.template.name}" >
+                <include name="com/teamcenter/soa/client/model/**" />
+            </dirset>
+        </path>
+
+        <!-- Convert the folders to package names -->
+        <pathconvert targetos="unix"  property="type.package.list"  refid="type.folder.list"
+                     dirsep="."       pathsep=",">
+            <map from="${tcsoa.client.classes.home}${file.separator}model${model.template.name}${file.separator}" to=""/>
+        </pathconvert>
+
+     </target>
+
+     <target name="Archive" depends="packageList" description="Creates the Stub Jars">
+
+        <tstamp>
+            <format property="NOW" pattern="MMMM d, yyyy" locale="en"/>
+        </tstamp>
+
+
+        <jar destfile="${tcsoa.client.jars.home}/${soa.jar.prefix}${model.template.name}.jar">
+            <fileset dir="${tcsoa.client.classes.home}/model${model.template.name}"/>
+
+            <manifest>
+                <attribute name="Implementation-Title"   value="Teamcenter model ${model.template.name}"/>
+                <attribute name="Implementation-Version" value="9000.1.0, ${NOW}"/>
+                <attribute name="Implementation-Vendor"  value="Siemens Product Lifecycle Management Inc."/>
+                <attribute name="Bundle-ManifestVersion" value="2"/>
+                <attribute name="Bundle-Name"            value="Teamcenter model ${model.template.name}"/>
+                <attribute name="Bundle-SymbolicName"    value="${soa.jar.prefix}${model.template.name}"/>
+                <attribute name="Bundle-Version"         value="9000.1.0"/>
+                <attribute name="Bundle-ClassPath"       value="."/>
+                <attribute name="Bundle-Vendor"          value="Siemens Product Lifecycle Management Inc."/>
+                <attribute name="Bundle-Localization"    value="plugin"/>
+                <attribute name="Bundle-ActivationPolicy" value="lazy" />
+                <attribute name="Require-Bundle"         value="com.teamcenter.rac.external,TcSoaCommon,TcSoaClient" />
+                <attribute name="Export-Package"         value="${type.package.list}" />
+            </manifest>
+        </jar>
+
+    </target>
+
+    <target name="All" depends="Compile,Archive"/>
+
+</project>

@@ -1,0 +1,20 @@
+Manifest-Version: 1.0
+Ant-Version: Apache Ant 1.7.0
+Created-By: 25.191-b12 (Oracle Corporation)
+Implementation-Title: Teamcenter Services D9SoaWork Types
+Implementation-Version: 11000.2.0, November 1, 2019
+Implementation-Vendor: Siemens Product Lifecycle Management Inc.
+Bundle-ManifestVersion: 2
+Bundle-Name: Teamcenter Services D9SoaWork Types
+Bundle-SymbolicName: D9SoaWorkTypes
+Bundle-Version: 11000.2.0
+TC-Version: V11000.2.0.71_20190703.00
+Bundle-ClassPath: .
+Bundle-Vendor: Siemens Product Lifecycle Management Inc.
+Bundle-Localization: plugin
+Bundle-ActivationPolicy: lazy
+Require-Bundle: TcSoaCommon
+Export-Package: com.d9.schemas,com.d9.schemas.work,com.d9.schemas.work
+ ._2018_06,com.d9.schemas.work._2018_06.manhourmanageservice
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+

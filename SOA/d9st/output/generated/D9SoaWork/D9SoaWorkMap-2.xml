@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?><deployment><!--@<COPYRIGHT_START>@
+===============================================
+Copyright 2006 UGS Corp. All Rights Reserved.
+===============================================
+@<COPYRIGHT_END>@
+
+This xml file has all configuration details about server managers to connect.
+--><!--This file stores the mapping between the WSDL Service Name and the WSDL File Name.
+Please note that the internal services are not listed here,
+and hence their WSDLs cannot be accessed by the URL /tc/services/serviceName?wsdl.
+Configure the Mapping here--><service name="Work-2018-06-ManHourManageService" wsdlServiceElement="Work1806ManHourManageServiceService"><operation name="clearManHoursOP"/><operation name="getManHourInfoOP"/><operation name="loadOP"/><operation name="mheTest"/><operation name="reviseOP"/><operation name="saveOP"/></service></deployment>

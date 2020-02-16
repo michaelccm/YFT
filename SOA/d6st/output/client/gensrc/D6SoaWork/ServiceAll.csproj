@@ -1,0 +1,35 @@
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <UseHostCompilerIfAvailable>false</UseHostCompilerIfAvailable>
+    <ProjectGuid>{4510DC5F-D620-44FD-B078-F8895698E0EF}</ProjectGuid>
+    <ServiceName>D6SoaWork</ServiceName>
+    <ModelTemplateName>d6st</ModelTemplateName>
+    <BaseOutDir>/siemens/afuz1/dev/workspace/d6st/output/client/net/</BaseOutDir>
+    <OutputPath>/siemens/afuz1/dev/workspace/d6st/output/client/net/</OutputPath>
+    <IntermediateOutDir>/siemens/afuz1/dev/workspace/d6st/output/client/net/tmp/</IntermediateOutDir>
+    <IntermediateOutputPath>/siemens/afuz1/dev/workspace/d6st/output/client/net/tmp/</IntermediateOutputPath>
+    <BaseIntermediateOutputPath>/siemens/afuz1/dev/workspace/d6st/output/client/net/tmp/</BaseIntermediateOutputPath>
+    <DerivedSourceFileDir>/siemens/afuz1/dev/workspace/d6st/output/</DerivedSourceFileDir>
+    <SourceFileDir>$(DerivedSourceFileDir)$(ServiceName)</SourceFileDir>
+    <TcSoaKitLibsPath>/siemens/afuz1/dev/soa_client/net/libs</TcSoaKitLibsPath>
+    <CLIENTGENSRC>/siemens/afuz1/dev/workspace/d6st/output/client/gensrc</CLIENTGENSRC>
+    <TYPESGENSRC>/siemens/afuz1/dev/workspace/d6st/output/types/gensrc</TYPESGENSRC>
+    <CLIENTNET>/siemens/afuz1/dev/workspace/d6st/output/client/Net</CLIENTNET>
+    <TYPESNET>/siemens/afuz1/dev/workspace/d6st/output/types/Net</TYPESNET>
+  </PropertyGroup>
+  <Target Name="ServiceTypes">
+    <Message Text="Building Service Types..." />
+    <MSBuild Projects="$(TYPESGENSRC)\ServiceTypes.csproj" Properties="ServiceName=$(ServiceName);OutputPath=$(TYPESNET)\;IntermediateOutputPath=$(TYPESNET)\tmp\;BaseIntermediateOutputPath=$(TYPESNET)\tmp\;DerivedSourceFileDir=$(TYPESGENSRC)\;TcSoaKitLibsPath=$(TcSoaKitLibsPath)" />   
+  </Target>
+  <Target Name="ServiceLoose">
+    <Message Text="Building Service Loose Bindings..." />
+    <MSBuild Projects="$(CLIENTGENSRC)\ServiceLoose.csproj" Properties="ServiceName=$(ServiceName);OutputPath=$(CLIENTNET)\;IntermediateOutputPath=$(CLIENTNET)\tmp\;BaseIntermediateOutputPath=$(CLIENTNET)\tmp\;DerivedSourceFileDir=$(CLIENTGENSRC)\;TcSoaKitLibsPath=$(TcSoaKitLibsPath)" />
+  </Target>
+  <Target Name="ServiceStrong" DependsOnTargets="ServiceTypes">
+    <Message Text="Building Service Strong Bindings..." />
+    <MSBuild Projects="$(CLIENTGENSRC)\ServiceStrong.csproj" Properties="ServiceName=$(ServiceName);OutputPath=$(CLIENTNET)\;IntermediateOutputPath=$(CLIENTNET)\tmp\;BaseIntermediateOutputPath=$(CLIENTNET)\tmp\;DerivedSourceFileDir=$(CLIENTGENSRC)\;TcSoaKitLibsPath=$(TcSoaKitLibsPath)" />
+  </Target>
+  <Target Name="Build" DependsOnTargets="ServiceTypes;ServiceLoose;ServiceStrong">
+    <Message Text="Build components ..." />
+  </Target>
+</Project>

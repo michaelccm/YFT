@@ -1,0 +1,36 @@
+[CreateClientModel]Model is already loaded
+[CreateClientModel]All Java classes are up to date.
+[CreateClientModel]Model is already loaded
+[CreateClientModel]All CSharp classes are up to date.
+[CreateClientModel]Model is already loaded
+[CreateClientModel]CPP Model up to date.
+[CreateClientModel]CPP Model up to date.
+[CreateServiceArtifacts]Model is already loaded
+[CreateServiceArtifacts]Processing Service Interface files...
+[CreateServiceArtifacts] source xml file  : /siemens/afuz1/dev/workspace/d6st/extensions/default.xml
+[CreateServiceArtifacts] number of services to process: 1
+[CreateServiceArtifacts]Creating [CPP ] Server Files (/siemens/afuz1/dev/workspace/d6st/output/server/gensrc/D6SoaWork) ...
+[CreateServiceArtifacts]... Interface Child manhourmanagement1202.hxx
+[CreateServiceArtifacts]... Interface Base  manhourmanagement.hxx
+[CreateServiceArtifacts]... Skeleton        ManHourManagement1202IiopSkeleton.cxx
+[CreateServiceArtifacts]Creating [WSDL] WebTier Files (/siemens/afuz1/dev/workspace/d6st/output/client/gensrc/jeti/webtier/soa/services/xids) ...
+[CreateServiceArtifacts]... XSD             Work1202ManHourManagement.xsd
+[CreateServiceArtifacts]... XID             Work1202ManHourManagement.xid
+[CreateServiceArtifacts]Creating [JAVA] STRONG Files (/siemens/afuz1/dev/workspace/d6st/output/client/gensrc/D6SoaWork/strong/java)...
+[CreateServiceArtifacts]... Child Interface ManHourManagement.java (_2012_02)
+[CreateServiceArtifacts]... Base Interface  ManHourManagementService.java
+[CreateServiceArtifacts]... Stub            ManHourManagementRestBindingStub.java
+[CreateServiceArtifacts]Creating [JAVA] RAC Files (/siemens/afuz1/dev/workspace/d6st/output/client/gensrc/D6SoaWork/rac/java)...
+[CreateServiceArtifacts]... Child Interface ManHourManagement.java (_2012_02)
+[CreateServiceArtifacts]... Base Interface  ManHourManagementService.java
+[CreateServiceArtifacts]... Stub            ManHourManagementRestBindingStub.java
+[CreateServiceArtifacts]Creating [TEST] JUnit (/siemens/afuz1/dev/workspace/d6st/output/client/gensrc/D6SoaWork/testSrc/com/d6/services/strong/work)
+[CreateServiceArtifacts]... Outline          ManHourManagementTest.java
+[CreateServiceArtifacts]Parsing XML Schemas for C++ bindings....
+[CreateServiceArtifacts]... Work1202ManHourManagement.xsd
+[CreateServiceArtifacts]Parsing XML Schemas for JAXB bindings....
+[CreateServiceArtifacts]... Work1202ManHourManagement.xsd
+[CreateServiceArtifacts]Creating JAXB classes for all XML Schemas....
+[CreateServiceArtifacts]Deleting directory /siemens/afuz1/dev/workspace/d6st/output/types/gensrc/D6SoaWork/java/com/teamcenter/schemas/soa/_2006_03/base
+[CreateServiceArtifacts]Parsing XML Schemas for CSharp bindings....
+[CreateServiceArtifacts]... Work1202ManHourManagement.xsd

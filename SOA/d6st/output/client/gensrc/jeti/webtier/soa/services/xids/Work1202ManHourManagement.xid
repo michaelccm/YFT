@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+ @<COPYRIGHT>@
+ ==================================================
+ Copyright 2012
+ Siemens Product Lifecycle Management Software Inc.
+ All Rights Reserved.
+ ==================================================
+ @<COPYRIGHT>@
+
+ ==================================================
+
+   Auto-generated source from service interface.
+                 DO NOT EDIT
+
+ ==================================================
+-->
+
+
+<services
+    xmlns="http://teamcenter.com/WebServices/2005-06/schemas/XID"
+    xmlns:soa="http://teamcenter.com/Schemas/Soa/2006-03/Base"
+    xmlns:exp="http://teamcenter.com/Schemas/Soa/2006-03/Exceptions"
+    xmlns:svc="http://d6.com/Schemas/Work/2012-02/ManHourManagement" 
+    
+    >
+    
+    <types>
+        <import namespace="http://teamcenter.com/Schemas/Soa/2006-03/Base"        schemaLocation="SoaBase.xsd"/>
+        <import namespace="http://teamcenter.com/Schemas/Soa/2006-03/Exceptions"  schemaLocation="SoaExceptions.xsd"/>
+        <import namespace="http://d6.com/Schemas/Work/2012-02/ManHourManagement"  schemaLocation="Work1202ManHourManagement.xsd"/> 
+           
+         
+    </types>
+    
+    <service name="Work1202ManHourManagement"
+             targetNamespace="http://d6.com/Services/Work/2012-02">
+             
+        <port>Work-2012-02-ManHourManagement</port>
+        
+        
+    <operation name="getManHourInfo" in="svc:GetManHourInfoInput" out="svc:ManHourInfo">
+        <documentation><![CDATA[
+        get the man hour info for give year and month
+        ]]></documentation>
+
+        <fault name="InternalServerFault"     type="exp:InternalServerFault"/>
+        <fault name="ServiceFault"            type="exp:ServiceFault"/>        
+        <fault name="InvalidUserFault"        type="exp:InvalidUserFault"/>        
+    </operation>
+    <operation name="clearManHours" in="svc:ClearManHoursInput" out="svc:ClearManHoursOutput">
+        <documentation><![CDATA[
+        clear man hours
+        ]]></documentation>
+
+        <fault name="InternalServerFault"     type="exp:InternalServerFault"/>
+        <fault name="ServiceFault"            type="exp:ServiceFault"/>        
+        <fault name="InvalidUserFault"        type="exp:InvalidUserFault"/>        
+    </operation>
+    <operation name="load" in="svc:LoadInput" out="svc:ManHourEntrySet">
+        <documentation><![CDATA[
+        load man hour entires
+        ]]></documentation>
+
+        <fault name="InternalServerFault"     type="exp:InternalServerFault"/>
+        <fault name="ServiceFault"            type="exp:ServiceFault"/>        
+        <fault name="InvalidUserFault"        type="exp:InvalidUserFault"/>        
+    </operation>
+    <operation name="save" in="svc:SaveInput" out="svc:ManHourEntrySet">
+        <documentation><![CDATA[
+        save man hours
+        ]]></documentation>
+
+        <fault name="InternalServerFault"     type="exp:InternalServerFault"/>
+        <fault name="ServiceFault"            type="exp:ServiceFault"/>        
+        <fault name="InvalidUserFault"        type="exp:InvalidUserFault"/>        
+    </operation>
+    <operation name="revise" in="svc:ReviseInput" out="svc:ManHourEntrySet">
+        <documentation><![CDATA[
+        revise
+        ]]></documentation>
+
+        <fault name="InternalServerFault"     type="exp:InternalServerFault"/>
+        <fault name="ServiceFault"            type="exp:ServiceFault"/>        
+        <fault name="InvalidUserFault"        type="exp:InvalidUserFault"/>        
+    </operation>
+    <operation name="mheTest" in="svc:MheTestInput" out="svc:MheTestOutput">
+        <documentation><![CDATA[
+        mheTest
+        ]]></documentation>
+
+        <fault name="InternalServerFault"     type="exp:InternalServerFault"/>
+        <fault name="ServiceFault"            type="exp:ServiceFault"/>        
+        <fault name="InvalidUserFault"        type="exp:InvalidUserFault"/>        
+    </operation>
+    </service>
+</services>

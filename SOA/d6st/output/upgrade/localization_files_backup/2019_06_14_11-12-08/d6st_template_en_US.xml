@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TcBusinessDataLocalization xmlns="http://teamcenter.com/BusinessModel/TcBusinessDataLocalization"
+    Date="">
+<Add>
+   <key locale="en_US" id="Property{::}D6ManHourEntry{::}d6BillType" status="Approved">Bill Type</key>
+   <key locale="en_US" id="Property{::}D6ManHourEntry{::}d6UserName" status="Approved">User Name</key>
+   <key locale="en_US" id="Property{::}D6ManHourEntry{::}d6WorkingHours" status="Approved">Working Hours</key>
+   <key locale="en_US" id="Property{::}D6ManHourEntry{::}d6WorkRequired" status="Approved">Work Required?</key>
+   <key locale="en_US" id="Property{::}D6ManHourEntry{::}d6Holiday" status="Approved">Holiday</key>
+   <key locale="en_US" id="Property{::}D6ManHourEntry{::}d6DayOfWeek" status="Approved">Day Of Week</key>
+   <key locale="en_US" id="Property{::}D6ManHourEntry{::}d6Month" status="Approved">Month</key>
+   <key locale="en_US" id="Property{::}D6ManHourEntry{::}d6Year" status="Approved">Year</key>
+   <key locale="en_US" id="Property{::}D6ManHourEntry{::}d6Day" status="Approved">Day</key>
+   <key locale="en_US" id="Property{::}D6ManHourEntry{::}d6RefTE" status="Approved">Timesheet UID</key>
+   <key locale="en_US" id="Property{::}D6ManHourEntry{::}d6PrjName" status="Approved">Project Name</key>
+   <key locale="en_US" id="Property{::}D6ManHourEntry{::}d6PrjId" status="Approved">Project ID</key>
+   <key locale="en_US" id="Property{::}D6ManHourEntry{::}d6TaskType" status="Approved">Task Type</key>
+   <key locale="en_US" id="Property{::}D6ManHourEntry{::}d6RefBR" status="Approved">Bill Rate UID</key>
+   <key locale="en_US" id="Property{::}D6MheTask{::}d6TaskType" status="Approved">d6TaskType</key>
+   <key locale="en_US" id="Property{::}D6MheTask{::}d6PrjId" status="Approved">d6PrjId</key>
+   <key locale="en_US" id="Property{::}D6MheTask{::}d6PrjName" status="Approved">d6PrjName</key>
+   <key locale="en_US" id="Property{::}D6MheTask{::}d6UserName" status="Approved">d6UserName</key>
+   <key locale="en_US" id="Property{::}D6MheTask{::}d6PrjStartDate" status="Approved">d6PrjStartDate</key>
+   <key locale="en_US" id="Property{::}D6MheTask{::}d6PrjEndDate" status="Approved">d6PrjEndDate</key>
+   <key locale="en_US" id="Property{::}D6MheTask{::}d6Status" status="Approved">d6Status</key>
+   <key locale="en_US" id="Property{::}TimeSheetEntry{::}d6MheTask_tag" status="Approved">d6MheTask_tag</key>
+   <key locale="en_US" id="Property{::}D6MheTask{::}d6Schedule_tag" status="Approved">d6Schedule_tag</key>
+   <key locale="en_US" id="Property{::}D6MheTask{::}d6TaskTypeDval" status="Approved">d6TaskTypeDval</key>
+   <key locale="en_US" id="Property{::}D6ManHourEntry{::}d6TaskTypeDval" status="Approved">Task Type Display Value</key>
+   <key locale="en_US" id="LOVValue{::}D6_YFAS_TaskType{::}OEM Project" status="Approved">D6_YFAS_TaskType_proj</key>
+   <key locale="en_US" id="LOVValue{::}D6_YFAS_TaskType{::}Innovation" status="Approved">D6_YFAS_TaskType_proj</key>
+   <key locale="en_US" id="LOVValue{::}D6_YFAS_TaskType{::}Platform" status="Approved">D6_YFAS_TaskType_proj</key>
+   <key locale="en_US" id="LOVValue{::}D6_YFAS_TaskType{::}Intra Company" status="Approved">D6_YFAS_TaskType_proj</key>
+   <key locale="en_US" id="LOVValue{::}D6_YFAS_TaskType{::}Lean CI" status="Approved">D6_YFAS_TaskType_proj</key>
+   <key locale="en_US" id="LOVValue{::}D6_YFAS_TaskType{::}PROACT CI" status="Approved">D6_YFAS_TaskType_proj</key>
+   <key locale="en_US" id="LOVValue{::}D6_YFAS_TaskType{::}Support" status="Approved">D6_YFAS_TaskType_proj</key>
+   <key locale="en_US" id="LOVValue{::}D6_YFAS_TaskType{::}Vacation" status="Approved">D6_YFAS_TaskType_nonproj</key>
+   <key locale="en_US" id="LOVValue{::}D6_YFAS_TaskType{::}People and development"
+       status="Approved">D6_YFAS_TaskType_nonproj</key>
+   <key locale="en_US" id="LOVValue{::}D6_YFAS_TaskType{::}Process and OPS" status="Approved">D6_YFAS_TaskType_nonproj</key>
+   <key locale="en_US" id="LOVValue{::}D6_YFAS_TaskType_proj{::}mhetask01" status="Approved">BOM and CAD</key>
+   <key locale="en_US" id="LOVValue{::}D6_YFAS_TaskType_proj{::}mhetask02" status="Approved">Engineering Development</key>
+   <key locale="en_US" id="LOVValue{::}D6_YFAS_TaskType_proj{::}mhetask04" status="Approved">Issue Management</key>
+   <key locale="en_US" id="LOVValue{::}D6_YFAS_TaskType_proj{::}mhetask05" status="Approved">Sampe Management</key>
+   <key locale="en_US" id="LOVValue{::}D6_YFAS_TaskType_proj{::}mhetask06" status="Approved">Program Cost Management</key>
+   <key locale="en_US" id="LOVValue{::}D6_YFAS_TaskType_proj{::}tasktype26" status="Approved">Resident Engineer</key>
+   <key locale="en_US" id="LOVValue{::}D6_YFAS_TaskType_nonproj{::}mnetask07" status="Approved">Non-program task</key>
+   <key locale="en_US" id="LOVValue{::}D6_YFAS_TaskType{::}Social value" status="Approved">D6_YFAS_TaskType_nonproj</key>
+   <key locale="en_US" id="LOVValue{::}D6_YFAS_TaskType_proj{::}mhetask03" status="Approved">Communication</key>
+   <key locale="en_US" id="LOVValueDescription{::}D6_YFAS_TaskType{::}OEM Project"
+       status="Approved">D6_YFAS_TaskType_proj</key>
+   <key locale="en_US" id="LOVValueDescription{::}D6_YFAS_TaskType{::}Innovation"
+       status="Approved">D6_YFAS_TaskType_proj</key>
+   <key locale="en_US" id="LOVValueDescription{::}D6_YFAS_TaskType{::}Platform" status="Approved">D6_YFAS_TaskType_proj</key>
+   <key locale="en_US" id="LOVValueDescription{::}D6_YFAS_TaskType{::}Intra Company"
+       status="Approved">D6_YFAS_TaskType_proj</key>
+   <key locale="en_US" id="LOVValueDescription{::}D6_YFAS_TaskType{::}Lean CI" status="Approved">D6_YFAS_TaskType_proj</key>
+   <key locale="en_US" id="LOVValueDescription{::}D6_YFAS_TaskType{::}PROACT CI" status="Approved">D6_YFAS_TaskType_proj</key>
+   <key locale="en_US" id="LOVValueDescription{::}D6_YFAS_TaskType{::}Support" status="Approved">D6_YFAS_TaskType_proj</key>
+   <key locale="en_US" id="LOVValueDescription{::}D6_YFAS_TaskType{::}Vacation" status="Approved">D6_YFAS_TaskType_nonproj</key>
+   <key locale="en_US" id="LOVValueDescription{::}D6_YFAS_TaskType{::}People and development"
+       status="Approved">D6_YFAS_TaskType_nonproj</key>
+   <key locale="en_US" id="LOVValueDescription{::}D6_YFAS_TaskType{::}Process and OPS"
+       status="Approved">D6_YFAS_TaskType_nonproj</key>
+   <key locale="en_US" id="LOVValueDescription{::}D6_YFAS_TaskType_nonproj{::}mnetask07"
+       status="Approved">Non-program task</key>
+   <key locale="en_US" id="LOVValueDescription{::}D6_YFAS_TaskType_proj{::}tasktype26"
+       status="Approved">Resident Engineer2</key>
+   <key locale="en_US" id="LOVValueDescription{::}D6_YFAS_TaskType_proj{::}mhetask06"
+       status="Approved">Program Cost Management2</key>
+   <key locale="en_US" id="LOVValueDescription{::}D6_YFAS_TaskType_proj{::}mhetask05"
+       status="Approved">Sampe Management2</key>
+   <key locale="en_US" id="LOVValueDescription{::}D6_YFAS_TaskType_proj{::}mhetask04"
+       status="Approved">Issue Management2</key>
+   <key locale="en_US" id="LOVValueDescription{::}D6_YFAS_TaskType_proj{::}mhetask02"
+       status="Approved">Engineering Development2</key>
+   <key locale="en_US" id="LOVValueDescription{::}D6_YFAS_TaskType_proj{::}mhetask01"
+       status="Approved">BOM and CAD2</key>
+   <key locale="en_US" id="LOVValueDescription{::}D6_YFAS_TaskType{::}Social value"
+       status="Approved">D6_YFAS_TaskType_nonproj</key>
+   <key locale="en_US" id="LOVValueDescription{::}D6_YFAS_TaskType_proj{::}mhetask03"
+       status="Approved">Communication2</key>
+   <key locale="en_US" id="BusinessObject{::}D6ManHourEntry" status="Approved">D6ManHourEntry</key>
+   <key locale="en_US" id="ReleaseStatus{::}D6_Revised" status="Approved">D6_Revised</key>
+   <key locale="en_US" id="BusinessObject{::}D6MheTask" status="Approved">D6MheTask</key>
+   <key locale="en_US" id="LOVValue{::}D6_YFAS_TaskType_proj{::}tasktype24" status="Approved">CI/VAVE</key>
+   <key locale="en_US" id="LOVValue{::}D6_YFAS_TaskType_proj{::}tasktype19" status="Approved">STO/Craftmanship//Trim</key>
+   <key locale="en_US" id="LOVValueDescription{::}D6_YFAS_TaskType_proj{::}tasktype19"
+       status="Approved">STO/Craftmanship//Trim2</key>
+   <key locale="en_US" id="LOVValueDescription{::}D6_YFAS_TaskType_proj{::}tasktype24"
+       status="Approved">CI/VAVE2</key>
+</Add>
+</TcBusinessDataLocalization>

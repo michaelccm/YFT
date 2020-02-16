@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!--
+Copyright 2017 Siemens Product Lifecycle Management Software Inc. All Rights Reserved.
+================================================================================
+Copyright 2017.
+Siemens Product Lifecycle Management Software Inc.
+All Rights Reserved.
+================================================================================
+Copyright 2017 Siemens Product Lifecycle Management Software Inc. All Rights Reserved.
+-->
+<package guid="DADF20FD643E93ED1CD331789DF20651" packageId="d9st">
+    <displayName value="${packageId}.displayName"/>
+    <description value="${packageId}.description"/>
+    <contentType value="application"/>
+    <propertyContribution/>
+    <dependencies/>
+    <artifact artifactType="fnd0_dataModelArtifact" guid="50011FDE3B6A10B6F4430963DCFFFCE0">
+        <deploymentActions>
+            <install>
+                <target description="Perform the file deployment actions including unzip, copy, and delete." name="fileProcessing">
+                    <unzip dest="${Teamcenter_root_path}" src="${Teamcenter_d9st_path}/artifacts/d9st_template.zip"/>
+                    <unzip dest="${Teamcenter_root_path}" src="${Teamcenter_d9st_path}/artifacts/d9st_install.zip"/>
+                    <copy file="${Teamcenter_d9st_path}/artifacts/d9st_icons.zip" todir="${Teamcenter_root_path}/install/d9st"/>
+                </target>
+                <target description="Perform the operations that must be completed prior to the database being updated." name="preDatabaseUpdate">
+                    <TemplateDeploy name="d9st"/>
+                </target>
+                <target description="Perform the operations that are database dependent." name="databaseUpdate"/>
+                <target description="Perform the operations that must be completed after the database update has occurred." name="postDatabaseUpdate"/>
+            </install>
+            <update>
+                <target description="Perform the file deployment actions including unzip, copy, and delete." name="fileProcessing">
+                    <unzip dest="${Teamcenter_root_path}" src="${Teamcenter_d9st_path}/artifacts/d9st_template.zip"/>
+                    <unzip dest="${Teamcenter_root_path}" src="${Teamcenter_d9st_path}/artifacts/d9st_install.zip"/>
+                    <copy file="${Teamcenter_d9st_path}/artifacts/d9st_icons.zip" force="true" overwrite="true" todir="${Teamcenter_root_path}/install/d9st"/>
+                </target>
+                <target description="Perform the operations that must be completed prior to the database being updated." name="preDatabaseUpdate">
+                    <TemplateUpdate name="d9st"/>
+                </target>
+                <target description="Perform the operations that are database dependent." name="databaseUpdate"/>
+                <target description="Perform the operations that must be completed after the database update has occurred." name="postDatabaseUpdate"/>
+            </update>
+        </deploymentActions>
+    </artifact>
+    <artifact artifactType="fnd0_serverArtifact" guid="D9292F4179AC9C91893D13E23F5600CF">        
+        <deploymentActions>
+            <install>
+                <target description="Perform the file deployment actions including unzip, copy, and delete." name="fileProcessing">
+                    <property name="template_rtserver" value="false"/>
+                    <unzip dest="${Teamcenter_root_path}" src="${Teamcenter_d9st_path}/artifacts/d9st_rtserver.zip"/>
+                </target>
+                <target description="Perform the operations that must be completed prior to the database being updated." name="preDatabaseUpdate">
+                    <XInclude destfile="${Teamcenter_root_path}/lang/textserver/no_translation/emh_text.xml" includefile="d9st_errors.xml"/>
+                    <XInclude destfile="${Teamcenter_root_path}/lang/textserver/no_translation/tc_text.xml" includefile="d9st_text.xml"/>
+                </target>
+            </install>
+            <update>
+                <target description="Perform the file deployment actions including unzip, copy, and delete." name="fileProcessing">
+                    <property name="template_rtserver" value="false"/>
+                    <unzip dest="${Teamcenter_root_path}" src="${Teamcenter_d9st_path}/artifacts/d9st_rtserver.zip"/>
+                </target>
+                <target description="Perform the operations that must be completed prior to the database being updated." name="preDatabaseUpdate">
+                    <XInclude destfile="${Teamcenter_root_path}/lang/textserver/no_translation/emh_text.xml" includefile="d9st_errors.xml"/>
+                    <XInclude destfile="${Teamcenter_root_path}/lang/textserver/no_translation/tc_text.xml" includefile="d9st_text.xml"/>
+                </target>
+            </update>
+        </deploymentActions>
+     </artifact>
+</package>

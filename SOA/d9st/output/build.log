@@ -1,0 +1,88 @@
+Log file created on on 11-01-2019 03:11 下午
+_______________________________________________________________________________
+
+
+
+_______________________________________________________________________________
+The Data Model for d9st is up-to-date.
+_______________________________________________________________________________
+正在获取构建信息...
+_______________________________________________________________________________
+正在为 d9st 创建构建文件...
+Creating the build file D:\Siemens\Teamcenter11\bmide\workspace\11000.2.0\d9st\makefile.wntx64.
+Creating the build file D:\Siemens\Teamcenter11\bmide\workspace\11000.2.0\d9st\build\targets.xml.
+Creating the build file D:\Siemens\Teamcenter11\bmide\workspace\11000.2.0\d9st\build\D9SoaWork\makefile.
+Creating the build file D:\Siemens\Teamcenter11\bmide\workspace\11000.2.0\d9st\build\D9SoaWork\D9SoaWorkAutoGen\makefile.
+Creating the build file D:\Siemens\Teamcenter11\bmide\workspace\11000.2.0\d9st\build\D9SoaWork\D9SoaWorkAutoGen\D9SoaWorkAutoGen-build.xml.
+Creating the build file D:\Siemens\Teamcenter11\bmide\workspace\11000.2.0\d9st\build\D9SoaWork\D9SoaWorkTypes\makefile.
+Creating the build file D:\Siemens\Teamcenter11\bmide\workspace\11000.2.0\d9st\build\D9SoaWork\D9SoaWorkTypes\D9SoaWorkTypes-build.xml.
+Creating the build file D:\Siemens\Teamcenter11\bmide\workspace\11000.2.0\d9st\build\D9SoaWork\D9SoaWorkStrong\makefile.
+Creating the build file D:\Siemens\Teamcenter11\bmide\workspace\11000.2.0\d9st\build\D9SoaWork\D9SoaWorkStrong\D9SoaWorkStrong-build.xml.
+Creating the build file D:\Siemens\Teamcenter11\bmide\workspace\11000.2.0\d9st\build\D9SoaWork\D9SoaWorkStrong\libd9soaworkstrong.makeInc.
+Creating the build file D:\Siemens\Teamcenter11\bmide\workspace\11000.2.0\d9st\build\D9SoaWork\D9SoaWorkStrong\libd9soaworkstrongmngd.makeInc.
+Creating the build file D:\Siemens\Teamcenter11\bmide\workspace\11000.2.0\d9st\build\D9SoaWork\D9SoaWorkLoose\makefile.
+Creating the build file D:\Siemens\Teamcenter11\bmide\workspace\11000.2.0\d9st\build\D9SoaWork\D9SoaWorkLoose\D9SoaWorkLoose-build.xml.
+Creating the build file D:\Siemens\Teamcenter11\bmide\workspace\11000.2.0\d9st\build\D9SoaWork\D9SoaWorkRac\makefile.
+Creating the build file D:\Siemens\Teamcenter11\bmide\workspace\11000.2.0\d9st\build\D9SoaWork\D9SoaWorkRac\D9SoaWorkRac-build.xml.
+Creating the build file D:\Siemens\Teamcenter11\bmide\workspace\11000.2.0\d9st\build\D9SoaWork\libd9soawork\makefile.
+_______________________________________________________________________________
+_______________________________________________________________________________
+正在生成源文件...
+_______________________________________________________________________________
+Generating code for the service library D9SoaWork.
+init:
+
+clean:
+
+setup:
+[mkdir] Created dir: D:\Siemens\Teamcenter11\bmide\workspace\11000.2.0\d9st\output\generated\D9SoaWork
+[mkdir] Created dir: D:\Siemens\Teamcenter11\bmide\workspace\11000.2.0\d9st\output\generated\D9SoaWorkImpl
+[mkdir] Created dir: D:\Siemens\Teamcenter11\bmide\workspace\11000.2.0\d9st\output\generated\D9SoaWorkClient
+[mkdir] Created dir: D:\Siemens\Teamcenter11\bmide\workspace\11000.2.0\d9st\output\generated\D9SoaWorkTypes
+[mkdir] Created dir: D:\Siemens\Teamcenter11\bmide\workspace\11000.2.0\d9st\output\generated\D9SoaWorkWeb
+[mkdir] Created dir: D:\Siemens\Teamcenter11\bmide\workspace\11000.2.0\d9st\output\wntx64\packaging\soa_client\cpp\includes\cpp\include
+[mkdir] Created dir: D:\Siemens\Teamcenter11\bmide\workspace\11000.2.0\d9st\output\wntx64\packaging\soa_client\cpp\includes\cpp-managed\include
+[mkdir] Created dir: D:\Siemens\Teamcenter11\bmide\workspace\11000.2.0\d9st\output\wntx64\packaging\soa_client\cpp\libs\wntx64
+[mkdir] Created dir: D:\Siemens\Teamcenter11\bmide\workspace\11000.2.0\d9st\output\wntx64\packaging\soa_client\java\libs
+[mkdir] Created dir: D:\Siemens\Teamcenter11\bmide\workspace\11000.2.0\d9st\output\wntx64\packaging\soa_client\net\libs
+[mkdir] Created dir: D:\Siemens\Teamcenter11\bmide\workspace\11000.2.0\d9st\output\wntx64\packaging\tc\bin
+[mkdir] Created dir: D:\Siemens\Teamcenter11\bmide\workspace\11000.2.0\d9st\output\wntx64\packaging\tc\lib
+
+init:
+
+define-classpath:
+
+[CreateService] Using Service Source XML file: D:\Siemens\Teamcenter11\bmide\workspace\11000.2.0\d9st\extensions\default.xml
+[CreateService] Creating [CPP ] Server Files (D:\Siemens\Teamcenter11\bmide\workspace\11000.2.0\d9st\output\generated\D9SoaWork) ...
+[CreateService] Creating [WSDL] WebTier Files (D:\Siemens\Teamcenter11\bmide\workspace\11000.2.0\d9st\output\generated\D9SoaWorkWeb\xids) ...
+[CreateService] Copying 2 files to D:\Siemens\Teamcenter11\bmide\workspace\11000.2.0\d9st\output\generated\D9SoaWorkWeb\xids
+[CreateService] Creating [JAVA] STRONG Files (D:\Siemens\Teamcenter11\bmide\workspace\11000.2.0\d9st\output\generated\D9SoaWorkClient\strong\java)...
+[CreateService] Creating [CPP ] STRONG Files (D:\Siemens\Teamcenter11\bmide\workspace\11000.2.0\d9st\output\generated\D9SoaWorkClient\strong\cpp)...
+[CreateService] Creating [CPP ] MANAGED Files (D:\Siemens\Teamcenter11\bmide\workspace\11000.2.0\d9st\output\generated\D9SoaWorkClient\strong\cppMngd)...
+[CreateService] Creating [JAVA] LOOSE Files (D:\Siemens\Teamcenter11\bmide\workspace\11000.2.0\d9st\output\generated\D9SoaWorkClient\loose\java)...
+[CreateService] Creating [JAVA] RAC Files (D:\Siemens\Teamcenter11\bmide\workspace\11000.2.0\d9st\output\generated\D9SoaWorkClient\rac\java)...
+[CreateService] Creating [TEST] JUnit (D:\Siemens\Teamcenter11\bmide\workspace\11000.2.0\d9st\output\generated\D9SoaWorkClient\testSrc\com\d9\services\strong\work)
+[CreateService] Parsing XML Schemas for JAXB bindings....
+[CreateService] Creating JAXB classes for all XML Schemas....
+[CreateService] Deleting directory D:\Siemens\Teamcenter11\bmide\workspace\11000.2.0\d9st\output\generated\D9SoaWorkTypes\java\com\teamcenter\schemas\soa\_2006_03\base
+[CreateService] Parsing XML Schemas for CSharp bindings....
+init:
+
+net-dir-check:
+
+net-final:
+
+auto-generation-final:
+
+init:
+
+packaging:
+[copy] Copying 5 files to D:\Siemens\Teamcenter11\bmide\workspace\11000.2.0\d9st\output\wntx64\packaging\soa_client\cpp\includes\cpp\include
+[copy] Copying 5 files to D:\Siemens\Teamcenter11\bmide\workspace\11000.2.0\d9st\output\wntx64\packaging\soa_client\cpp\includes\cpp-managed\include
+
+_______________________________________________________________________________
+_______________________________________________________________________________
+正在将项目转换到 CDT Nature...
+_______________________________________________________________________________
+Code generation complete.
+_______________________________________________________________________________

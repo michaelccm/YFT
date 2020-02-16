@@ -1,0 +1,87 @@
+# ==================================================
+# Copyright 2013.
+# Siemens Product Lifecycle Management Software Inc.
+# All Rights Reserved.
+# ==================================================
+# ==================================================
+#             Auto-generated source
+#                 DO NOT EDIT
+# ==================================================
+
+
+
+# ==================================================
+# Define macros for Strong C++ Binding libraries
+# ==================================================
+D9SOAWORKSTRONG_DRV        = $(PROJECT_DRV)$(PS)D9SoaWorkClient$(PS)strong$(PS)cpp
+D9SOAWORKSTRONG_OBJ        = $(PROJECT_OBJ)$(PS)libd9soaworkstrong
+D9SOAWORKSTRONGTYPES_DRV   = $(PROJECT_DRV)$(PS)D9SoaWorkTypes$(PS)cpp
+D9SOAWORKSTRONG_CXXS       = $(D9SOAWORKSTRONG_DRV)$(PS)*.cxx
+D9SOAWORKSTRONG_CXX_FLAGS  = $(CXX_FLAGS) -DIPLIB=libd9soaworkstrong
+D9SOAWORKSTRONG_LINK_FLAGS = $(LINK_FLAGS)
+D9SOAWORKSTRONG_INCLUDES   = $(CPP_INCLUDES) -I$(D9SOAWORKSTRONG_DRV) \
+                                  -I$(D9SOAWORKSTRONGTYPES_DRV) -I$(PROJECT_DRV)$(PS)TcSoaStrongModelD9st$(PS)cpp$(PS)strong
+D9SOAWORKSTRONG_LIB_PATH   = $(LP)$(PROJECT_BIN) $(LIB_PATH)
+D9SOAWORKSTRONG_LIBS       =  \
+                                  $(SYSLIBS)    \
+                                  $(LIB_PREFIX)tcsoacommon$(LIB_SUFFIX)  $(LIB_PREFIX)tcsoaclient$(LIB_SUFFIX)
+D9SOAWORKSTRONG_LD_FLAGS   = $(D9SOAWORKSTRONG_LINK_FLAGS) $(D9SOAWORKSTRONG_LIB_PATH)
+D9SOAWORKSTRONG_TARGET     = $(PROJECT_BIN)$(PS)libd9soaworkstrong
+
+
+
+libd9soaworkstrong_allNoOp:
+libd9soaworkstrong_all:   $(D9SOAWORKSTRONG_OBJ)  $(D9SOAWORKSTRONG_TARGET).$(LIB_EXT)
+
+
+$(D9SOAWORKSTRONG_OBJ) :
+	@echo Creating: $(D9SOAWORKSTRONG_OBJ)
+	-@$(MAKE_DIR) $(D9SOAWORKSTRONG_OBJ)
+
+$(D9SOAWORKSTRONG_CXXS) :
+
+# ==================================================
+# Windows Build Target
+# ==================================================
+$(D9SOAWORKSTRONG_TARGET).dll : $(D9SOAWORKSTRONG_CXXS)
+	@echo ________________________________________________________________________________
+	@echo Building C++ Client libd9soaworkstrong
+	@echo Compiling Source...
+	@$(COMPILE)  $(D9SOAWORKSTRONG_CXX_FLAGS) $(D9SOAWORKSTRONG_INCLUDES) -c $(**)   $(CARG_OUT)$(D9SOAWORKSTRONG_OBJ)$(PS)
+	@echo.
+	@$(LINK) $(D9SOAWORKSTRONG_LD_FLAGS) $(D9SOAWORKSTRONG_OBJ)$(PS)*.$(OBJ_EXT)  $(D9SOAWORKSTRONG_LIBS)  $(LARG_OUT)$(D9SOAWORKSTRONG_TARGET).dll
+	$(COPY_FILE)  $(PROJECT_BIN)$(PS)libd9soaworkstrong.dll $(PORJECT_SOA_CLIENT)$(PS)cpp$(PS)libs$(PS)$(PLAT)
+	$(COPY_FILE)  $(PROJECT_BIN)$(PS)libd9soaworkstrong.lib $(PORJECT_SOA_CLIENT)$(PS)cpp$(PS)libs$(PS)$(PLAT)
+	@echo ________________________________________________________________________________
+
+
+# ==================================================
+# UNIX Build Target
+# ==================================================
+$(D9SOAWORKSTRONG_TARGET).so : $(D9SOAWORKSTRONG_CXXS)
+	@echo ________________________________________________________________________________
+	@echo Building C++ Client libd9soaworkstrong
+	@-rm *.$(OBJ_EXT)
+	@echo Compiling $(D9SOAWORKSTRONG_CXXS)
+	@$(COMPILE)  $(D9SOAWORKSTRONG_CXX_FLAGS) $(D9SOAWORKSTRONG_INCLUDES) -c $(D9SOAWORKSTRONG_CXXS) 
+	@mv *.$(OBJ_EXT) $(D9SOAWORKSTRONG_OBJ)
+	@echo Linking $(D9SOAWORKSTRONG_TARGET).so
+	@$(LINK) $(D9SOAWORKSTRONG_LD_FLAGS) $(D9SOAWORKSTRONG_OBJ)$(PS)*.$(OBJ_EXT)  $(D9SOAWORKSTRONG_LIBS)  $(LARG_OUT) $(D9SOAWORKSTRONG_TARGET).so
+	$(COPY_FILE)  $(PROJECT_BIN)$(PS)libd9soaworkstrong.so $(PORJECT_SOA_CLIENT)$(PS)cpp$(PS)libs$(PS)$(PLAT)
+	@echo ________________________________________________________________________________
+	
+
+
+
+libd9soaworkstrong_cleanNoOp:	
+libd9soaworkstrong_clean:
+	@echo ________________________________________________________________________________
+	@echo Cleaning C++ Client libd9soaworkstrong
+	-$(DELETE_DIR)  $(D9SOAWORKSTRONG_OBJ)
+	-$(DELETE_FILE) $(PROJECT_BIN)$(PS)libd9soaworkstrong.*	
+	-$(DELETE_FILE) $(PORJECT_SOA_CLIENT)$(PS)cpp$(PS)libs$(PS)$(PLAT)$(PS)libd9soaworkstrong.so
+	-$(DELETE_FILE) $(PORJECT_SOA_CLIENT)$(PS)cpp$(PS)libs$(PS)$(PLAT)$(PS)libd9soaworkstrong.dll
+	-$(DELETE_FILE) $(PORJECT_SOA_CLIENT)$(PS)cpp$(PS)libs$(PS)$(PLAT)$(PS)libd9soaworkstrong.lib
+	@echo ________________________________________________________________________________
+	
+

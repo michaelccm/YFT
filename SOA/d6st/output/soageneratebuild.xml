@@ -1,0 +1,187 @@
+<!--
+@<COPYRIGHT>@
+==================================================
+Copyright 2009.
+Siemens Product Lifecycle Management Software Inc.
+All Rights Reserved.
+==================================================
+@<COPYRIGHT>@
+-->
+<!--============================================================================ -->
+
+<project name="Generate service Artifacts" default="CreateServiceArtifactsTask" basedir="..">
+  <description> 
+     Generated Service artifacts.
+  </description>
+  
+  <!--Javac target version-->
+  <property name="javac.target"        value="1.5" />
+  <property name="types.per.cxx"       value="100" />
+  <property name="prj"                 value="CreateServiceArtifacts"/>
+
+
+  <property name="build.compiler" value="extJavac"/>
+  
+  <!--THESE TWO PROPERTIES WILL BE REPLACED WITH RUNTIME PROPERTIES.-->
+  <property name="tc.root"                  location="/siemens/afuz1/teamcenter9"/>
+  <property name="tcsoa.out.home"           location="/siemens/afuz1/dev/workspace/d6st/output"/>
+  <property name="tcsoa.src.home"           location="/siemens/afuz1/dev/workspace/d6st/src/server"/>
+  <property name="tcsoa.client.kit.home"    location="/siemens/afuz1/dev/soa_client"/>
+  <property name="External.Tools.home"      location="${tcsoa.client.kit.home}/toolbox"/>
+
+  <property name="tcsoa.drv.home"           location="${tcsoa.out.home}"/>
+  <property name="bmide.template.home"      location="/siemens/afuz1/teamcenter9/bmide/templates"/>
+  <property name="bmide.project.home"       location="/siemens/afuz1/dev/workspace/d6st"/>
+  
+  <property name="tcsoa.model.extension"    value="d6st"/><!-- Template name ex: \mybmidetemplate -->
+  <property name="soa.web.home"             value="jeti/webtier/soa/services"/>
+
+  <property name="project.folder"           value="D6SoaWork"/>
+
+  <property name="server.gen.home"          location="/siemens/afuz1/dev/workspace/d6st/output/server/gensrc/${project.folder}"/>
+  <property name="server.src.home"          location="/siemens/afuz1/dev/workspace/d6st/src/server/${project.folder}"/>
+  <property name="client.gen.home"          location="/siemens/afuz1/dev/workspace/d6st/output/client/gensrc/${project.folder}"/>
+  <property name="types.gen.home"           location="/siemens/afuz1/dev/workspace/d6st/output/types/gensrc/${project.folder}"/>
+  <property name="model.gen.home"           location="/siemens/afuz1/dev/workspace/d6st/output/client/gensrc/modeld6st"/>
+  <property name="cpp.gen.folder.name"      value="cpp"/>
+  <property name="cppMngd.gen.folder.name"  value="cppMngd"/>
+  <property name="java.gen.folder.name"     value="java"/>
+  <property name="net.gen.folder.name"      value="net"/>
+  
+  
+  <property name="strong.language"      value="java"/>
+  <property name="strong.binding"       value="rest"/>
+  <property name="loose.language"       value=""/>
+  <property name="loose.binding"        value="rest"/>
+  <property name="rac.language"         value="java"/>
+  <property name="rac.binding"          value="rest"/>
+  <property name="managed.language"     value=""/>
+  <property name="managed.binding"      value="rest"/>   
+
+  
+  <property name="tcsoa.client.classes.home"   location="/siemens/afuz1/dev/workspace/d6st/output/client/classes"/>
+  <property name="tcsoa.client.jars.home"      location="/siemens/afuz1/dev/workspace/d6st/output/client/jars"/>    
+  <property name="tcsoa.types.classes.home"    location="/siemens/afuz1/dev/workspace/d6st/output/types/classes"/>
+  <property name="tcsoa.types.jars.home"       location="/siemens/afuz1/dev/workspace/d6st/output/types/jars"/>   
+    
+  <property name="tcsoa.java.home"          location="${tcsoa.client.classes.home}"/>
+  <property name="tcsoa.jars.home"          location="${tcsoa.client.jars.home}"/>    
+  
+  <property name="web.gen.home"             location="/siemens/afuz1/dev/workspace/d6st/output/client/gensrc/${soa.web.home}"/>
+  <property name="web.build.home"           location="${tcsoa.java.home}"/>
+  <property name="base.dir"                 location="${client.gen.home}"/>
+  <property name="soa.jar.prefix"           value="TcSoa" />
+
+  <!--SOME PROPERTIES TO BE DEFINED-->
+  <property name="tcsoa.commons_xmlschema.home" location="${External.Tools.home}/commons_xmlschema/1.3.2"/>
+  <property name="tcsoa.webservices12.home"     location="${External.Tools.home}/webservices"/>
+  <property name="tcsoa.xerces_j.home"          location="${External.Tools.home}/xerces_j"/>
+  <property name="xsd2JaxbBindings.runtime.package"         value="com.teamcenter.schemas.soa._2006_03.base.impl.runtime" />
+
+  <property name="resources"                 location="${External.Tools.home}/resources"/>
+  <property name="cdm.language"              value="java"/>
+  <property name="cdm.cpp.managedflag"       value="true"/>
+
+
+  <!--FILESETS FOR MAKING CLASSPATH-->
+  <fileset dir="${tcsoa.webservices12.home}" id="ws.libs">
+    <include name="ws_tools.jar" />
+    <include name="ws_framework.jar" />
+  </fileset>
+
+  <fileset dir="${External.Tools.home}" id="soa.tools.libs">
+    <include name="TcSoaTools.jar" />
+    <include name="TcSoaWeb.jar" />
+  </fileset>
+
+
+  <fileset dir="${jdk.home}/lib" id="jdk.libs">
+    <include name="htmlconverter.jar" />
+    <include name="dt.jat" />
+    <include name="tools.jar" />
+    <include name="jconsole.jar" />
+  </fileset>
+
+  <fileset dir="${tcsoa.xerces_j.home}" id="xerces.libs">
+    <include name="xercesImpl.jar" />
+    <include name="resolver.jar" />
+    <include name="xml-apis.jar" />
+    <include name="xmlParserAPIs.jar" />
+  </fileset>
+
+  <fileset dir="${tcsoa.commons_xmlschema.home}/commons_xmlschema" id="commons.xmlschema.libs">
+    <include name="XmlSchema-1.3.2.jar" />
+  </fileset>
+
+
+  <path id="tool.classpath">
+    <fileset refid="ws.libs"  />
+    <fileset refid="soa.tools.libs"  />
+    <fileset refid="commons.xmlschema.libs" />
+    <fileset refid="xerces.libs"  />
+  </path>
+
+  <path id="class_path"
+      path="${java.class.path}"/>
+  
+  
+  <pathconvert dirsep="/"
+               pathsep=";"
+               property="tool.classpath.str"
+               refid="tool.classpath"/>
+ 
+
+
+  <property name="TestPath" refid="tool.classpath" />
+
+  <echo message="ClassPath=${TestPath}" />
+
+  <property name="clientJavaBindings.classpath.locations"   location="${resources}" />
+
+  <property name="xsd2JaxbBindings.classpath.locations"     location="${resources}" />
+  <property name="xsd2JaxbBindings.runtime.package"         value="com.teamcenter.schemas.soa._2006_03.base.impl.runtime" />
+
+  <property name="xsd2CppBindings.classpath.locations"      location="${resources}" />
+
+  <property name="service.binder.schema.classpath.locations" location="${resources}" />
+
+  <property name="service.binder.xid.classpath.locations" location="${resources}" />
+
+  <property name="service.binder.schema.referenced.xsd.home" location="${External.Tools.home}/schemas" />
+
+
+  <!-- TODO after migration of services to bmide, remove readserviceExceptions -->
+  <property name="dump.serviceParser.output"               value="false"/>
+  <property name="readserviceExceptions.fromDocumentation" value="true"/>
+
+  <property name="service.binder.skeleton.classpath.locations" location="${resources}" />
+
+  <!--CREATESERVICEARTIFACTS TARGET TO GENERATE THE CODE.-->
+  <target name="CreateServiceArtifactsTask" >
+
+    <property name="TestPath" refid="tool.classpath" />
+
+    <echo message="ClassPath=${TestPath}" />
+
+    <property name="clientJavaBindings.classpath.locations"   location="${resources}" />
+
+    <property name="xsd2JaxbBindings.classpath.locations"     location="${resources}" />
+    <property name="xsd2JaxbBindings.runtime.package"         value="com.teamcenter.schemas.soa._2006_03.base.impl.runtime" />
+
+    <property name="xsd2CppBindings.classpath.locations"      location="${resources}" />
+
+    <property name="service.binder.schema.classpath.locations" location="${resources}" />
+
+    <property name="service.binder.xid.classpath.locations" location="${resources}" />
+
+    <property name="service.binder.schema.referenced.xsd.home" location="${External.Tools.home}/schemas" />
+
+
+    <!-- TODO after migration of services to bmide, remove readserviceExceptions -->
+    <property name="dump.serviceParser.output"               value="false"/>
+    <property name="readserviceExceptions.fromDocumentation" value="true"/>
+
+    <property name="service.binder.skeleton.classpath.locations" location="${resources}" />
+  </target> 
+    
+</project>

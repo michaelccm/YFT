@@ -1,0 +1,415 @@
+<!--
+@<COPYRIGHT>@
+==================================================
+Copyright 2009.
+Siemens Product Lifecycle Management Software Inc.
+All Rights Reserved.
+==================================================
+@<COPYRIGHT>@
+-->
+<!--============================================================================ -->
+<!--
+    Use this build file at your own risk.  This ant script is not maintained
+    for use in production builds.
+-->
+
+<project name="FunctionalGroup" default="All" basedir=".">
+
+  <property name="build.compiler" value="extJavac"/>
+  <property name="project.folder" value="D6SoaWork"/>
+  <property name="project.name"   value="${project.folder}"/>
+    <echo message=" ___________________________________________________________" />
+    <echo message="   Building ${project.name} Java Client Services bindings   " />
+    <echo message=" ___________________________________________________________" />
+
+    <!-- Real value of framework home is passed in from TcSoa, this makes Ant editor happy -->
+    <property environment="tcsoa.external.env" />
+
+    <!--Javac target version-->
+    <property name="javac.target" value="1.5" />
+
+  <property name="tc.root"                  location="/siemens/afuz1/teamcenter9"/>
+  <property name="tcsoa.out.home"           location="/siemens/afuz1/dev/workspace/d6st/output"/>
+  <property name="tcsoa.client.kit.home"    location="/siemens/afuz1/dev/soa_client"/>
+  <property name="External.Tools.home"      location="${tcsoa.client.kit.home}/toolbox"/>
+
+  <property name="tcsoa.drv.home"           location="${tcsoa.out.home}"/>
+  <property name="model.template.name"      value="d6st"/>
+  <property name="soa.prefix"               value="d6"/>
+
+  <property name="server.gen.home"          location="/siemens/afuz1/dev/workspace/d6st/output/server/gensrc/${project.folder}"/>
+  <property name="server.src.home"          location="/siemens/afuz1/dev/workspace/d6st/src/server/${project.folder}"/>
+  <property name="client.gen.home"          location="/siemens/afuz1/dev/workspace/d6st/output/client/gensrc/${project.folder}"/>
+  <property name="types.gen.home"           location="/siemens/afuz1/dev/workspace/d6st/output/types/gensrc/${project.folder}"/>
+  <property name="model.gen.home"           location="/siemens/afuz1/dev/workspace/d6st/output/client/gensrc/modeld6st"/>
+  <property name="cpp.gen.folder.name"      value="cpp"/>
+  <property name="java.gen.folder.name"     value="java"/>
+  <property name="net.gen.folder.name"      value="net"/>
+
+  <property name="tcsoa.client.classes.home"   location="/siemens/afuz1/dev/workspace/d6st/output/client/classes"/>
+  <property name="tcsoa.client.jars.home"      location="/siemens/afuz1/dev/workspace/d6st/output/client/jars"/>
+  <property name="tcsoa.types.classes.home"    location="/siemens/afuz1/dev/workspace/d6st/output/types/classes"/>
+  <property name="tcsoa.types.jars.home"       location="/siemens/afuz1/dev/workspace/d6st/output/types/jars"/>
+
+  <property name="soa.jar.prefix"           value="" />
+
+  <property name="tcsoa.commons_xmlschema.home" location="${External.Tools.home}/commons_xmlschema/1.3.2"/>
+  <property name="tcsoa.webservices12.home"     location="${External.Tools.home}/webservices"/>
+  <property name="tcsoa.xerces_j.home"          location="${External.Tools.home}/xerces_j"/>
+  <property name="xsd2JaxbBindings.runtime.package"         value="com.teamcenter.schemas.soa._2006_03.base.impl.runtime" />
+
+  <!--FILESETS FOR MAKING CLASSPATH-->
+    <fileset dir="${tcsoa.webservices12.home}" id="ws.libs">
+      <include name="ws_tools.jar" />
+      <include name="ws_framework.jar" />
+    </fileset>
+
+    <fileset dir="${External.Tools.home}" id="soa.tools.libs">
+      <include name="TcSoaTools.jar" />
+    </fileset>
+
+    <fileset dir="${tcsoa.client.kit.home}/java/libs" id="soa.client.libs">
+      <include name="TcSoaCommon*.jar" />
+      <include name="TcSoaStrongModel*.jar" />
+      <include name="TcSoaClient*.jar" />
+    </fileset>
+
+    <fileset dir="${tcsoa.client.kit.home}/java/libs" id="soa.rac.client.libs">
+      <include name="TcSoaCommon*.jar" />
+      <include name="TcSoaStrongModel*.jar" />
+      <include name="TcSoaClient*.jar" />
+      <include name="com.teamcenter.rac.aif.registryeditor*.jar" />
+      <include name="com.teamcenter.rac.aifrcp*.jar" />
+      <include name="com.teamcenter.rac.kernel*.jar" />
+      <include name="com.teamcenter.rac.util*.jar" />
+    </fileset>
+
+  <fileset dir="${tcsoa.xerces_j.home}" id="xerces.libs">
+    <include name="xercesImpl.jar" />
+    <include name="resolver.jar" />
+    <include name="xml-apis.jar" />
+    <include name="xmlParserAPIs.jar" />
+  </fileset>
+
+  <path id="build.classpath">
+        <pathelement location="${tcsoa.types.classes.home}/${soa.jar.prefix}${project.name}Types"/>   <!-- Types Jar is created after compile -->
+        <pathelement location="${tcsoa.client.classes.home}/model${model.template.name}"/>   <!-- Model Jar is created after compile -->
+        <fileset refid="xerces.libs"/>
+        <fileset refid="soa.client.libs"/>
+    </path>
+
+    <path id="build.rac.classpath">
+        <pathelement location="${tcsoa.types.classes.home}/${soa.jar.prefix}${project.name}Types"/>   <!-- Types Jar is created after compile -->
+        <pathelement location="${tcsoa.client.classes.home}/model${model.template.name}"/>   <!-- Model Jar is created after compile -->
+        <fileset refid="xerces.libs"/>
+        <fileset refid="soa.client.libs"/>
+        <fileset refid="soa.rac.client.libs"/>
+        <pathelement location="/siemens/afuz1/teamcenter9/portal/plugins"/>
+    </path>
+
+    <target name="init">
+        <tstamp/>
+
+        <mkdir dir="${tcsoa.types.jars.home}" />
+        <mkdir dir="${tcsoa.client.jars.home}" />
+        <mkdir dir="${tcsoa.types.classes.home}/${soa.jar.prefix}${project.name}Types"/>
+        <mkdir dir="${tcsoa.client.classes.home}/${soa.jar.prefix}${project.name}Strong"/>
+        <mkdir dir="${tcsoa.client.classes.home}/${soa.jar.prefix}${project.name}Loose"/>
+        <mkdir dir="${tcsoa.client.classes.home}/${soa.jar.prefix}${project.name}Rac"/>
+
+    </target>
+
+    <target name="initTypes">
+        <tstamp/>
+
+        <mkdir dir="${tcsoa.types.jars.home}" />
+        <mkdir dir="${tcsoa.types.classes.home}/${soa.jar.prefix}${project.name}Types"/>
+    </target>
+
+    <target name="initStrong">
+        <tstamp/>
+
+        <mkdir dir="${tcsoa.client.jars.home}" />
+        <mkdir dir="${tcsoa.client.classes.home}/${soa.jar.prefix}${project.name}Strong"/>
+    </target>
+
+    <target name="initLoose">
+        <tstamp/>
+
+        <mkdir dir="${tcsoa.client.jars.home}" />
+        <mkdir dir="${tcsoa.client.classes.home}/${soa.jar.prefix}${project.name}Loose"/>
+    </target>
+
+    <target name="initRac">
+        <tstamp/>
+
+        <mkdir dir="${tcsoa.client.jars.home}" />
+        <mkdir dir="${tcsoa.client.classes.home}/${soa.jar.prefix}${project.name}Rac"/>
+    </target>
+
+    <target name="clean">
+        <delete dir="${tcsoa.types.classes.home}/${soa.jar.prefix}${project.name}Types"/>
+        <delete dir="${tcsoa.client.classes.home}/${soa.jar.prefix}${project.name}Strong"/>
+        <delete dir="${tcsoa.client.classes.home}/${soa.jar.prefix}${project.name}Loose"/>
+        <delete file="${tcsoa.types.jars.home}/${soa.jar.prefix}${project.name}Types.jar"/>
+        <delete file="${tcsoa.client.jars.home}/${soa.jar.prefix}${project.name}Strong.jar"/>
+        <delete file="${tcsoa.client.jars.home}/${soa.jar.prefix}${project.name}Loose.jar"/>
+        <delete file="${tcsoa.client.jars.home}/${soa.jar.prefix}${project.name}Rac.jar"/>
+     </target>
+
+
+     <target name="CompileTypes" depends="initTypes" description="compile types source">
+
+        <!-- Compile Wire level types (JAXB) used by all client bindings (Strong , Loose ) and the web tier -->
+        <javac destdir="${tcsoa.types.classes.home}/${soa.jar.prefix}${project.name}Types" debug="true" source="${javac.target}" target="${javac.target}">
+            <src path="${types.gen.home}/${java.gen.folder.name}"/>
+            <classpath refid="build.classpath"/>
+        </javac>
+
+     </target>
+
+     <target name="CompileStrong" depends="initStrong" description="compile Strong Stubs source">
+
+        <!-- Complie the Strong Stubs -->
+        <javac destdir="${tcsoa.client.classes.home}/${soa.jar.prefix}${project.name}Strong" debug="true" source="${javac.target}" target="${javac.target}">
+            <src path="${client.gen.home}/strong/${java.gen.folder.name}"/>
+            <classpath refid="build.classpath"/>
+        </javac>
+
+     </target>
+
+     <target name="CompileLoose" depends="initLoose" description="compile Loose Stubs source">
+
+        <!-- Compile the Loose Stubs -->
+        <javac destdir="${tcsoa.client.classes.home}/${soa.jar.prefix}${project.name}Loose" debug="true" source="${javac.target}" target="${javac.target}">
+            <src path="${client.gen.home}/loose/${java.gen.folder.name}"/>
+            <classpath refid="build.classpath"/>
+        </javac>
+
+     </target>
+
+     <target name="CompileRac" depends="initRac" description="compile Rac Stubs source">
+
+        <!-- Compile the Rac Stubs -->
+        <javac destdir="${tcsoa.client.classes.home}/${soa.jar.prefix}${project.name}Rac" debug="true" source="${javac.target}" target="${javac.target}">
+            <src path="${client.gen.home}/rac/${java.gen.folder.name}"/>
+            <classpath refid="build.rac.classpath"/>
+        </javac>
+
+     </target>
+
+     <target name="Compile" depends="CompileTypes,CompileStrong,CompileLoose" description="compile the source"/>
+
+
+     <target name="packageListTypes" >
+
+        <!-- Create Package List for Types -->
+        <path id="type.folder.list">
+            <dirset  dir="${tcsoa.types.classes.home}/${soa.jar.prefix}${project.name}Types" >
+                <include name="com/${soa.prefix}/schemas/**"   />
+                <include name="com/${soa.prefix}/services/**" />
+                <include name="com/${soa.prefix}/services/internal/**" />
+            </dirset>
+        </path>
+
+        <!-- Convert the folders to package names -->
+        <pathconvert targetos="unix"  property="type.package.list"  refid="type.folder.list"
+                     dirsep="."       pathsep=",">
+            <map from="${tcsoa.types.classes.home}${file.separator}${soa.jar.prefix}${project.name}Types${file.separator}" to=""/>
+        </pathconvert>
+
+     </target>
+
+     <target name="packageListStrong" >
+
+         <!-- Create Package List for Strong Stubs -->
+         <path id="strong.folder.list">
+            <dirset  dir="${tcsoa.client.classes.home}/${soa.jar.prefix}${project.name}Strong" >
+                <include name="com/${soa.prefix}/schemas/**"   />
+                <include name="com/${soa.prefix}/services/**" />
+                <include name="com/${soa.prefix}/services/internal/**" />
+            </dirset>
+        </path>
+
+           <!-- Convert the folders to package names -->
+        <pathconvert targetos="unix"  property="strong.package.list"  refid="strong.folder.list"
+                     dirsep="."       pathsep=",">
+            <map from="${tcsoa.client.classes.home}${file.separator}${soa.jar.prefix}${project.name}Strong${file.separator}" to=""/>
+        </pathconvert>
+
+     </target>
+
+     <target name="packageListLoose" >
+
+        <!-- Create Package List for Loose Stubs -->
+        <path id="loose.folder.list">
+            <dirset  dir="${tcsoa.client.classes.home}/${soa.jar.prefix}${project.name}Loose" >
+                <include name="com/${soa.prefix}/schemas/**"   />
+                <include name="com/${soa.prefix}/services/**" />
+                <include name="com/${soa.prefix}/services/internal/**" />
+            </dirset>
+        </path>
+
+           <!-- Convert the folders to package names -->
+        <pathconvert targetos="unix"  property="loose.package.list"  refid="loose.folder.list"
+                     dirsep="."       pathsep=",">
+            <map from="${tcsoa.client.classes.home}${file.separator}${soa.jar.prefix}${project.name}Loose${file.separator}" to=""/>
+        </pathconvert>
+
+     </target>
+
+     <target name="packageListRac" >
+
+        <!-- Create Package List for RAC Stubs -->
+        <path id="rac.folder.list">
+            <dirset  dir="${tcsoa.client.classes.home}/${soa.jar.prefix}${project.name}Rac" >
+                <include name="com/${soa.prefix}/schemas/**"   />
+                <include name="com/${soa.prefix}/services/**" />
+                <include name="com/${soa.prefix}/services/internal/**" />
+            </dirset>
+        </path>
+
+           <!-- Convert the folders to package names -->
+        <pathconvert targetos="unix"  property="rac.package.list"  refid="rac.folder.list"
+                     dirsep="."       pathsep=",">
+            <map from="${tcsoa.client.classes.home}${file.separator}${soa.jar.prefix}${project.name}Rac${file.separator}" to=""/>
+        </pathconvert>
+
+     </target>
+
+     <target name="packageList" depends="packageListTypes,packageListStrong,packageListLoose"/>
+
+
+     <target name="ArchiveTypes" depends="packageListTypes" description="Creates the Types Stub Jars">
+
+        <tstamp>
+            <format property="NOW" pattern="MMMM d, yyyy" locale="en"/>
+        </tstamp>
+
+
+        <jar destfile="${tcsoa.types.jars.home}/${soa.jar.prefix}${project.name}Types.jar">
+            <fileset dir="${tcsoa.types.classes.home}/${soa.jar.prefix}${project.name}Types"/>
+            <fileset dir="${types.gen.home}/${java.gen.folder.name}" includes="**/*ser"/>
+            <fileset dir="${types.gen.home}/${java.gen.folder.name}" includes="**/jaxb.properties"/>
+
+
+            <manifest>
+                <attribute name="Implementation-Title"   value="Teamcenter Services ${project.name} Types"/>
+                <attribute name="Implementation-Version" value="9000.1.0, ${NOW}"/>
+                <attribute name="Implementation-Vendor"  value="Siemens Product Lifecycle Management Inc."/>
+                <attribute name="Bundle-ManifestVersion" value="2"/>
+                <attribute name="Bundle-Name"            value="Teamcenter Services ${project.name} Types"/>
+                <attribute name="Bundle-SymbolicName"    value="${soa.jar.prefix}${project.name}Types"/>
+                <attribute name="Bundle-Version"         value="9000.1.0"/>
+                <attribute name="Bundle-ClassPath"       value="."/>
+                <attribute name="Bundle-Vendor"          value="Siemens Product Lifecycle Management Inc."/>
+                <attribute name="Bundle-Localization"    value="plugin"/>
+                <attribute name="Bundle-ActivationPolicy" value="lazy" />
+                <attribute name="Require-Bundle"         value="com.teamcenter.rac.external,TcSoaCommon,TcSoaClient" />
+                <attribute name="Export-Package"         value="${type.package.list}" />
+            </manifest>
+        </jar>
+
+    </target>
+
+    <target name="ArchiveStrong" depends="packageListStrong" description="Creates the Strong Stub Jars">
+
+        <tstamp>
+            <format property="NOW" pattern="MMMM d, yyyy" locale="en"/>
+        </tstamp>
+
+
+        <jar destfile="${tcsoa.client.jars.home}/${soa.jar.prefix}${project.name}Strong.jar">
+               <fileset dir="${tcsoa.client.classes.home}/${soa.jar.prefix}${project.name}Strong"/>
+            <manifest>
+                <attribute name="Implementation-Title"   value="Teamcenter Services ${project.name} Strong Client"/>
+                <attribute name="Implementation-Version" value="9000.1.0, ${NOW}"/>
+                <attribute name="Implementation-Vendor"  value="Siemens Product Lifecycle Management Inc."/>
+                <attribute name="Bundle-ManifestVersion" value="2"/>
+                <attribute name="Bundle-Name"            value="Teamcenter Services ${project.name} Strong Client"/>
+                <attribute name="Bundle-SymbolicName"    value="${soa.jar.prefix}${project.name}Strong"/>
+                <attribute name="Bundle-Version"         value="9000.1.0"/>
+                <attribute name="Bundle-ClassPath"       value="."/>
+                <attribute name="Bundle-Vendor"          value="Siemens Product Lifecycle Management Inc."/>
+                <attribute name="Bundle-Localization"    value="plugin"/>
+                <attribute name="Bundle-ActivationPolicy" value="lazy" />
+                <attribute name="Require-Bundle"         value="com.teamcenter.rac.external,TcSoaCommon,TcSoaClient,TcSoaStrongModel,${soa.jar.prefix}${project.name}Types" />
+                <attribute name="Export-Package"         value="${strong.package.list}" />
+            </manifest>
+        </jar>
+
+    </target>
+
+    <target name="ArchiveLoose" depends="packageListLoose" description="Creates the Loose Stub Jars">
+
+        <tstamp>
+            <format property="NOW" pattern="MMMM d, yyyy" locale="en"/>
+        </tstamp>
+
+
+        <jar destfile="${tcsoa.client.jars.home}/${soa.jar.prefix}${project.name}Loose.jar">
+            <fileset dir="${tcsoa.client.classes.home}/${soa.jar.prefix}${project.name}Loose"/>
+            <manifest>
+                <attribute name="Implementation-Title"   value="Teamcenter Services ${project.name} Loose Client"/>
+                <attribute name="Implementation-Version" value="9000.1.0, ${NOW}"/>
+                <attribute name="Implementation-Vendor"  value="Siemens Product Lifecycle Management Inc."/>
+                <attribute name="Bundle-ManifestVersion" value="2"/>
+                <attribute name="Bundle-Name"            value="Teamcenter Services ${project.name} Loose Client"/>
+                <attribute name="Bundle-SymbolicName"    value="${soa.jar.prefix}${project.name}Loose"/>
+                <attribute name="Bundle-Version"         value="9000.1.0"/>
+                <attribute name="Bundle-ClassPath"       value="."/>
+                <attribute name="Bundle-Vendor"          value="Siemens Product Lifecycle Management Inc."/>
+                <attribute name="Bundle-Localization"    value="plugin"/>
+                <attribute name="Bundle-ActivationPolicy" value="lazy" />
+                <attribute name="Require-Bundle"         value="com.teamcenter.rac.external,TcSoaCommon,TcSoaClient,${soa.jar.prefix}${project.name}Types" />
+                <attribute name="Export-Package"         value="${loose.package.list}" />
+            </manifest>
+        </jar>
+
+    </target>
+
+    <target name="ArchiveRac" depends="packageListRac" description="Creates the Rac Stub Jars">
+
+        <tstamp>
+            <format property="NOW" pattern="MMMM d, yyyy" locale="en"/>
+        </tstamp>
+
+
+        <jar destfile="${tcsoa.client.jars.home}/${soa.jar.prefix}${project.name}Rac.jar">
+            <fileset dir="${tcsoa.client.classes.home}/${soa.jar.prefix}${project.name}Rac"/>
+            <fileset dir="${types.gen.home}/${java.gen.folder.name}" includes="**/*ser"/>
+            <fileset dir="${types.gen.home}/${java.gen.folder.name}" includes="**/jaxb.properties"/>
+            <fileset dir="${client.gen.home}/rac/${java.gen.folder.name}" />
+            <manifest>
+                <attribute name="Implementation-Title"    value="Teamcenter Services ${project.name} Rich Client"/>
+                <attribute name="Implementation-Version"  value="9000.1.0, ${NOW}"/>
+                <attribute name="Implementation-Vendor"   value="Siemens Product Lifecycle Management Inc."/>
+                <attribute name="Bundle-ManifestVersion"  value="2"/>
+                <attribute name="Bundle-Name"             value="Teamcenter Services ${project.name} Rich Client"/>
+                <attribute name="Bundle-SymbolicName"     value="${soa.jar.prefix}${project.name}Rac"/>
+                <attribute name="Bundle-Version"          value="9000.1.0"/>
+                <attribute name="Bundle-ClassPath"        value="."/>
+                <attribute name="Bundle-Vendor"           value="Siemens Product Lifecycle Management Inc."/>
+                <attribute name="Bundle-Localization"     value="plugin"/>
+                <attribute name="Bundle-ActivationPolicy" value="lazy" />
+                <attribute name="Require-Bundle"          value="com.teamcenter.rac.external,TcSoaCommon,TcSoaClient,${soa.jar.prefix}${project.name}Types" />
+                <attribute name="Import-Package"          value="com.teamcenter.rac.kernel" />
+                <attribute name="Export-Package"          value="${rac.package.list}" />
+            </manifest>
+        </jar>
+
+    </target>
+
+    <target name="Archive" depends="ArchiveTypes,ArchiveStrong,ArchiveLoose" description="Creates the Stub Jars"/>
+
+    <target name="BuildTypes" depends="CompileTypes,ArchiveTypes"/>
+
+    <target name="BuildStrong" depends="CompileStrong,ArchiveStrong"/>
+
+    <target name="BuildLoose" depends="CompileLoose,ArchiveLoose"/>
+
+    <target name="BuildRac" depends="CompileRac,ArchiveRac"/>
+
+    <target name="All" depends="BuildTypes,BuildStrong,BuildLoose"/>
+
+</project>

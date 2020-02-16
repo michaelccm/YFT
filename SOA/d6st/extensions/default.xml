@@ -1,0 +1,666 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TcBusinessData xmlns="http://teamcenter.com/BusinessModel/TcBusinessData" Date="">
+<Add>
+   <Library name="D6SoaWork" createRelease="tc9000.1.0" serviceLibrary="true" namespace="D6::Soa::Work"
+       isThirdParty="false" description="D6SoaWork">
+     <DependentOn name="tc"/>
+     <DependentOn name="tccore"/>
+     <DependentOn name="tccoreext"/>
+     <DependentOn name="sa"/>
+     <DependentOn name="property"/>
+     <DependentOn name="qry"/>
+     <DependentOn name="epm"/>
+     <DependentOn name="grm"/>
+     <DependentOn name="bom"/>
+     <DependentOn name="lov"/>
+     <DependentOn name="schmgt"/>
+   </Library>
+   <ServiceInterface name="ManHourManagement" namespace="D6::Soa::Work" libraryName="D6SoaWork"
+       serviceLibraryRef="" dependencies="" createRelease="tc9000.1.0" description="ManHourManagement"/>
+   <Struct name="ManHourBillType" createRelease="tc9000.1.0" scope="D6::Soa::Work::ManHourManagement"
+       namespace="D6::Soa::Work::_2012_02::ManHourManagement" isPublished="true" description="BillType">
+     <StructElement name="myRefBR" description="bill rate ref.">
+       <DataTypeRefParam dataType="std::string"/>
+     </StructElement>
+     <StructElement name="billTypeInternal" description="billTypeInternal">
+       <DataTypeRefParam dataType="std::string"/>
+     </StructElement>
+     <StructElement name="billRateName" description="billRateName">
+       <DataTypeRefParam dataType="std::string"/>
+     </StructElement>
+   </Struct>
+   <Struct name="ManHourEntry" createRelease="tc9000.1.0" scope="D6::Soa::Work::ManHourManagement"
+       namespace="D6::Soa::Work::_2012_02::ManHourManagement" isPublished="true" description="man hour enty">
+     <StructElement name="myUserName" description="myUserName">
+       <DataTypeRefParam dataType="std::string"/>
+     </StructElement>
+     <StructElement name="myYear" description="the year for man hour.">
+       <DataTypeRefParam dataType="std::string"/>
+     </StructElement>
+     <StructElement name="myMonth" description="the month for man hour">
+       <DataTypeRefParam dataType="std::string"/>
+     </StructElement>
+     <StructElement name="myDay" description="the day of year">
+       <DataTypeRefParam dataType="std::string"/>
+     </StructElement>
+     <StructElement name="myDayOfWeek" description="myDayOfWeek">
+       <DataTypeRefParam dataType="std::string"/>
+     </StructElement>
+     <StructElement name="myHoliday" description="myHoliday">
+       <DataTypeRefParam dataType="std::string"/>
+     </StructElement>
+     <StructElement name="workRequired" description="workRequired">
+       <DataTypeRefParam dataType="std::string"/>
+     </StructElement>
+     <StructElement name="myPrjName" description="myPrjName">
+       <DataTypeRefParam dataType="std::string"/>
+     </StructElement>
+     <StructElement name="myPrjId" description="myPrjId">
+       <DataTypeRefParam dataType="std::string"/>
+     </StructElement>
+     <StructElement name="myTaskType" description="myTaskType">
+       <DataTypeRefParam dataType="std::string"/>
+     </StructElement>
+     <StructElement name="myTaskTypeDval" description="myTaskTypeDval">
+       <DataTypeRefParam dataType="std::string"/>
+     </StructElement>
+     <StructElement name="billType" description="billType">
+       <DataTypeRefParam dataType="std::string"/>
+     </StructElement>
+     <StructElement name="myRefBR" description="bill rate reference">
+       <DataTypeRefParam dataType="std::string"/>
+     </StructElement>
+     <StructElement name="workingHours" description="workingHours">
+       <DataTypeRefParam dataType="std::string"/>
+     </StructElement>
+     <StructElement name="myRefTE" description="myRefTE">
+       <DataTypeRefParam dataType="std::string"/>
+     </StructElement>
+     <StructElement name="tseStatus" description="tse status">
+       <DataTypeRefParam dataType="std::string"/>
+     </StructElement>
+     <StructElement name="myRefMHE" description="myRefMHE">
+       <DataTypeRefParam dataType="std::string"/>
+     </StructElement>
+     <StructElement name="row" description="row">
+       <DataTypeRefParam dataType="int"/>
+     </StructElement>
+     <StructElement name="col" description="col">
+       <DataTypeRefParam dataType="int"/>
+     </StructElement>
+     <StructElement name="billTypeInternal" description="billTypeInternal">
+       <DataTypeRefParam dataType="std::string"/>
+     </StructElement>
+   </Struct>
+   <Struct name="ManHourEntrySet" createRelease="tc9000.1.0" scope="D6::Soa::Work::ManHourManagement"
+       namespace="D6::Soa::Work::_2012_02::ManHourManagement" isPublished="true" description="a set of man hour entries">
+     <StructElement name="mheSet" description="a sef of man hour entries">
+       <DataTypeRefParam dataType="std::vector">
+          <DataTypeRefParam dataType="D6::Soa::Work::_2012_02::ManHourManagement::ManHourEntry"/>
+       </DataTypeRefParam>
+     </StructElement>
+   </Struct>
+   <Struct name="ManHourInfo" createRelease="tc9000.1.0" scope="D6::Soa::Work::ManHourManagement"
+       namespace="D6::Soa::Work::_2012_02::ManHourManagement" isPublished="true" description="basic man hour info.">
+     <StructElement name="myUserName" description="user name">
+       <DataTypeRefParam dataType="std::string"/>
+     </StructElement>
+     <StructElement name="myPosition" description="myPosition">
+       <DataTypeRefParam dataType="std::string"/>
+     </StructElement>
+     <StructElement name="myYear" description="the year for man hour.">
+       <DataTypeRefParam dataType="std::string"/>
+     </StructElement>
+     <StructElement name="myMonth" description="the month for the man hour.">
+       <DataTypeRefParam dataType="std::string"/>
+     </StructElement>
+     <StructElement name="totalDays" description="Total days for the give year and month.">
+       <DataTypeRefParam dataType="int"/>
+     </StructElement>
+     <StructElement name="theMonthTmp" description="the month template.">
+       <DataTypeRefParam dataType="std::vector">
+          <DataTypeRefParam dataType="D6::Soa::Work::_2012_02::ManHourManagement::ManHourMonthTmp"/>
+       </DataTypeRefParam>
+     </StructElement>
+     <StructElement name="theProgramSet" description="a set of program">
+       <DataTypeRefParam dataType="std::vector">
+          <DataTypeRefParam dataType="D6::Soa::Work::_2012_02::ManHourManagement::ManHourProgram"/>
+       </DataTypeRefParam>
+     </StructElement>
+     <StructElement name="isHourlyBasedUser" description="identify if the user is a hourly based user">
+       <DataTypeRefParam dataType="bool"/>
+     </StructElement>
+     <StructElement name="isManHourEditable" description="identify if the man hour can be edited.">
+       <DataTypeRefParam dataType="bool"/>
+     </StructElement>
+     <StructElement name="theBillTypeSet" description="theBillTypeSet">
+       <DataTypeRefParam dataType="std::vector">
+          <DataTypeRefParam dataType="D6::Soa::Work::_2012_02::ManHourManagement::ManHourBillType"/>
+       </DataTypeRefParam>
+     </StructElement>
+   </Struct>
+   <Struct name="ManHourMonthTmp" createRelease="tc9000.1.0" scope="D6::Soa::Work::ManHourManagement"
+       namespace="D6::Soa::Work::_2012_02::ManHourManagement" isPublished="true" description="the month template for man hour.">
+     <StructElement name="dayOfMonth" description="the day of month.">
+       <DataTypeRefParam dataType="int"/>
+     </StructElement>
+     <StructElement name="dayOfWeek" description="the day of week.">
+       <DataTypeRefParam dataType="std::string"/>
+     </StructElement>
+     <StructElement name="isWeekend" description="is the day weekend">
+       <DataTypeRefParam dataType="bool"/>
+     </StructElement>
+     <StructElement name="isHoliday" description="is the day holiday">
+       <DataTypeRefParam dataType="bool"/>
+     </StructElement>
+     <StructElement name="holidayName" description="the holiday name.">
+       <DataTypeRefParam dataType="std::string"/>
+     </StructElement>
+     <StructElement name="isWorkRequired" description="is the day required to work.">
+       <DataTypeRefParam dataType="bool"/>
+     </StructElement>
+   </Struct>
+   <Struct name="ManHourProgram" createRelease="tc9000.1.0" scope="D6::Soa::Work::ManHourManagement"
+       namespace="D6::Soa::Work::_2012_02::ManHourManagement" isPublished="true" description="the program info for the man hour.">
+     <StructElement name="prjId" description="Project ID">
+       <DataTypeRefParam dataType="std::string"/>
+     </StructElement>
+     <StructElement name="prjName" description="Project Name">
+       <DataTypeRefParam dataType="std::string"/>
+     </StructElement>
+     <StructElement name="tskType" description="task type">
+       <DataTypeRefParam dataType="std::string"/>
+     </StructElement>
+     <StructElement name="tskTypeDval" description="tskTypeDval">
+       <DataTypeRefParam dataType="std::string"/>
+     </StructElement>
+     <StructElement name="stkTag" description="Schdeule Task Tag">
+       <DataTypeRefParam dataType="std::string"/>
+     </StructElement>
+     <StructElement name="startDay" description="start day in given month">
+       <DataTypeRefParam dataType="int"/>
+     </StructElement>
+     <StructElement name="endDay" description="end day in given month">
+       <DataTypeRefParam dataType="int"/>
+     </StructElement>
+     <StructElement name="prjStartYear" description="prjStartYear">
+       <DataTypeRefParam dataType="int"/>
+     </StructElement>
+     <StructElement name="prjStartMonth" description="prjStartMonth">
+       <DataTypeRefParam dataType="int"/>
+     </StructElement>
+     <StructElement name="prjStartDay" description="prjStartDay">
+       <DataTypeRefParam dataType="int"/>
+     </StructElement>
+     <StructElement name="prjEndYear" description="prjEndYear">
+       <DataTypeRefParam dataType="int"/>
+     </StructElement>
+     <StructElement name="prjEndMonth" description="prjEndMonth">
+       <DataTypeRefParam dataType="int"/>
+     </StructElement>
+     <StructElement name="prjEndDay" description="prjEndDay">
+       <DataTypeRefParam dataType="int"/>
+     </StructElement>
+     <StructElement name="schTag" description="schTag">
+       <DataTypeRefParam dataType="std::string"/>
+     </StructElement>
+   </Struct>
+   <TcClass className="D6ManHourEntry" parentClassName="WorkspaceObject" isExportable="false"
+       isUninstantiable="false" isUninheritable="false" description="">
+     <TcAttribute attributeName="d6BillType" description="d6BillType" attributeType="POM_string"
+          maxStringLength="32" isArray="false" followOnExport="false" isNullsAllowed="true"
+          isUnique="false" isPublicRead="true" isPublicWrite="true" isCandidateKey="false"
+          isTransient="false" exportAsString="false" noBackpointer="false" initialValue=""
+          lowerBoundValue="" upperBoundValue=""/>
+     <TcAttribute attributeName="d6Holiday" description="d6Holiday" attributeType="POM_string"
+          maxStringLength="64" isArray="false" followOnExport="false" isNullsAllowed="true"
+          isUnique="false" isPublicRead="true" isPublicWrite="true" isCandidateKey="false"
+          isTransient="false" exportAsString="false" noBackpointer="false" initialValue=""
+          lowerBoundValue="" upperBoundValue=""/>
+     <TcAttribute attributeName="d6UserName" description="d6UserName" attributeType="POM_string"
+          maxStringLength="32" isArray="false" followOnExport="false" isNullsAllowed="true"
+          isUnique="false" isPublicRead="true" isPublicWrite="true" isCandidateKey="false"
+          isTransient="false" exportAsString="false" noBackpointer="false" initialValue=""
+          lowerBoundValue="" upperBoundValue=""/>
+     <TcAttribute attributeName="d6WorkingHours" description="d6WorkingHours" attributeType="POM_string"
+          maxStringLength="32" isArray="false" followOnExport="false" isNullsAllowed="true"
+          isUnique="false" isPublicRead="true" isPublicWrite="true" isCandidateKey="false"
+          isTransient="false" exportAsString="false" noBackpointer="false" initialValue=""
+          lowerBoundValue="" upperBoundValue=""/>
+     <TcAttribute attributeName="d6WorkRequired" description="d6WorkRequired" attributeType="POM_string"
+          maxStringLength="16" isArray="false" followOnExport="false" isNullsAllowed="true"
+          isUnique="false" isPublicRead="true" isPublicWrite="true" isCandidateKey="false"
+          isTransient="false" exportAsString="false" noBackpointer="false" initialValue=""
+          lowerBoundValue="" upperBoundValue=""/>
+     <TcAttribute attributeName="d6DayOfWeek" description="d6DayOfWeek" attributeType="POM_string"
+          maxStringLength="32" isArray="false" followOnExport="false" isNullsAllowed="true"
+          isUnique="false" isPublicRead="true" isPublicWrite="true" isCandidateKey="false"
+          isTransient="false" exportAsString="false" noBackpointer="false" initialValue=""
+          lowerBoundValue="" upperBoundValue=""/>
+     <TcAttribute attributeName="d6Month" description="d6Month" attributeType="POM_string"
+          maxStringLength="16" isArray="false" followOnExport="false" isNullsAllowed="true"
+          isUnique="false" isPublicRead="true" isPublicWrite="true" isCandidateKey="false"
+          isTransient="false" exportAsString="false" noBackpointer="false" initialValue=""
+          lowerBoundValue="" upperBoundValue=""/>
+     <TcAttribute attributeName="d6Year" description="d6Year" attributeType="POM_string"
+          maxStringLength="16" isArray="false" followOnExport="false" isNullsAllowed="true"
+          isUnique="false" isPublicRead="true" isPublicWrite="true" isCandidateKey="false"
+          isTransient="false" exportAsString="false" noBackpointer="false" initialValue=""
+          lowerBoundValue="" upperBoundValue=""/>
+     <TcAttribute attributeName="d6Day" description="the day of month" attributeType="POM_string"
+          maxStringLength="16" isArray="false" followOnExport="false" isNullsAllowed="true"
+          isUnique="false" isPublicRead="true" isPublicWrite="true" isCandidateKey="false"
+          isTransient="false" exportAsString="false" noBackpointer="false" initialValue=""
+          lowerBoundValue="" upperBoundValue=""/>
+     <TcAttribute attributeName="d6RefTE" description="d6RefTE" attributeType="POM_string"
+          maxStringLength="32" isArray="false" followOnExport="false" isNullsAllowed="true"
+          isUnique="false" isPublicRead="true" isPublicWrite="true" isCandidateKey="false"
+          isTransient="false" exportAsString="false" noBackpointer="false" initialValue=""
+          lowerBoundValue="" upperBoundValue=""/>
+     <TcAttribute attributeName="d6PrjName" description="d6PrjName" attributeType="POM_string"
+          maxStringLength="64" isArray="false" followOnExport="false" isNullsAllowed="true"
+          isUnique="false" isPublicRead="true" isPublicWrite="true" isCandidateKey="false"
+          isTransient="false" exportAsString="false" noBackpointer="false" initialValue=""
+          lowerBoundValue="" upperBoundValue=""/>
+     <TcAttribute attributeName="d6PrjId" description="d6PrjId" attributeType="POM_string"
+          maxStringLength="32" isArray="false" followOnExport="false" isNullsAllowed="true"
+          isUnique="false" isPublicRead="true" isPublicWrite="true" isCandidateKey="false"
+          isTransient="false" exportAsString="false" noBackpointer="false" initialValue=""
+          lowerBoundValue="" upperBoundValue=""/>
+     <TcAttribute attributeName="d6TaskType" description="d6TaskType" attributeType="POM_string"
+          maxStringLength="32" isArray="false" followOnExport="false" isNullsAllowed="true"
+          isUnique="false" isPublicRead="true" isPublicWrite="true" isCandidateKey="false"
+          isTransient="false" exportAsString="false" noBackpointer="false" initialValue=""
+          lowerBoundValue="" upperBoundValue=""/>
+     <TcAttribute attributeName="d6RefBR" description="bill rate tag str" attributeType="POM_string"
+          maxStringLength="32" isArray="false" followOnExport="false" isNullsAllowed="true"
+          isUnique="false" isPublicRead="true" isPublicWrite="true" isCandidateKey="false"
+          isTransient="false" exportAsString="false" noBackpointer="false" initialValue=""
+          lowerBoundValue="" upperBoundValue=""/>
+     <TcAttribute attributeName="d6TaskTypeDval" description="d6TaskTypeDval" attributeType="POM_string"
+          maxStringLength="32" isArray="false" followOnExport="false" isNullsAllowed="true"
+          isUnique="false" isPublicRead="true" isPublicWrite="true" isCandidateKey="false"
+          isTransient="false" exportAsString="false" noBackpointer="false" initialValue=""
+          lowerBoundValue="" upperBoundValue=""/>
+   </TcClass>
+   <TcClass className="D6MheTask" parentClassName="WorkspaceObject" isExportable="false"
+       isUninstantiable="false" isUninheritable="false" description="">
+     <TcAttribute attributeName="d6TaskType" description="d6TaskType" attributeType="POM_string"
+          maxStringLength="32" isArray="false" followOnExport="false" isNullsAllowed="true"
+          isUnique="false" isPublicRead="true" isPublicWrite="true" isCandidateKey="false"
+          isTransient="false" exportAsString="false" noBackpointer="false" initialValue=""
+          lowerBoundValue="" upperBoundValue=""/>
+     <TcAttribute attributeName="d6PrjId" description="d6PrjId" attributeType="POM_string"
+          maxStringLength="32" isArray="false" followOnExport="false" isNullsAllowed="true"
+          isUnique="false" isPublicRead="true" isPublicWrite="true" isCandidateKey="false"
+          isTransient="false" exportAsString="false" noBackpointer="false" initialValue=""
+          lowerBoundValue="" upperBoundValue=""/>
+     <TcAttribute attributeName="d6PrjName" description="d6PrjName" attributeType="POM_string"
+          maxStringLength="32" isArray="false" followOnExport="false" isNullsAllowed="true"
+          isUnique="false" isPublicRead="true" isPublicWrite="true" isCandidateKey="false"
+          isTransient="false" exportAsString="false" noBackpointer="false" initialValue=""
+          lowerBoundValue="" upperBoundValue=""/>
+     <TcAttribute attributeName="d6UserName" description="d6UserName" attributeType="POM_string"
+          maxStringLength="32" isArray="false" followOnExport="false" isNullsAllowed="true"
+          isUnique="false" isPublicRead="true" isPublicWrite="true" isCandidateKey="false"
+          isTransient="false" exportAsString="false" noBackpointer="false" initialValue=""
+          lowerBoundValue="" upperBoundValue=""/>
+     <TcAttribute attributeName="d6PrjStartDate" description="d6PrjStartDate" attributeType="POM_date"
+          maxStringLength="0" isArray="false" followOnExport="false" isNullsAllowed="true"
+          isUnique="false" isPublicRead="true" isPublicWrite="true" isCandidateKey="false"
+          isTransient="false" exportAsString="false" noBackpointer="false" initialValue="NULL"
+          lowerBoundValue="" upperBoundValue=""/>
+     <TcAttribute attributeName="d6PrjEndDate" description="d6PrjEndDate" attributeType="POM_date"
+          maxStringLength="0" isArray="false" followOnExport="false" isNullsAllowed="true"
+          isUnique="false" isPublicRead="true" isPublicWrite="true" isCandidateKey="false"
+          isTransient="false" exportAsString="false" noBackpointer="false" initialValue=""
+          lowerBoundValue="" upperBoundValue=""/>
+     <TcAttribute attributeName="d6Status" description="d6Status" attributeType="POM_string"
+          maxStringLength="32" isArray="false" followOnExport="false" isNullsAllowed="true"
+          isUnique="false" isPublicRead="true" isPublicWrite="true" isCandidateKey="false"
+          isTransient="false" exportAsString="false" noBackpointer="false" initialValue=""
+          lowerBoundValue="" upperBoundValue=""/>
+     <TcAttribute attributeName="d6Schedule_tag" description="d6Schedule_tag" attributeType="POM_typed_reference"
+          maxStringLength="0" isArray="false" followOnExport="false" isNullsAllowed="true"
+          isUnique="false" isPublicRead="true" isPublicWrite="true" isCandidateKey="false"
+          isTransient="false" exportAsString="false" noBackpointer="false" typedRefClassName="Schedule"/>
+     <TcAttribute attributeName="d6TaskTypeDval" description="d6TaskTypeDval" attributeType="POM_string"
+          maxStringLength="32" isArray="false" followOnExport="false" isNullsAllowed="true"
+          isUnique="false" isPublicRead="true" isPublicWrite="true" isCandidateKey="false"
+          isTransient="false" exportAsString="false" noBackpointer="false" initialValue=""
+          lowerBoundValue="" upperBoundValue=""/>
+   </TcClass>
+   <TcAttributeAttach className="TimeSheetEntry">
+     <TcAttribute attributeName="d6MheTask_tag" description="d6MheTask_tag" attributeType="POM_typed_reference"
+          maxStringLength="0" isArray="false" followOnExport="false" isNullsAllowed="true"
+          isUnique="false" isPublicRead="true" isPublicWrite="true" isCandidateKey="false"
+          isTransient="false" exportAsString="false" noBackpointer="false" typedRefClassName="D6MheTask"/>
+   </TcAttributeAttach>
+   <OperationTemplate id="D6::Soa::Work::_2012_02::ManHourManagement::ManHourEntrySet#D6::Soa::Work::ManHourManagement::load#const,D6::Soa::Work::_2012_02::ManHourManagement::ManHourEntry,&amp;"
+       name="D6::Soa::Work::ManHourManagement::load" returnConst="false" createRelease="tc9000.1.0"
+       description="load man hour entires" const="false" static="false" returnFreeMemory="false"
+       returnDescription="a set of man hour entries">
+     <OperationReturnDataTypeRef dataType="D6::Soa::Work::_2012_02::ManHourManagement::ManHourEntrySet"
+          qualifier=""/>
+     <OperationParameter name="filter" description="filter" const="true" inputOutput="Input"
+          freeOutputMemory="false" defaultValue="">
+       <OperationParameterDataTypeRef dataType="D6::Soa::Work::_2012_02::ManHourManagement::ManHourEntry"
+            qualifier="&amp;"/>
+     </OperationParameter>
+     <MetaException name="Teamcenter::Soa::Server::ServiceException"/>
+   </OperationTemplate>
+   <OperationTemplate id="D6::Soa::Work::_2012_02::ManHourManagement::ManHourEntrySet#D6::Soa::Work::ManHourManagement::revise#const,std::string,&amp;$const,std::string,&amp;$const,std::string,&amp;$const,std::vector&lt;D6::Soa::Work::_2012_02::ManHourManagement::ManHourEntry&gt;,&amp;"
+       name="D6::Soa::Work::ManHourManagement::revise" returnConst="false" createRelease="tc9000.1.0"
+       description="revise" const="false" static="false" returnFreeMemory="false"
+       returnDescription="man hour entry set">
+     <OperationReturnDataTypeRef dataType="D6::Soa::Work::_2012_02::ManHourManagement::ManHourEntrySet"
+          qualifier=""/>
+     <OperationParameter name="username" description="username" const="true" inputOutput="Input"
+          freeOutputMemory="false" defaultValue="">
+       <OperationParameterDataTypeRef dataType="std::string" qualifier="&amp;"/>
+     </OperationParameter>
+     <OperationParameter name="year" description="year" const="true" inputOutput="Input"
+          freeOutputMemory="false" defaultValue="">
+       <OperationParameterDataTypeRef dataType="std::string" qualifier="&amp;"/>
+     </OperationParameter>
+     <OperationParameter name="month" description="month" const="true" inputOutput="Input"
+          freeOutputMemory="false" defaultValue="">
+       <OperationParameterDataTypeRef dataType="std::string" qualifier="&amp;"/>
+     </OperationParameter>
+     <OperationParameter name="manHours" description="manHours" const="true" inputOutput="Input"
+          freeOutputMemory="false" defaultValue="">
+       <OperationParameterDataTypeRef dataType="std::vector" qualifier="&amp;">
+          <DataTypeRefParam dataType="D6::Soa::Work::_2012_02::ManHourManagement::ManHourEntry"
+              qualifier=""/>
+       </OperationParameterDataTypeRef>
+     </OperationParameter>
+     <MetaException name="Teamcenter::Soa::Server::ServiceException"/>
+   </OperationTemplate>
+   <OperationTemplate id="D6::Soa::Work::_2012_02::ManHourManagement::ManHourEntrySet#D6::Soa::Work::ManHourManagement::save#const,std::string,&amp;$const,std::string,&amp;$const,std::string,&amp;$const,std::vector&lt;D6::Soa::Work::_2012_02::ManHourManagement::ManHourEntry&gt;,&amp;$const,std::vector&lt;D6::Soa::Work::_2012_02::ManHourManagement::ManHourProgram&gt;,&amp;"
+       name="D6::Soa::Work::ManHourManagement::save" returnConst="false" createRelease="tc9000.1.0"
+       description="save man hours" const="false" static="false" returnFreeMemory="false"
+       returnDescription="save man hours">
+     <OperationReturnDataTypeRef dataType="D6::Soa::Work::_2012_02::ManHourManagement::ManHourEntrySet"
+          qualifier=""/>
+     <OperationParameter name="theUserName" description="theUserName" const="true"
+          inputOutput="Input" freeOutputMemory="false" defaultValue="">
+       <OperationParameterDataTypeRef dataType="std::string" qualifier="&amp;"/>
+     </OperationParameter>
+     <OperationParameter name="theYear" description="theYear" const="true" inputOutput="Input"
+          freeOutputMemory="false" defaultValue="">
+       <OperationParameterDataTypeRef dataType="std::string" qualifier="&amp;"/>
+     </OperationParameter>
+     <OperationParameter name="theMonth" description="theMonth" const="true" inputOutput="Input"
+          freeOutputMemory="false" defaultValue="">
+       <OperationParameterDataTypeRef dataType="std::string" qualifier="&amp;"/>
+     </OperationParameter>
+     <OperationParameter name="manHours" description="manHours" const="true" inputOutput="Input"
+          freeOutputMemory="false" defaultValue="">
+       <OperationParameterDataTypeRef dataType="std::vector" qualifier="&amp;">
+          <DataTypeRefParam dataType="D6::Soa::Work::_2012_02::ManHourManagement::ManHourEntry"
+              qualifier=""/>
+       </OperationParameterDataTypeRef>
+     </OperationParameter>
+     <OperationParameter name="thePrograms" description="the programs" const="true"
+          inputOutput="Input" freeOutputMemory="false" defaultValue="">
+       <OperationParameterDataTypeRef dataType="std::vector" qualifier="&amp;">
+          <DataTypeRefParam dataType="D6::Soa::Work::_2012_02::ManHourManagement::ManHourProgram"
+              qualifier=""/>
+       </OperationParameterDataTypeRef>
+     </OperationParameter>
+     <MetaException name="Teamcenter::Soa::Server::ServiceException"/>
+   </OperationTemplate>
+   <OperationTemplate id="D6::Soa::Work::_2012_02::ManHourManagement::ManHourInfo#D6::Soa::Work::ManHourManagement::getManHourInfo#const,std::string,&amp;$const,std::string,&amp;$const,std::string,&amp;"
+       name="D6::Soa::Work::ManHourManagement::getManHourInfo" returnConst="false"
+       createRelease="tc9000.1.0" description="get the man hour info for give year and month"
+       const="false" static="false" returnFreeMemory="false" returnDescription="the man hour info">
+     <OperationReturnDataTypeRef dataType="D6::Soa::Work::_2012_02::ManHourManagement::ManHourInfo"
+          qualifier=""/>
+     <OperationParameter name="theUserName" description="the user name" const="true"
+          inputOutput="Input" freeOutputMemory="false" defaultValue="">
+       <OperationParameterDataTypeRef dataType="std::string" qualifier="&amp;"/>
+     </OperationParameter>
+     <OperationParameter name="theYear" description="the given year" const="true"
+          inputOutput="Input" freeOutputMemory="false" defaultValue="">
+       <OperationParameterDataTypeRef dataType="std::string" qualifier="&amp;"/>
+     </OperationParameter>
+     <OperationParameter name="theMonth" description="the given month" const="true"
+          inputOutput="Input" freeOutputMemory="false" defaultValue="">
+       <OperationParameterDataTypeRef dataType="std::string" qualifier="&amp;"/>
+     </OperationParameter>
+     <MetaException name="Teamcenter::Soa::Server::ServiceException"/>
+   </OperationTemplate>
+   <OperationTemplate id="std::string#D6::Soa::Work::ManHourManagement::clearManHours#const,std::string,&amp;$const,std::string,&amp;$const,std::string,&amp;"
+       name="D6::Soa::Work::ManHourManagement::clearManHours" returnConst="false"
+       createRelease="tc9000.1.0" description="clear man hours" const="false" static="false"
+       returnFreeMemory="false" returnDescription="return string value">
+     <OperationReturnDataTypeRef dataType="std::string" qualifier=""/>
+     <OperationParameter name="theUser" description="the user name" const="true" inputOutput="Input"
+          freeOutputMemory="false" defaultValue="">
+       <OperationParameterDataTypeRef dataType="std::string" qualifier="&amp;"/>
+     </OperationParameter>
+     <OperationParameter name="theYear" description="the year" const="true" inputOutput="Input"
+          freeOutputMemory="false" defaultValue="">
+       <OperationParameterDataTypeRef dataType="std::string" qualifier="&amp;"/>
+     </OperationParameter>
+     <OperationParameter name="theMonth" description="the month" const="true" inputOutput="Input"
+          freeOutputMemory="false" defaultValue="">
+       <OperationParameterDataTypeRef dataType="std::string" qualifier="&amp;"/>
+     </OperationParameter>
+     <MetaException name="Teamcenter::Soa::Server::ServiceException"/>
+   </OperationTemplate>
+   <OperationTemplate id="std::string#D6::Soa::Work::ManHourManagement::mheTest#const,std::string,&amp;"
+       name="D6::Soa::Work::ManHourManagement::mheTest" returnConst="false" createRelease="tc9000.1.0"
+       description="mheTest" const="false" static="false" returnFreeMemory="false"
+       returnDescription="test result">
+     <OperationReturnDataTypeRef dataType="std::string" qualifier=""/>
+     <OperationParameter name="userName" description="userName" const="true" inputOutput="Input"
+          freeOutputMemory="false" defaultValue="">
+       <OperationParameterDataTypeRef dataType="std::string" qualifier="&amp;"/>
+     </OperationParameter>
+     <MetaException name="Teamcenter::Soa::Server::ServiceException"/>
+   </OperationTemplate>
+   <OperationInputType typeName="D6ManHourEntryCreI" parentTypeName="WorkspaceObjectCreI"
+       typeClassName="D6ManHourEntryCreI" description="CreateInput object for &quot;D6ManHourEntry&quot; business object"
+       isAbstract="false" artifactName="D6ManHourEntryCreI"/>
+   <OperationInputType typeName="D6ManHourEntrySvAI" parentTypeName="WorkspaceObjectSvAI"
+       typeClassName="D6ManHourEntrySvAI" description="SaveAsInput object for &quot;D6ManHourEntry&quot; business object"
+       isAbstract="false" artifactName="D6ManHourEntrySvAI"/>
+   <OperationInputType typeName="D6MheTaskCreI" parentTypeName="WorkspaceObjectCreI"
+       typeClassName="D6MheTaskCreI" description="CreateInput object for &quot;D6MheTask&quot; business object"
+       isAbstract="false" artifactName="D6MheTaskCreI"/>
+   <OperationInputType typeName="D6MheTaskSvAI" parentTypeName="WorkspaceObjectSvAI"
+       typeClassName="D6MheTaskSvAI" description="SaveAsInput object for &quot;D6MheTask&quot; business object"
+       isAbstract="false" artifactName="D6MheTaskSvAI"/>
+   <TcStandardType typeName="D6ManHourEntry" parentTypeName="WorkspaceObject" typeClassName="D6ManHourEntry"
+       description="D6ManHourEntry" isAbstract="false" artifactName="D6ManHourEntry"/>
+   <TcStandardType typeName="D6MheTask" parentTypeName="WorkspaceObject" typeClassName="D6MheTask"
+       description="D6MheTask" isAbstract="false" artifactName="D6MheTask"/>
+   <Operation id="clearManHours#const,std::string,&amp;$const,std::string,&amp;$const,std::string,&amp;"
+       name="clearManHours" createRelease="tc9000.1.0" description="clear man hours"
+       opTemplate="std::string#D6::Soa::Work::ManHourManagement::clearManHours#const,std::string,&amp;$const,std::string,&amp;$const,std::string,&amp;"
+       interface="D6::Soa::Work::ManHourManagement" isPublished="true" canOverride="false"
+       isPreActionAllowed="false" isPostActionAllowed="false" isPreConditionAllowed="false"
+       returnDescription="return string value" component="" useCase="" dependencies=""
+       exceptionCondition="">
+     <ParameterInfo parameterName="theUser" description="the user name"/>
+     <ParameterInfo parameterName="theYear" description="the year"/>
+     <ParameterInfo parameterName="theMonth" description="the month"/>
+   </Operation>
+   <Operation id="getManHourInfo#const,std::string,&amp;$const,std::string,&amp;$const,std::string,&amp;"
+       name="getManHourInfo" createRelease="tc9000.1.0" description="get the man hour info for give year and month"
+       opTemplate="D6::Soa::Work::_2012_02::ManHourManagement::ManHourInfo#D6::Soa::Work::ManHourManagement::getManHourInfo#const,std::string,&amp;$const,std::string,&amp;$const,std::string,&amp;"
+       interface="D6::Soa::Work::ManHourManagement" isPublished="true" canOverride="false"
+       isPreActionAllowed="false" isPostActionAllowed="false" isPreConditionAllowed="false"
+       returnDescription="the man hour info" component="" useCase="" dependencies=""
+       exceptionCondition="">
+     <ParameterInfo parameterName="theUserName" description="the user name"/>
+     <ParameterInfo parameterName="theYear" description="the given year"/>
+     <ParameterInfo parameterName="theMonth" description="the given month"/>
+   </Operation>
+   <Operation id="load#const,D6::Soa::Work::_2012_02::ManHourManagement::ManHourEntry,&amp;"
+       name="load" createRelease="tc9000.1.0" description="load man hour entires"
+       opTemplate="D6::Soa::Work::_2012_02::ManHourManagement::ManHourEntrySet#D6::Soa::Work::ManHourManagement::load#const,D6::Soa::Work::_2012_02::ManHourManagement::ManHourEntry,&amp;"
+       interface="D6::Soa::Work::ManHourManagement" isPublished="true" canOverride="false"
+       isPreActionAllowed="false" isPostActionAllowed="false" isPreConditionAllowed="false"
+       returnDescription="a set of man hour entries" component="" useCase="" dependencies=""
+       exceptionCondition="">
+     <ParameterInfo parameterName="filter" description="filter"/>
+   </Operation>
+   <Operation id="mheTest#const,std::string,&amp;" name="mheTest" createRelease="tc9000.1.0"
+       description="mheTest" opTemplate="std::string#D6::Soa::Work::ManHourManagement::mheTest#const,std::string,&amp;"
+       interface="D6::Soa::Work::ManHourManagement" isPublished="true" canOverride="false"
+       isPreActionAllowed="false" isPostActionAllowed="false" isPreConditionAllowed="false"
+       returnDescription="test result" component="" useCase="" dependencies="" exceptionCondition="">
+     <ParameterInfo parameterName="userName" description="userName"/>
+   </Operation>
+   <Operation id="revise#const,std::string,&amp;$const,std::string,&amp;$const,std::string,&amp;$const,std::vector&lt;D6::Soa::Work::_2012_02::ManHourManagement::ManHourEntry&gt;,&amp;"
+       name="revise" createRelease="tc9000.1.0" description="revise" opTemplate="D6::Soa::Work::_2012_02::ManHourManagement::ManHourEntrySet#D6::Soa::Work::ManHourManagement::revise#const,std::string,&amp;$const,std::string,&amp;$const,std::string,&amp;$const,std::vector&lt;D6::Soa::Work::_2012_02::ManHourManagement::ManHourEntry&gt;,&amp;"
+       interface="D6::Soa::Work::ManHourManagement" isPublished="true" canOverride="false"
+       isPreActionAllowed="false" isPostActionAllowed="false" isPreConditionAllowed="false"
+       returnDescription="man hour entry set" component="" useCase="" dependencies=""
+       exceptionCondition="">
+     <ParameterInfo parameterName="username" description="username"/>
+     <ParameterInfo parameterName="year" description="year"/>
+     <ParameterInfo parameterName="month" description="month"/>
+     <ParameterInfo parameterName="manHours" description="manHours"/>
+   </Operation>
+   <Operation id="save#const,std::string,&amp;$const,std::string,&amp;$const,std::string,&amp;$const,std::vector&lt;D6::Soa::Work::_2012_02::ManHourManagement::ManHourEntry&gt;,&amp;$const,std::vector&lt;D6::Soa::Work::_2012_02::ManHourManagement::ManHourProgram&gt;,&amp;"
+       name="save" createRelease="tc9000.1.0" description="save man hours" opTemplate="D6::Soa::Work::_2012_02::ManHourManagement::ManHourEntrySet#D6::Soa::Work::ManHourManagement::save#const,std::string,&amp;$const,std::string,&amp;$const,std::string,&amp;$const,std::vector&lt;D6::Soa::Work::_2012_02::ManHourManagement::ManHourEntry&gt;,&amp;$const,std::vector&lt;D6::Soa::Work::_2012_02::ManHourManagement::ManHourProgram&gt;,&amp;"
+       interface="D6::Soa::Work::ManHourManagement" isPublished="true" canOverride="false"
+       isPreActionAllowed="false" isPostActionAllowed="false" isPreConditionAllowed="false"
+       returnDescription="save man hours" component="" useCase="" dependencies=""
+       exceptionCondition="">
+     <ParameterInfo parameterName="theUserName" description="theUserName"/>
+     <ParameterInfo parameterName="theYear" description="theYear"/>
+     <ParameterInfo parameterName="theMonth" description="theMonth"/>
+     <ParameterInfo parameterName="manHours" description="manHours"/>
+     <ParameterInfo parameterName="thePrograms" description="the programs"/>
+   </Operation>
+   <TcGlobalConstantAttach constantName="Fnd0SelectedLocales" value="en_US,zh_CN"/>
+   <TcTypeConstantAttach constantName="CreateInput" typeName="D6ManHourEntry" value="D6ManHourEntryCreI"/>
+   <TcTypeConstantAttach constantName="CreateInput" typeName="D6MheTask" value="D6MheTaskCreI"/>
+   <TcTypeConstantAttach constantName="SaveAsInput" typeName="D6ManHourEntry" value="D6ManHourEntrySvAI"/>
+   <TcTypeConstantAttach constantName="SaveAsInput" typeName="D6MheTask" value="D6MheTaskSvAI"/>
+   <TcPropertyConstantAttach constantName="Modifiable" typeName="D6ManHourEntry" propertyName="d6BillType"
+       value="Write"/>
+   <TcPropertyConstantAttach constantName="Modifiable" typeName="D6ManHourEntry" propertyName="d6Day"
+       value="Write"/>
+   <TcPropertyConstantAttach constantName="Modifiable" typeName="D6ManHourEntry" propertyName="d6DayOfWeek"
+       value="Write"/>
+   <TcPropertyConstantAttach constantName="Modifiable" typeName="D6ManHourEntry" propertyName="d6Holiday"
+       value="Write"/>
+   <TcPropertyConstantAttach constantName="Modifiable" typeName="D6ManHourEntry" propertyName="d6Month"
+       value="Write"/>
+   <TcPropertyConstantAttach constantName="Modifiable" typeName="D6ManHourEntry" propertyName="d6PrjId"
+       value="Write"/>
+   <TcPropertyConstantAttach constantName="Modifiable" typeName="D6ManHourEntry" propertyName="d6PrjName"
+       value="Write"/>
+   <TcPropertyConstantAttach constantName="Modifiable" typeName="D6ManHourEntry" propertyName="d6RefBR"
+       value="Write"/>
+   <TcPropertyConstantAttach constantName="Modifiable" typeName="D6ManHourEntry" propertyName="d6RefTE"
+       value="Write"/>
+   <TcPropertyConstantAttach constantName="Modifiable" typeName="D6ManHourEntry" propertyName="d6TaskType"
+       value="Write"/>
+   <TcPropertyConstantAttach constantName="Modifiable" typeName="D6ManHourEntry" propertyName="d6TaskTypeDval"
+       value="Write"/>
+   <TcPropertyConstantAttach constantName="Modifiable" typeName="D6ManHourEntry" propertyName="d6UserName"
+       value="Write"/>
+   <TcPropertyConstantAttach constantName="Modifiable" typeName="D6ManHourEntry" propertyName="d6WorkingHours"
+       value="Write"/>
+   <TcPropertyConstantAttach constantName="Modifiable" typeName="D6ManHourEntry" propertyName="d6WorkRequired"
+       value="Write"/>
+   <TcPropertyConstantAttach constantName="Modifiable" typeName="D6ManHourEntry" propertyName="d6Year"
+       value="Write"/>
+   <TcPropertyConstantAttach constantName="Modifiable" typeName="D6MheTask" propertyName="d6PrjEndDate"
+       value="Write"/>
+   <TcPropertyConstantAttach constantName="Modifiable" typeName="D6MheTask" propertyName="d6PrjId"
+       value="Write"/>
+   <TcPropertyConstantAttach constantName="Modifiable" typeName="D6MheTask" propertyName="d6PrjName"
+       value="Write"/>
+   <TcPropertyConstantAttach constantName="Modifiable" typeName="D6MheTask" propertyName="d6PrjStartDate"
+       value="Write"/>
+   <TcPropertyConstantAttach constantName="Modifiable" typeName="D6MheTask" propertyName="d6Schedule_tag"
+       value="Write"/>
+   <TcPropertyConstantAttach constantName="Modifiable" typeName="D6MheTask" propertyName="d6Status"
+       value="Write"/>
+   <TcPropertyConstantAttach constantName="Modifiable" typeName="D6MheTask" propertyName="d6TaskType"
+       value="Write"/>
+   <TcPropertyConstantAttach constantName="Modifiable" typeName="D6MheTask" propertyName="d6TaskTypeDval"
+       value="Write"/>
+   <TcPropertyConstantAttach constantName="Modifiable" typeName="D6MheTask" propertyName="d6UserName"
+       value="Write"/>
+   <TcPropertyConstantAttach constantName="Modifiable" typeName="TimeSheetEntry" propertyName="bill_type"
+       value="Write"/>
+   <TcPropertyConstantAttach constantName="Modifiable" typeName="TimeSheetEntry" propertyName="billrate_tag"
+       value="Write"/>
+   <TcPropertyConstantAttach constantName="Modifiable" typeName="TimeSheetEntry" propertyName="d6MheTask_tag"
+       value="Write"/>
+   <TcPropertyConstantAttach constantName="Modifiable" typeName="TimeSheetEntry" propertyName="date"
+       value="Write"/>
+   <TcPropertyConstantAttach constantName="Modifiable" typeName="TimeSheetEntry" propertyName="minutes"
+       value="Write"/>
+   <TcPropertyConstantAttach constantName="Modifiable" typeName="TimeSheetEntry" propertyName="scheduletask_tag"
+       value="Write"/>
+   <TcPropertyConstantAttach constantName="Modifiable" typeName="TimeSheetEntry" propertyName="user_tag"
+       value="Write"/>
+   <TcLOV name="D6_YFAS_TaskType" lovType="ListOfValuesString" usage="Exhaustive"
+       description="">
+     <TcLOVValue value="OEM Project" description="OEM Project" conditionName="isTrue"/>
+     <TcLOVValue value="Innovation" description="Innovation" conditionName="isTrue"/>
+     <TcLOVValue value="Platform" description="Platform" conditionName="isTrue"/>
+     <TcLOVValue value="Intra Company" description="Intra Company" conditionName="isTrue"/>
+     <TcLOVValue value="Lean CI" description="Lean CI" conditionName="isTrue"/>
+     <TcLOVValue value="PROACT CI" description="PROACT CI" conditionName="isTrue"/>
+     <TcLOVValue value="Support" description="Support" conditionName="isTrue"/>
+     <TcLOVValue value="Vacation" description="Vacation" conditionName="isTrue"/>
+     <TcLOVValue value="People and development" description="People and development"
+          conditionName="isTrue"/>
+     <TcLOVValue value="Process and OPS" description="Process and OPS" conditionName="isTrue"/>
+     <TcLOVValue value="Social value" description="Social value" conditionName="isTrue"/>
+   </TcLOV>
+   <TcLOV name="D6_YFAS_TaskType_nonproj" lovType="ListOfValuesString" usage="Exhaustive"
+       description="">
+     <TcLOVValue value="mnetask07" description="Non-program task" conditionName="isTrue"/>
+   </TcLOV>
+   <TcLOV name="D6_YFAS_TaskType_proj" lovType="ListOfValuesString" usage="Exhaustive"
+       description="">
+     <TcLOVValue value="mhetask01" description="BOM and CAD2" conditionName="isTrue"/>
+     <TcLOVValue value="mhetask02" description="Engineering Development2" conditionName="isTrue"/>
+     <TcLOVValue value="mhetask03" description="Communication2" conditionName="isTrue"/>
+     <TcLOVValue value="mhetask04" description="Issue Management2" conditionName="isTrue"/>
+     <TcLOVValue value="mhetask05" description="Sampe Management2" conditionName="isTrue"/>
+     <TcLOVValue value="mhetask06" description="Program Cost Management2" conditionName="isTrue"/>
+     <TcLOVValue value="tasktype26" description="Resident Engineer2" conditionName="isTrue"/>
+     <TcLOVValue value="tasktype24" description="CI/VAVE2" conditionName="isTrue"/>
+     <TcLOVValue value="tasktype19" description="STO/Craftmanship//Trim2" conditionName="isTrue"/>
+   </TcLOV>
+   <TcLOVValueSubLOVAttach targetLOVName="D6_YFAS_TaskType" targetValue="Innovation"
+       subLOVName="D6_YFAS_TaskType_proj" conditionName="isTrue"/>
+   <TcLOVValueSubLOVAttach targetLOVName="D6_YFAS_TaskType" targetValue="Intra Company"
+       subLOVName="D6_YFAS_TaskType_proj" conditionName="isTrue"/>
+   <TcLOVValueSubLOVAttach targetLOVName="D6_YFAS_TaskType" targetValue="Lean CI"
+       subLOVName="D6_YFAS_TaskType_proj" conditionName="isTrue"/>
+   <TcLOVValueSubLOVAttach targetLOVName="D6_YFAS_TaskType" targetValue="OEM Project"
+       subLOVName="D6_YFAS_TaskType_proj" conditionName="isTrue"/>
+   <TcLOVValueSubLOVAttach targetLOVName="D6_YFAS_TaskType" targetValue="People and development"
+       subLOVName="D6_YFAS_TaskType_nonproj" conditionName="isTrue"/>
+   <TcLOVValueSubLOVAttach targetLOVName="D6_YFAS_TaskType" targetValue="Platform"
+       subLOVName="D6_YFAS_TaskType_proj" conditionName="isTrue"/>
+   <TcLOVValueSubLOVAttach targetLOVName="D6_YFAS_TaskType" targetValue="PROACT CI"
+       subLOVName="D6_YFAS_TaskType_proj" conditionName="isTrue"/>
+   <TcLOVValueSubLOVAttach targetLOVName="D6_YFAS_TaskType" targetValue="Process and OPS"
+       subLOVName="D6_YFAS_TaskType_nonproj" conditionName="isTrue"/>
+   <TcLOVValueSubLOVAttach targetLOVName="D6_YFAS_TaskType" targetValue="Social value"
+       subLOVName="D6_YFAS_TaskType_nonproj" conditionName="isTrue"/>
+   <TcLOVValueSubLOVAttach targetLOVName="D6_YFAS_TaskType" targetValue="Support"
+       subLOVName="D6_YFAS_TaskType_proj" conditionName="isTrue"/>
+   <TcLOVValueSubLOVAttach targetLOVName="D6_YFAS_TaskType" targetValue="Vacation"
+       subLOVName="D6_YFAS_TaskType_nonproj" conditionName="isTrue"/>
+   <TcLOVAttach lovName="Fnd0state_status" typeName="D6MheTask">
+     <TcLOVAttachPropertyInfo valuePropertyName="d6Status" conditionName="isTrue"
+          override="false" level="0"/>
+   </TcLOVAttach>
+   <TcStatus statusName="D6_Revised" description="D6_Revised"/>
+</Add>
+</TcBusinessData>

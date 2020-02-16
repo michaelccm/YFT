@@ -1,0 +1,50 @@
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <UseHostCompilerIfAvailable>false</UseHostCompilerIfAvailable>
+    <ProjectGuid>{E41E182B-0B2E-4686-B3CE-14501214BCE0}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <ServiceName>D6SoaWork</ServiceName>
+    <ModelTemplateName>d6st</ModelTemplateName>
+    <AssemblyName>$(ServiceName)Types</AssemblyName>
+    <CLIENTGENSRC>/siemens/afuz1/dev/workspace/d6st/output/client/gensrc</CLIENTGENSRC>
+    <TYPESGENSRC>/siemens/afuz1/dev/workspace/d6st/output/types/gensrc</TYPESGENSRC>
+    <CLIENTNET>/siemens/afuz1/dev/workspace/d6st/output/client/Net</CLIENTNET>
+    <TYPESNET>/siemens/afuz1/dev/workspace/d6st/output/types/Net</TYPESNET>   
+    <NETFOLDERNAME>net</NETFOLDERNAME>            
+    <CleanFile Condition="'$(CleanFile)'==''">$(MSBuildProjectFile).$(ServiceName).FileList.txt</CleanFile>
+    <BaseOutDir>/siemens/afuz1/dev/workspace/d6st/output/client/net/</BaseOutDir>
+    <OutputPath>$(TYPESNET)</OutputPath>
+    <IntermediateOutDir>$(TYPESNET)\tmp\</IntermediateOutDir>
+    <IntermediateOutputPath>$(TYPESNET)\tmp\</IntermediateOutputPath>
+    <BaseIntermediateOutputPath>$(TYPESNET)\tmp</BaseIntermediateOutputPath>
+    <DerivedSourceFileDir>$(TYPESGENSRC)</DerivedSourceFileDir>
+    <SourceFileDir>$(DerivedSourceFileDir)\$(ServiceName)</SourceFileDir>
+    <TcSoaKitLibsPath>/siemens/afuz1/dev/soa_client/net/libs</TcSoaKitLibsPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+ 
+ <ItemGroup>
+   <Reference Include="$(TcSoaKitLibsPath)\TcSoaCommon.dll">
+     <SpecificVersion>False</SpecificVersion>
+     <HintPath>$(TcSoaKitLibsPath)</HintPath>
+   </Reference>
+   <Reference Include="System" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="$(SourceFileDir)\$(NETFOLDERNAME)\*.cs" />
+    <Compile Include="$(BuildVersionFile)" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

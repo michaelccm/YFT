@@ -1,0 +1,11 @@
+MSBUILDPATH=%WinDir%/Microsoft.NET/Framework/v2.0.50727
+ANTPATH=/siemens/afuz1/dev/soa_client/toolbox/Ant/bin
+MODELTEMPLATENAME=d6st
+
+include /siemens/afuz1/dev/workspace/d6st/output/client/gensrc/model$(MODELTEMPLATENAME)/makefile
+
+include /siemens/afuz1/dev/workspace/d6st/output/client/gensrc/D6SoaWork/makefile
+include /siemens/afuz1/dev/workspace/d6st/output/server/gensrc/D6SoaWork/makefile
+
+
+include /siemens/afuz1/dev/workspace/d6st/output/client/gensrc/makefile

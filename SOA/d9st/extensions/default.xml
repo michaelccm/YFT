@@ -1,0 +1,388 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TcBusinessData xmlns="http://teamcenter.com/BusinessModel/TcBusinessData" Date="">
+<Add>
+   <Library name="D9SoaWork" createRelease="tc11000.5.0" serviceLibrary="true" namespace="D9::Soa::Work"
+       isThirdParty="false" description="D9SoaWork">
+     <DependentOn name="cxpom"/>
+     <DependentOn name="itk"/>
+     <DependentOn name="sa"/>
+     <DependentOn name="tccore"/>
+     <DependentOn name="tc"/>
+     <DependentOn name="tccoreext"/>
+     <DependentOn name="metaframework"/>
+     <DependentOn name="bom"/>
+     <DependentOn name="epm"/>
+     <DependentOn name="grm"/>
+     <DependentOn name="property"/>
+     <DependentOn name="qry"/>
+     <DependentOn name="lov"/>
+     <DependentOn name="schmgt"/>
+   </Library>
+   <ServiceInterface name="ManHourManageService" namespace="D9::Soa::Work" libraryName="D9SoaWork"
+       serviceLibraryRef="" dependencies="" createRelease="tc11000.5.0" description="ManHourManageService"/>
+   <Struct name="ManHourBillType" createRelease="tc11000.5.0" scope="D9::Soa::Work::ManHourManageService"
+       namespace="D9::Soa::Work::_2018_06::ManHourManageService" isPublished="true"
+       description="ManHourBillType">
+     <StructElement name="myRefBR" description="myRefBR">
+       <DataTypeRefParam dataType="std::string"/>
+     </StructElement>
+     <StructElement name="billTypeInternal" description="billTypeInternal">
+       <DataTypeRefParam dataType="std::string"/>
+     </StructElement>
+     <StructElement name="billRateName" description="billRateName">
+       <DataTypeRefParam dataType="std::string"/>
+     </StructElement>
+   </Struct>
+   <Struct name="ManHourEntry" createRelease="tc11000.5.0" scope="D9::Soa::Work::ManHourManageService"
+       namespace="D9::Soa::Work::_2018_06::ManHourManageService" isPublished="true"
+       description="ManHourEntry">
+     <StructElement name="myUserName" description="myUserName,">
+       <DataTypeRefParam dataType="std::string"/>
+     </StructElement>
+     <StructElement name="myYear" description="myYear">
+       <DataTypeRefParam dataType="std::string"/>
+     </StructElement>
+     <StructElement name="myMonth" description="myMonth">
+       <DataTypeRefParam dataType="std::string"/>
+     </StructElement>
+     <StructElement name="myDay" description="myDay">
+       <DataTypeRefParam dataType="std::string"/>
+     </StructElement>
+     <StructElement name="myDayOfWeek" description="myDayOfWeek">
+       <DataTypeRefParam dataType="std::string"/>
+     </StructElement>
+     <StructElement name="myHoliday" description="myHoliday">
+       <DataTypeRefParam dataType="std::string"/>
+     </StructElement>
+     <StructElement name="workRequired" description="workRequired">
+       <DataTypeRefParam dataType="std::string"/>
+     </StructElement>
+     <StructElement name="myPrjName" description="myPrjName">
+       <DataTypeRefParam dataType="std::string"/>
+     </StructElement>
+     <StructElement name="myPrjId" description="myPrjId">
+       <DataTypeRefParam dataType="std::string"/>
+     </StructElement>
+     <StructElement name="myTaskType" description="myTaskType">
+       <DataTypeRefParam dataType="std::string"/>
+     </StructElement>
+     <StructElement name="myTaskTypeDval" description="myTaskTypeDval">
+       <DataTypeRefParam dataType="std::string"/>
+     </StructElement>
+     <StructElement name="billType" description="billType">
+       <DataTypeRefParam dataType="std::string"/>
+     </StructElement>
+     <StructElement name="myRefBR" description="myRefBR">
+       <DataTypeRefParam dataType="std::string"/>
+     </StructElement>
+     <StructElement name="workingHours" description="workingHours">
+       <DataTypeRefParam dataType="std::string"/>
+     </StructElement>
+     <StructElement name="myRefTE" description="myRefTE">
+       <DataTypeRefParam dataType="std::string"/>
+     </StructElement>
+     <StructElement name="tseStatus" description="tseStatus">
+       <DataTypeRefParam dataType="std::string"/>
+     </StructElement>
+     <StructElement name="myRefMHE" description="myRefMHE">
+       <DataTypeRefParam dataType="std::string"/>
+     </StructElement>
+     <StructElement name="row" description="row">
+       <DataTypeRefParam dataType="int"/>
+     </StructElement>
+     <StructElement name="col" description="col">
+       <DataTypeRefParam dataType="int"/>
+     </StructElement>
+     <StructElement name="billTypeInternal" description="billTypeInternal">
+       <DataTypeRefParam dataType="std::string"/>
+     </StructElement>
+   </Struct>
+   <Struct name="ManHourEntrySet" createRelease="tc11000.5.0" scope="D9::Soa::Work::ManHourManageService"
+       namespace="D9::Soa::Work::_2018_06::ManHourManageService" isPublished="true"
+       description="ManHourEntrySet">
+     <StructElement name="mheSet" description="mheSet">
+       <DataTypeRefParam dataType="std::vector">
+          <DataTypeRefParam dataType="D9::Soa::Work::_2018_06::ManHourManageService::ManHourEntry"/>
+       </DataTypeRefParam>
+     </StructElement>
+   </Struct>
+   <Struct name="ManHourInfo" createRelease="tc11000.5.0" scope="D9::Soa::Work::ManHourManageService"
+       namespace="D9::Soa::Work::_2018_06::ManHourManageService" isPublished="true"
+       description="ManHourInfo">
+     <StructElement name="myUserName" description="myUserName">
+       <DataTypeRefParam dataType="std::string"/>
+     </StructElement>
+     <StructElement name="myPosition" description="myPosition">
+       <DataTypeRefParam dataType="std::string"/>
+     </StructElement>
+     <StructElement name="myYear" description="myYear">
+       <DataTypeRefParam dataType="std::string"/>
+     </StructElement>
+     <StructElement name="myMonth" description="myMonth">
+       <DataTypeRefParam dataType="std::string"/>
+     </StructElement>
+     <StructElement name="totalDays" description="totalDays">
+       <DataTypeRefParam dataType="int"/>
+     </StructElement>
+     <StructElement name="theMonthTmp" description="theMonthTmp">
+       <DataTypeRefParam dataType="std::vector">
+          <DataTypeRefParam dataType="D9::Soa::Work::_2018_06::ManHourManageService::ManHourMonthTmp"/>
+       </DataTypeRefParam>
+     </StructElement>
+     <StructElement name="theProgramSet" description="theProgramSet">
+       <DataTypeRefParam dataType="std::vector">
+          <DataTypeRefParam dataType="D9::Soa::Work::_2018_06::ManHourManageService::ManHourProgram"/>
+       </DataTypeRefParam>
+     </StructElement>
+     <StructElement name="isHourlyBasedUser" description="isHourlyBasedUser">
+       <DataTypeRefParam dataType="bool"/>
+     </StructElement>
+     <StructElement name="isManHourEditable" description="isManHourEditable">
+       <DataTypeRefParam dataType="bool"/>
+     </StructElement>
+     <StructElement name="theBillTypeSet" description="theBillTypeSet">
+       <DataTypeRefParam dataType="std::vector">
+          <DataTypeRefParam dataType="D9::Soa::Work::_2018_06::ManHourManageService::ManHourBillType"/>
+       </DataTypeRefParam>
+     </StructElement>
+   </Struct>
+   <Struct name="ManHourMonthTmp" createRelease="tc11000.5.0" scope="D9::Soa::Work::ManHourManageService"
+       namespace="D9::Soa::Work::_2018_06::ManHourManageService" isPublished="true"
+       description="ManHourMonthTmp">
+     <StructElement name="dayOfMonth" description="dayOfMonth">
+       <DataTypeRefParam dataType="int"/>
+     </StructElement>
+     <StructElement name="dayOfWeek" description="dayOfWeek">
+       <DataTypeRefParam dataType="std::string"/>
+     </StructElement>
+     <StructElement name="isWeekend" description="isWeekend">
+       <DataTypeRefParam dataType="bool"/>
+     </StructElement>
+     <StructElement name="isHoliday" description="isHoliday">
+       <DataTypeRefParam dataType="bool"/>
+     </StructElement>
+     <StructElement name="holidayName" description="holidayName">
+       <DataTypeRefParam dataType="std::string"/>
+     </StructElement>
+     <StructElement name="isWorkRequired" description="isWorkRequired">
+       <DataTypeRefParam dataType="bool"/>
+     </StructElement>
+   </Struct>
+   <Struct name="ManHourProgram" createRelease="tc11000.5.0" scope="D9::Soa::Work::ManHourManageService"
+       namespace="D9::Soa::Work::_2018_06::ManHourManageService" isPublished="true"
+       description="ManHourProgram">
+     <StructElement name="prjId" description="prjId">
+       <DataTypeRefParam dataType="std::string"/>
+     </StructElement>
+     <StructElement name="prjName" description="prjName">
+       <DataTypeRefParam dataType="std::string"/>
+     </StructElement>
+     <StructElement name="tskType" description="tskType">
+       <DataTypeRefParam dataType="std::string"/>
+     </StructElement>
+     <StructElement name="tskTypeDval" description="tskTypeDval">
+       <DataTypeRefParam dataType="std::string"/>
+     </StructElement>
+     <StructElement name="stkTag" description="stkTag">
+       <DataTypeRefParam dataType="std::string"/>
+     </StructElement>
+     <StructElement name="startDay" description="startDay">
+       <DataTypeRefParam dataType="int"/>
+     </StructElement>
+     <StructElement name="endDay" description="endDay">
+       <DataTypeRefParam dataType="int"/>
+     </StructElement>
+     <StructElement name="prjStartYear" description="prjStartYear">
+       <DataTypeRefParam dataType="int"/>
+     </StructElement>
+     <StructElement name="prjStartMonth" description="prjStartMonth">
+       <DataTypeRefParam dataType="int"/>
+     </StructElement>
+     <StructElement name="prjStartDay" description="prjStartDay">
+       <DataTypeRefParam dataType="int"/>
+     </StructElement>
+     <StructElement name="prjEndYear" description="prjEndYear">
+       <DataTypeRefParam dataType="int"/>
+     </StructElement>
+     <StructElement name="prjEndMonth" description="prjEndMonth">
+       <DataTypeRefParam dataType="int"/>
+     </StructElement>
+     <StructElement name="prjEndDay" description="prjEndDay">
+       <DataTypeRefParam dataType="int"/>
+     </StructElement>
+     <StructElement name="schTag" description="schTag">
+       <DataTypeRefParam dataType="std::string"/>
+     </StructElement>
+   </Struct>
+   <OperationTemplate id="D9::Soa::Work::_2018_06::ManHourManageService::ManHourEntrySet#D9::Soa::Work::ManHourManageService::loadOP#const,D9::Soa::Work::_2018_06::ManHourManageService::ManHourEntry,&amp;"
+       name="D9::Soa::Work::ManHourManageService::loadOP" returnConst="false" createRelease="tc11000.5.0"
+       description="" const="false" static="false" returnFreeMemory="false" returnDescription="">
+     <OperationReturnDataTypeRef dataType="D9::Soa::Work::_2018_06::ManHourManageService::ManHourEntrySet"
+          qualifier=""/>
+     <OperationParameter name="manHourFilter" description="manHourFilter" const="true"
+          inputOutput="Input" freeOutputMemory="false" defaultValue="">
+       <OperationParameterDataTypeRef dataType="D9::Soa::Work::_2018_06::ManHourManageService::ManHourEntry"
+            qualifier="&amp;"/>
+     </OperationParameter>
+   </OperationTemplate>
+   <OperationTemplate id="D9::Soa::Work::_2018_06::ManHourManageService::ManHourEntrySet#D9::Soa::Work::ManHourManageService::reviseOP#const,std::string,&amp;$const,std::string,&amp;$const,std::string,&amp;$const,std::vector&lt;D9::Soa::Work::_2018_06::ManHourManageService::ManHourEntry&gt;,&amp;"
+       name="D9::Soa::Work::ManHourManageService::reviseOP" returnConst="false" createRelease="tc11000.5.0"
+       description="" const="false" static="false" returnFreeMemory="false" returnDescription="">
+     <OperationReturnDataTypeRef dataType="D9::Soa::Work::_2018_06::ManHourManageService::ManHourEntrySet"
+          qualifier=""/>
+     <OperationParameter name="username" description="username" const="true" inputOutput="Input"
+          freeOutputMemory="false" defaultValue="">
+       <OperationParameterDataTypeRef dataType="std::string" qualifier="&amp;"/>
+     </OperationParameter>
+     <OperationParameter name="year" description="year" const="true" inputOutput="Input"
+          freeOutputMemory="false" defaultValue="">
+       <OperationParameterDataTypeRef dataType="std::string" qualifier="&amp;"/>
+     </OperationParameter>
+     <OperationParameter name="month" description="month" const="true" inputOutput="Input"
+          freeOutputMemory="false" defaultValue="">
+       <OperationParameterDataTypeRef dataType="std::string" qualifier="&amp;"/>
+     </OperationParameter>
+     <OperationParameter name="manHours" description="manHours" const="true" inputOutput="Input"
+          freeOutputMemory="false" defaultValue="">
+       <OperationParameterDataTypeRef dataType="std::vector" qualifier="&amp;">
+          <DataTypeRefParam dataType="D9::Soa::Work::_2018_06::ManHourManageService::ManHourEntry"
+              qualifier=""/>
+       </OperationParameterDataTypeRef>
+     </OperationParameter>
+   </OperationTemplate>
+   <OperationTemplate id="D9::Soa::Work::_2018_06::ManHourManageService::ManHourEntrySet#D9::Soa::Work::ManHourManageService::saveOP#const,std::string,&amp;$const,std::string,&amp;$const,std::string,&amp;$const,std::vector&lt;D9::Soa::Work::_2018_06::ManHourManageService::ManHourEntry&gt;,&amp;$const,std::vector&lt;D9::Soa::Work::_2018_06::ManHourManageService::ManHourProgram&gt;,&amp;"
+       name="D9::Soa::Work::ManHourManageService::saveOP" returnConst="false" createRelease="tc11000.5.0"
+       description="" const="false" static="false" returnFreeMemory="false" returnDescription="">
+     <OperationReturnDataTypeRef dataType="D9::Soa::Work::_2018_06::ManHourManageService::ManHourEntrySet"
+          qualifier=""/>
+     <OperationParameter name="username" description="username" const="true" inputOutput="Input"
+          freeOutputMemory="false" defaultValue="">
+       <OperationParameterDataTypeRef dataType="std::string" qualifier="&amp;"/>
+     </OperationParameter>
+     <OperationParameter name="year" description="year" const="true" inputOutput="Input"
+          freeOutputMemory="false" defaultValue="">
+       <OperationParameterDataTypeRef dataType="std::string" qualifier="&amp;"/>
+     </OperationParameter>
+     <OperationParameter name="month" description="month" const="true" inputOutput="Input"
+          freeOutputMemory="false" defaultValue="">
+       <OperationParameterDataTypeRef dataType="std::string" qualifier="&amp;"/>
+     </OperationParameter>
+     <OperationParameter name="manHours" description="manHours" const="true" inputOutput="Input"
+          freeOutputMemory="false" defaultValue="">
+       <OperationParameterDataTypeRef dataType="std::vector" qualifier="&amp;">
+          <DataTypeRefParam dataType="D9::Soa::Work::_2018_06::ManHourManageService::ManHourEntry"
+              qualifier=""/>
+       </OperationParameterDataTypeRef>
+     </OperationParameter>
+     <OperationParameter name="programs" description="programs" const="true" inputOutput="Input"
+          freeOutputMemory="false" defaultValue="">
+       <OperationParameterDataTypeRef dataType="std::vector" qualifier="&amp;">
+          <DataTypeRefParam dataType="D9::Soa::Work::_2018_06::ManHourManageService::ManHourProgram"
+              qualifier=""/>
+       </OperationParameterDataTypeRef>
+     </OperationParameter>
+   </OperationTemplate>
+   <OperationTemplate id="D9::Soa::Work::_2018_06::ManHourManageService::ManHourInfo#D9::Soa::Work::ManHourManageService::getManHourInfoOP#const,std::string,&amp;$const,std::string,&amp;$const,std::string,&amp;"
+       name="D9::Soa::Work::ManHourManageService::getManHourInfoOP" returnConst="false"
+       createRelease="tc11000.5.0" description="" const="false" static="false" returnFreeMemory="false"
+       returnDescription="">
+     <OperationReturnDataTypeRef dataType="D9::Soa::Work::_2018_06::ManHourManageService::ManHourInfo"
+          qualifier=""/>
+     <OperationParameter name="theUserName" description="theUserName" const="true"
+          inputOutput="Input" freeOutputMemory="false" defaultValue="">
+       <OperationParameterDataTypeRef dataType="std::string" qualifier="&amp;"/>
+     </OperationParameter>
+     <OperationParameter name="theYear" description="theYear" const="true" inputOutput="Input"
+          freeOutputMemory="false" defaultValue="">
+       <OperationParameterDataTypeRef dataType="std::string" qualifier="&amp;"/>
+     </OperationParameter>
+     <OperationParameter name="theMonth" description="theMonth" const="true" inputOutput="Input"
+          freeOutputMemory="false" defaultValue="">
+       <OperationParameterDataTypeRef dataType="std::string" qualifier="&amp;"/>
+     </OperationParameter>
+   </OperationTemplate>
+   <OperationTemplate id="std::string#D9::Soa::Work::ManHourManageService::clearManHoursOP#const,std::string,&amp;$const,std::string,&amp;$const,std::string,&amp;"
+       name="D9::Soa::Work::ManHourManageService::clearManHoursOP" returnConst="false"
+       createRelease="tc11000.5.0" description="" const="false" static="false" returnFreeMemory="false"
+       returnDescription="">
+     <OperationReturnDataTypeRef dataType="std::string" qualifier=""/>
+     <OperationParameter name="theUser" description="theUser" const="true" inputOutput="Input"
+          freeOutputMemory="false" defaultValue="">
+       <OperationParameterDataTypeRef dataType="std::string" qualifier="&amp;"/>
+     </OperationParameter>
+     <OperationParameter name="theAction" description="theAction" const="true" inputOutput="Input"
+          freeOutputMemory="false" defaultValue="">
+       <OperationParameterDataTypeRef dataType="std::string" qualifier="&amp;"/>
+     </OperationParameter>
+     <OperationParameter name="thePara" description="thePara" const="true" inputOutput="Input"
+          freeOutputMemory="false" defaultValue="">
+       <OperationParameterDataTypeRef dataType="std::string" qualifier="&amp;"/>
+     </OperationParameter>
+   </OperationTemplate>
+   <OperationTemplate id="std::string#D9::Soa::Work::ManHourManageService::mheTest#const,std::string,&amp;"
+       name="D9::Soa::Work::ManHourManageService::mheTest" returnConst="false" createRelease="tc11000.5.0"
+       description="" const="false" static="false" returnFreeMemory="false" returnDescription="">
+     <OperationReturnDataTypeRef dataType="std::string" qualifier=""/>
+     <OperationParameter name="theUser" description="theUser" const="true" inputOutput="Input"
+          freeOutputMemory="false" defaultValue="">
+       <OperationParameterDataTypeRef dataType="std::string" qualifier="&amp;"/>
+     </OperationParameter>
+   </OperationTemplate>
+   <Operation id="clearManHoursOP#const,std::string,&amp;$const,std::string,&amp;$const,std::string,&amp;"
+       name="clearManHoursOP" createRelease="tc11000.5.0" description="" opTemplate="std::string#D9::Soa::Work::ManHourManageService::clearManHoursOP#const,std::string,&amp;$const,std::string,&amp;$const,std::string,&amp;"
+       interface="D9::Soa::Work::ManHourManageService" isPublished="true" canOverride="false"
+       isPreActionAllowed="false" isPostActionAllowed="false" isPreConditionAllowed="false"
+       returnDescription="" component="" useCase="" dependencies="" exceptionCondition="">
+     <ParameterInfo parameterName="theUser" description="theUser"/>
+     <ParameterInfo parameterName="theAction" description="theAction"/>
+     <ParameterInfo parameterName="thePara" description="thePara"/>
+   </Operation>
+   <Operation id="getManHourInfoOP#const,std::string,&amp;$const,std::string,&amp;$const,std::string,&amp;"
+       name="getManHourInfoOP" createRelease="tc11000.5.0" description="" opTemplate="D9::Soa::Work::_2018_06::ManHourManageService::ManHourInfo#D9::Soa::Work::ManHourManageService::getManHourInfoOP#const,std::string,&amp;$const,std::string,&amp;$const,std::string,&amp;"
+       interface="D9::Soa::Work::ManHourManageService" isPublished="true" canOverride="false"
+       isPreActionAllowed="false" isPostActionAllowed="false" isPreConditionAllowed="false"
+       returnDescription="" component="" useCase="" dependencies="" exceptionCondition="">
+     <ParameterInfo parameterName="theUserName" description="theUserName"/>
+     <ParameterInfo parameterName="theYear" description="theYear"/>
+     <ParameterInfo parameterName="theMonth" description="theMonth"/>
+   </Operation>
+   <Operation id="loadOP#const,D9::Soa::Work::_2018_06::ManHourManageService::ManHourEntry,&amp;"
+       name="loadOP" createRelease="tc11000.5.0" description="" opTemplate="D9::Soa::Work::_2018_06::ManHourManageService::ManHourEntrySet#D9::Soa::Work::ManHourManageService::loadOP#const,D9::Soa::Work::_2018_06::ManHourManageService::ManHourEntry,&amp;"
+       interface="D9::Soa::Work::ManHourManageService" isPublished="true" canOverride="false"
+       isPreActionAllowed="false" isPostActionAllowed="false" isPreConditionAllowed="false"
+       returnDescription="" component="" useCase="" dependencies="" exceptionCondition="">
+     <ParameterInfo parameterName="manHourFilter" description="manHourFilter"/>
+   </Operation>
+   <Operation id="mheTest#const,std::string,&amp;" name="mheTest" createRelease="tc11000.5.0"
+       description="" opTemplate="std::string#D9::Soa::Work::ManHourManageService::mheTest#const,std::string,&amp;"
+       interface="D9::Soa::Work::ManHourManageService" isPublished="true" canOverride="false"
+       isPreActionAllowed="false" isPostActionAllowed="false" isPreConditionAllowed="false"
+       returnDescription="" component="" useCase="" dependencies="" exceptionCondition="">
+     <ParameterInfo parameterName="theUser" description="theUser"/>
+   </Operation>
+   <Operation id="reviseOP#const,std::string,&amp;$const,std::string,&amp;$const,std::string,&amp;$const,std::vector&lt;D9::Soa::Work::_2018_06::ManHourManageService::ManHourEntry&gt;,&amp;"
+       name="reviseOP" createRelease="tc11000.5.0" description="" opTemplate="D9::Soa::Work::_2018_06::ManHourManageService::ManHourEntrySet#D9::Soa::Work::ManHourManageService::reviseOP#const,std::string,&amp;$const,std::string,&amp;$const,std::string,&amp;$const,std::vector&lt;D9::Soa::Work::_2018_06::ManHourManageService::ManHourEntry&gt;,&amp;"
+       interface="D9::Soa::Work::ManHourManageService" isPublished="true" canOverride="false"
+       isPreActionAllowed="false" isPostActionAllowed="false" isPreConditionAllowed="false"
+       returnDescription="" component="" useCase="" dependencies="" exceptionCondition="">
+     <ParameterInfo parameterName="username" description="username"/>
+     <ParameterInfo parameterName="year" description="year"/>
+     <ParameterInfo parameterName="month" description="month"/>
+     <ParameterInfo parameterName="manHours" description="manHours"/>
+   </Operation>
+   <Operation id="saveOP#const,std::string,&amp;$const,std::string,&amp;$const,std::string,&amp;$const,std::vector&lt;D9::Soa::Work::_2018_06::ManHourManageService::ManHourEntry&gt;,&amp;$const,std::vector&lt;D9::Soa::Work::_2018_06::ManHourManageService::ManHourProgram&gt;,&amp;"
+       name="saveOP" createRelease="tc11000.5.0" description="" opTemplate="D9::Soa::Work::_2018_06::ManHourManageService::ManHourEntrySet#D9::Soa::Work::ManHourManageService::saveOP#const,std::string,&amp;$const,std::string,&amp;$const,std::string,&amp;$const,std::vector&lt;D9::Soa::Work::_2018_06::ManHourManageService::ManHourEntry&gt;,&amp;$const,std::vector&lt;D9::Soa::Work::_2018_06::ManHourManageService::ManHourProgram&gt;,&amp;"
+       interface="D9::Soa::Work::ManHourManageService" isPublished="true" canOverride="false"
+       isPreActionAllowed="false" isPostActionAllowed="false" isPreConditionAllowed="false"
+       returnDescription="" component="" useCase="" dependencies="" exceptionCondition="">
+     <ParameterInfo parameterName="username" description="username"/>
+     <ParameterInfo parameterName="year" description="year"/>
+     <ParameterInfo parameterName="month" description="month"/>
+     <ParameterInfo parameterName="manHours" description="manHours"/>
+     <ParameterInfo parameterName="programs" description="programs"/>
+   </Operation>
+   <TcGlobalConstantAttach constantName="Fnd0SelectedLocales" value="en_US,zh_CN"/>
+   <Functionality name="D9st" displayName="d7st" enabledForVerificationRules="false"
+       description="Component for the template - d9st"/>
+</Add>
+</TcBusinessData>

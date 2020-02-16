@@ -1,0 +1,60 @@
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <UseHostCompilerIfAvailable>false</UseHostCompilerIfAvailable>
+    <ProjectGuid>{DCA075C9-B417-41C5-BC2F-F9496877545F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <ServiceName>modeld6st</ServiceName>
+    <ModelTemplateName>d6st</ModelTemplateName>
+    <CLIENTGENSRC>/siemens/afuz1/dev/workspace/d6st/output/client/gensrc</CLIENTGENSRC>
+    <TYPESGENSRC>/siemens/afuz1/dev/workspace/d6st/output/types/gensrc</TYPESGENSRC>
+    <CLIENTNET>/siemens/afuz1/dev/workspace/d6st/output/client/Net</CLIENTNET>
+    <TYPESNET>/siemens/afuz1/dev/workspace/d6st/output/types/Net</TYPESNET>   
+    <NETFOLDERNAME>net</NETFOLDERNAME>     
+    <AssemblyName>TcSoaStrongModel$(ModelTemplateName)</AssemblyName>
+    <CleanFile Condition="'$(CleanFile)'==''">$(MSBuildProjectFile).$(ServiceName).FileList.txt</CleanFile>
+    <BaseOutDir>/siemens/afuz1/dev/workspace/d6st/output/client/net/</BaseOutDir>
+    <OutputPath>$(CLIENTNET)</OutputPath>
+    <IntermediateOutDir>$(CLIENTNET)\tmp\</IntermediateOutDir>
+    <IntermediateOutputPath>$(CLIENTNET)\tmp\</IntermediateOutputPath>
+    <BaseIntermediateOutputPath>$(CLIENTNET)\tmp</BaseIntermediateOutputPath>
+    <DerivedSourceFileDir>$(CLIENTGENSRC)</DerivedSourceFileDir>
+    <SourceFileDir>$(DerivedSourceFileDir)\model$(ModelTemplateName)</SourceFileDir>
+    <TcSoaKitLibsPath>/siemens/afuz1/dev/soa_client/net/libs</TcSoaKitLibsPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  
+ <ItemGroup>
+    <Reference Include="$(TcSoaKitLibsPath)\TcSoaCommon.dll">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(TcSoaKitLibsPath)</HintPath>
+    </Reference>
+    <Reference Include="$(TcSoaKitLibsPath)\TcSoaStrongModel.dll">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(TcSoaKitLibsPath)</HintPath>
+    </Reference>
+    <Reference Include="$(TcSoaKitLibsPath)\TcSoaClient.dll">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(TcSoaKitLibsPath)</HintPath>
+    </Reference>
+    ${DependentModelLibs}
+    <Reference Include="System" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="$(SourceFileDir)\$(NETFOLDERNAME)\**\*.cs" />
+    <Compile Include="$(BuildVersionFile)" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+    <Message  Text="SOA STRONG:@(Reference)"/>
+  </Target>
+  <Target Name="AfterBuild...">
+  </Target>
+  -->
+</Project>
